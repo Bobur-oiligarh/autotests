@@ -1,10 +1,10 @@
-import uuid
-
 from sqlalchemy.orm import Session, relationship
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Integer, Column, Text, DateTime, Numeric, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
+
+import uuid
 
 from utils.db.db_engine import SessionMaker
 from utils.patterns.singleton import Singleton

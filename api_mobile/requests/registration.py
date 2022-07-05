@@ -82,7 +82,7 @@ class BioIdentification(TestRequest):
         self.doc_number = client.user.doc_number
         self.doc_series = client.user.doc_series
         self.doc_type = client.user.doc_type
-        self.photo = {"front": "" + base64}
+        self.photo = {"front": "" + base64.b64encode(client.photo)}
 
 
 if __name__ == "__main__":
