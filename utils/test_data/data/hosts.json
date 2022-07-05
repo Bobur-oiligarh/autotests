@@ -1,0 +1,27 @@
+{
+  "test": {
+    "hosts": {
+      "back": "https://test-mobilebank.hamkorbank.uz/",
+      "signature": "http://172.25.102.150:7002/",
+      "product_catalog": "http://172.25.102.150:7006/",
+      "reference": "http://172.25.102.150:7000/",
+      "limit": "http://172.25.102.150:7081/",
+      "credentials": "http://172.25.102.150:7080/"
+    }
+  },
+  "pre_prod": {
+    "hosts": {
+      "back": "",
+      "signature": "",
+      "product_catalog": "",
+      "reference": "",
+      "limit": "",
+      "credentials": ""
+    }
+  },
+  "all": {
+    "hosts": {
+      "grafana": "http://172.25.102.118:3000/"
+    }
+  }
+}

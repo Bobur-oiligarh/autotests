@@ -1,0 +1,151 @@
+{
+  "back": {
+    "operations": {
+      "main_page": {
+        "end_points": {
+          "cards_balances": {
+            "method": "post",
+            "path": "api/v1/mobile/cards-balances"
+          },
+          "cards_operations": {
+            "method": "post",
+            "path": "api/v1/mobile/cards-operations"
+          },
+          "client_cards": {
+            "method": "get",
+            "path": "api/v1/mobile/client-cards"
+          },
+          "client_name": {
+            "method": "get",
+            "path": "api/v1/mobile/client-name"
+          }
+        }
+      },
+      "registration": {
+        "end_points": {
+          "start_reg": {
+            "method": "post",
+            "path": "api/v1/mobile/start-registration"
+          },
+          "finish_reg": {
+            "method": "post",
+            "path": "api/v1/mobile/finish-registration"
+          },
+          "get-offer": {
+            "method": "get",
+            "path": "api/v1/mobile/registration-offer"
+          },
+          "offer_accept": {
+            "method": "put",
+            "path": "api/v1/mobile/registration-offer"
+          },
+          "check_client_reg": {
+            "method": "post",
+            "path": "api/v1/mobile/check-client-registration"
+          },
+          "client_reg": {
+            "method": "post",
+            "path": "api/v1/mobile/client-registration"
+          }
+        }
+      },
+      "references": {
+        "end_points": {
+          "bankomates": {
+            "method": "get",
+            "path": "api/v1/mobile/dict/bankomates"
+          },
+          "branches": {
+            "method": "get",
+            "path": "api/v1/mobile/dict/branches"
+          },
+          "languages": {
+            "method": "get",
+            "path": "api/v1/mobile/dict/languages"
+          },
+          "operators": {
+            "method": "get",
+            "path": "api/v1/mobile/dict/operators"
+          },
+          "regions": {
+            "method": "get",
+            "path": "api/v1/mobile/dict/regions"
+          },
+          "exchange-rates": {
+            "method": "get",
+            "path": "api/v1/mobile/exchange-rates"
+          }
+        }
+      },
+      "auth": {
+        "end_points": {
+          "login": {
+            "method": "post",
+            "path": "api/v1/mobile/login"
+          },
+          "refresh": {
+            "method": "post",
+            "path": "api/v1/mobile/refresh"
+          }
+        }
+      },
+      "payment": {
+        "end_points": {
+          "p2p-check": {
+            "method": "post",
+            "path": "api/v1/mobile/payment/p2p-check"
+          },
+          "p2p-confirm": {
+            "method": "post",
+            "path": "api/v1/mobile/payment/p2p-confirm"
+          },
+          "p2p-info": {
+            "method": "post",
+            "path": "api/v1/mobile/payment/p2p-info/%d"
+          },
+          "p2p-init": {
+            "method": "get",
+            "path": "api/v1/mobile/payment/p2p-init"
+          },
+          "p2p-lasts": {
+            "method": "get",
+            "path": "api/v1/mobile/payment/p2p-lasts"
+          }
+        }
+      },
+      "product": {
+        "end_points": {
+          "accounts": {
+            "method": "get",
+            "path": "api/v1/mobile/product/accounts"
+          },
+          "deposits": {
+            "method": "get",
+            "path": "api/v1/mobile/product/deposits"
+          },
+          "loans": {
+            "method": "get",
+            "path": "api/v1/mobile/product/loans"
+          },
+          "store": {
+            "method": "get",
+            "path": "api/v1/mobile/product/store"
+          }
+        }
+      },
+      "settings": {
+        "end_points": {
+          "language": {
+            "method": "put",
+            "path": "api/v1/mobile/settings/language"
+          },
+          "min_version": {
+            "method": "get",
+            "path": "api/v1/mobile/settings/min-version"
+          }
+        }
+      }
+    }
+  }
+}
+

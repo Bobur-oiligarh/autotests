@@ -1,0 +1,198 @@
+[
+  {
+    "phone_type": "1",
+    "device_id": "string2",
+    "device_info": "string2",
+    "device_os": "IOS",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "7a1d9efd2acdd156",
+    "device_info": "Galaxy A50",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "ac7bc2760c3e79fb",
+    "device_info": "Galaxy A50",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "3c871486cdb1bf55",
+    "device_info": "Galaxy M12",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "3c871486cdb1bf56",
+    "device_info": "Galaxy M12",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "f575ea2556130b5b",
+    "device_info": "Galaxy M31",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "f575ea2556130b57",
+    "device_info": "Galaxy M31",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "a7af938d003c955f",
+    "device_info": "Galaxy S20",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "a7af938d003c9555",
+    "device_info": "Galaxy S20",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "e88cf2ce2237651f",
+    "device_info": "Galaxy S9",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "e88cf2ce2237651f",
+    "device_info": "Galaxy S9",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "e88cf2ce22376556",
+    "device_info": "Galaxy S9",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "9F12C392-A630-4E6E-9C90-81A85894B4M6",
+    "device_info": "iPhone 7 (GSM)",
+    "device_os": "IOS",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "9F12C392-A630-4E6E-9C90-81A85894B4F1",
+    "device_info": "iPhone 7 (GSM)",
+    "device_os": "IOS",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "233487BA-BC08-4116-AD87-EA5C5385B07B",
+    "device_info": "iPhone XS",
+    "device_os": "IOS",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "233487BA-BC08-4116-AD87-EA5C5385B08K",
+    "device_info": "iPhone XS",
+    "device_os": "IOS",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "7f3e3617ec764b2c",
+    "device_info": "LG",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "7f3e3617ec764456",
+    "device_info": "LG",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "0cecbcdf2ae7f0fa",
+    "device_info": "Redmi 10X 4G / Redmi Note 9",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "0cecbcdf2ae7f0f4",
+    "device_info": "Redmi 10X 4G / Redmi Note 9",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "6f89d1cf9d0a7c1c",
+    "device_info": "Redmi 4X",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "6f89d1cf9d0a7c1f",
+    "device_info": "Redmi 4X",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "b5f38b411772eb4f",
+    "device_info": "Redmi 6",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "b5f38b411772eb4c",
+    "device_info": "Redmi 6",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "b748d107a7c87e1e",
+    "device_info": "Redmi Note 8 Pro / Redmi Note 8 pro",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "b748d107a6c87e0e",
+    "device_info": "Redmi Note 8 Pro / Redmi Note 8 pro",
+    "device_os": "Android",
+    "lang_id": "uz"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "8916e7c5dd1debff",
+    "device_info": "Xiaomi 11 Lite 5G NE",
+    "device_os": "Android",
+    "lang_id": "ru"
+  },
+  {
+    "phone_type": "1",
+    "device_id": "8935e7c5dd1debff",
+    "device_info": "Xiaomi 11 Lite 5G NE",
+    "device_os": "Android",
+    "lang_id": "uz"
+  }
+]

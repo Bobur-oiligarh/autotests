@@ -1,0 +1,12 @@
+{
+  "uuid": "0ca03ddd-fc5a-4c34-9a1e-5c11da164c8d",
+  "name": "[8] Client{user={phone_number='998916106433', card_number='8600120423719163', expire_date='1023'}, device={device_id='233487BA-BC08-4116-AD87-EA5C5385B07B', device_info='iPhone XS', device_os='IOS'}, sign_id='null', access_token='null', refresh_token='null'}",
+  "children": [
+    "6194887c-42af-4bfd-8c3c-36d7f3690a0d"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1653046316883,
+  "stop": 1653046317165
+}
