@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy_utils import database_exists, create_database,
+from sqlalchemy_utils import database_exists, create_database
 from .db_names import db_names
 from utils.db.credentials import Credentials
 from ..patterns.singleton import Singleton
