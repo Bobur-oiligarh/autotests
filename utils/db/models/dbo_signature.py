@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session, relationship
+from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Integer, Column, Text, DateTime, Numeric, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
@@ -6,7 +6,7 @@ import datetime
 
 import uuid
 
-from utils.db.db_engine import SessionMaker
+from utils.db.models.base_db import BaseDB
 from utils.patterns.singleton import Singleton
 
 Base = declarative_base()
@@ -57,22 +57,6 @@ class Signature(Base):
     document_id = Column(Text(), nullable=True)
     created_at = Column(DateTime(), default=datetime.datetime.now, nullable=False)
     otps = relationship("OTP")
-
-
-class BaseDB:
-    __db_name__ = None
-
-    def __init__(self):
-        self._session: Session = None
-
-    def _get_session(self) -> Session:
-        if not self._session:
-            self._session = SessionMaker().get_session(self.__db_name__)
-        return self._session
-
-    def _close(self):
-        self._session.close()
-        self._session = None
 
 
 class DBOSignatureBase(BaseDB):

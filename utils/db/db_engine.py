@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+from sqlalchemy_utils import database_exists, create_database,
 from .db_names import db_names
 from utils.db.credentials import Credentials
 from ..patterns.singleton import Singleton
@@ -10,17 +11,21 @@ class EngineFabricBase:
 
     def __init__(self):
         self.engines = {}
-        self.set_engines()
+        self._set_engines()
 
     def create_engine(self, db_name, echo: bool = True, pool_size: int = 5, max_overflow: int = 10):
-        return create_engine(
+        engine = create_engine(
             self.CREDS % db_name,
             echo=echo,
             pool_size=pool_size,
             max_overflow=max_overflow
-        ).connect(False)
+        )
+        if not database_exists(engine.url):
+            create_database(engine.url)
 
-    def set_engines(self):
+        return engine.connect(False)
+
+    def _set_engines(self):
         for db_name in db_names:
             self.engines[db_name] = self.create_engine(db_name)
 
