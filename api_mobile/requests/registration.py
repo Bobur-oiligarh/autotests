@@ -101,11 +101,15 @@ if __name__ == "__main__":
         )
     )
 
+    print()
+    print("StartRegistration")
     sr = StartRegistration(client=client)
     print(sr.get_response())
     client.sign_id = sr.get_response().data.sign_id
     client.code = DBOSignature().sms_key(client.sign_id)
 
+    print()
+    print("FinishRegistration")
     fr = FinishRegistration(client=client)
     print(fr.get_response())
     client.refresh_token = fr.get_response().data.refresh_token
@@ -113,12 +117,18 @@ if __name__ == "__main__":
     print(client)
 
     # time.sleep(3)
+    print()
+    print("GetOffer")
     go = GetOffer(client=client)
     print(go.get_response())
 
+    print()
+    print("AgreeOffer")
     ao = AgreeOffer(client)
     print(ao.get_response())
 
+    print()
+    print("CheckClientReg")
     ccr = CheckClientReg(client=client)
     print(ccr.get_response())
 
