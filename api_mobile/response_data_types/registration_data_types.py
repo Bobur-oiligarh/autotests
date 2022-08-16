@@ -14,7 +14,7 @@ class ConfirmMethod(SignId):
 
 class AccRefTokens(BaseType):
     def __init__(self, data: dict):
-        self.access_token = data["access_token"]
+        self.accs_token = data["accesess_token"]
         self.refresh_token = data["refresh_token"]
 
 
