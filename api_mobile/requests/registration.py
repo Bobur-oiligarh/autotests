@@ -1,6 +1,6 @@
 import base64
 
-from api_mobile.response_data_types.registration_data_types import SignId, AccRefTokens, Offer, AgreeResult, \
+from api_mobile.response_data_types.registration_data_types import SignId, AccRefTokens, Offer, AgreeOfferResult, \
     ConfirmMethod, StoreAccRefTokens
 from utils.db.models.dbo_signature import DBOSignature
 from utils.test_data.providers import URLProvider
@@ -52,7 +52,7 @@ class AgreeOffer(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
             URLProvider().url("registration", "agree_offer"),
-            data_type=AgreeResult,
+            data_type=AgreeOfferResult,
             headers=client.auth_token()
         )
         self.action = client.action
