@@ -58,7 +58,6 @@ class Offer(BaseType):
         pass
 
 
-
 class AgreeOfferResult(BaseType):
     def __init__(self, data: dict):
         self.result = data["result"]
