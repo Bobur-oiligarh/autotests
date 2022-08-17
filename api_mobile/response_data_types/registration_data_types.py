@@ -27,7 +27,7 @@ class AccRefTokens(BaseType):
         self.refresh_token = data["refresh_token"]
 
     def check(self, client):
-        super().check()
+        super().check(client)
         self.access_token_not_empty()
         self.refresh_token_not_empty()
 
@@ -50,8 +50,13 @@ class Offer(BaseType):
         self.text_not_empty(client)
 
     @allure.step("Текст не пустой")
-    def text_not_empty(self, client):
+    def text_not_empty(self):
         assert len(self.text) > 0, f"Текст в ответе пустой"
+
+    @allure.step("Язык текста совпадает с ожидаемым")
+    def true_text_language(self):
+        pass
+
 
 
 class AgreeOfferResult(BaseType):

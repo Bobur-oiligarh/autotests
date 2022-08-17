@@ -1,4 +1,4 @@
-from api_mobile.tests.registration_tests import StartRegistrationTest, FinishRegistrationTest
+from api_mobile.tests.registration_tests import StartRegistrationSteps, FinishRegistrationTest
 from utils.db.models.dbo_signature import DBOSignature
 from utils.test_data.client import Client, User, Device
 
@@ -27,7 +27,7 @@ class RegistrationScenarioTest(unittest.TestCase):
         )
 
     def testScenario(self):
-        StartRegistrationTest().startReg(self.client)
+        StartRegistrationSteps().startReg(self.client)
 
         with allure.step("Имитируем получение СМС кода"):
             self.client.code = DBOSignature().sms_key(self.client.sign_id)

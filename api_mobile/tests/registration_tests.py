@@ -3,14 +3,12 @@ import unittest
 import allure
 
 
-@allure.story("Start registration")
-class StartRegistrationTest(unittest.TestCase):
-
+class StartRegistrationSteps:
     @allure.step("Start registration")
     def startReg(self, client):
         response = StartRegistration(client).get_response()
-        response.check()
-        client.sign_id = response.data.sign_i
+        response.check(client)
+        client.sign_id = response.data.sign_id
         print(client.sign_id)
 
 
@@ -27,7 +25,7 @@ class FinishRegistrationTest(unittest.TestCase):
 
 class GetOfferTest(unittest.TestCase):
 
-    @allure.step("Get Offer")
+    @allure.step("Get offer")
     def getOffer(self, client):
         response = GetOffer(client).get_response()
         response.check()
