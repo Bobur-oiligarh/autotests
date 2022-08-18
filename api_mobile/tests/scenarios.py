@@ -32,7 +32,7 @@ class RegistrationScenarioTest(unittest.TestCase):
             .check_response(self.client) \
             .set_sign_id(self.client)
 
-        with allure.step("Имитируем получение СМС кода (запрос из БД)"):
+        with allure.step("Имитируем получение СМС кода (запрос в dbo_signature)"):
             self.client.code = DBOSignature().sms_key(self.client.sign_id)
 
         FinishRegistration(self.client) \

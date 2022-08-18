@@ -10,9 +10,9 @@ class SignId(BaseType):
     def check(self, client, **kwargs):
         self.sign_id_not_empty()
 
-    @allure.step("Sign_id не пустой")
+    @allure.step("sign_id не пустой")
     def sign_id_not_empty(self):
-        assert self.sign_id != "", f"Sign_id ответа пустой"
+        assert self.sign_id != "", f"sign_id ответа пустой"
 
 
 class AccRefTokens(BaseType):
@@ -44,11 +44,11 @@ class Offer(BaseType):
         self.text_not_empty()
         self.true_text_language(client)
 
-    @allure.step("Текст не пустой")
+    @allure.step("текст не пустой")
     def text_not_empty(self):
-        assert len(self.text) > 0, f"Текст в ответе пустой"
+        assert len(self.text) > 0, f"текст в ответе пустой"
 
-    @allure.step("Язык текста совпадает с ожидаемым")
+    @allure.step("язык текста совпадает с ожидаемым")
     def true_text_language(self, client):
         # подумать над проверкой языка текста
         pass
@@ -64,11 +64,11 @@ class AgreeOfferResult(BaseType):
             kwargs["result"] if "result" in kwargs.keys() else "Success"
         )
 
-    @allure.step("Проверка результата подписания оферты")
+    @allure.step("проверка результата подписания оферты")
     def result_is_success(self, expected_result):
-        assert self.result == expected_result, f"" \
-                                               f"Результат подписания оферты ({self.result}) " \
-                                               f"отличается от ожидаемого ({expected_result})"
+        assert self.result == expected_result, \
+            f"результат подписания оферты ({self.result}) " \
+            f"отличается от ожидаемого ({expected_result})"
 
 
 class ConfirmMethod(SignId):
@@ -82,7 +82,7 @@ class ConfirmMethod(SignId):
             kwargs["confirm_method"] if "confirm_method" in kwargs.keys() else "BIO"
         )
 
-    @allure.step("Проверка confirm_method")
+    @allure.step("проверка confirm_method")
     def check_confirm_method(self, expected_confirm_method):
         self.confirm_method_not_empty()
         self.confirm_method_not_empty()
@@ -93,8 +93,9 @@ class ConfirmMethod(SignId):
 
     @allure.step("confirm_method совпадает с ожидаемым")
     def confirm_method_is_true(self, expected_confirm_method):
-        assert self.confirm_method == expected_confirm_method, f"confirm_method ответа ({self.confirm_method}) не " \
-                                                               f"совпадает с ожидаемым ({expected_confirm_method})"
+        assert self.confirm_method == expected_confirm_method, \
+            f"confirm_method ответа ({self.confirm_method}) не " \
+            f"совпадает с ожидаемым ({expected_confirm_method})"
 
 
 class StoreAccRefTokens(AccRefTokens):
