@@ -1,10 +1,11 @@
-from api_mobile.tests.registration_tests import StartRegistrationSteps, FinishRegistrationTest
-from utils.db.models.dbo_signature import DBOSignature
-from utils.test_data.client import Client, User, Device
-
+import allure
 import unittest
 
-import allure
+from api_mobile.requests.registration.finish_registration import FinishRegistration
+from api_mobile.requests.registration.offer import GetOffer, AgreeOffer
+from api_mobile.requests.registration.start_registration import StartRegistration
+from utils.db.models.dbo_signature import DBOSignature
+from utils.test_data.client import Client, User, Device
 
 
 @allure.story("Registration scenario, positive")
@@ -27,11 +28,19 @@ class RegistrationScenarioTest(unittest.TestCase):
         )
 
     def testScenario(self):
-        StartRegistrationSteps().startReg(self.client)
+        StartRegistration(self.client) \
+            .check_response(self.client) \
+            .set_sign_id(self.client)
 
-        with allure.step("Имитируем получение СМС кода"):
+        with allure.step("Имитируем получение СМС кода (запрос из БД)"):
             self.client.code = DBOSignature().sms_key(self.client.sign_id)
 
-        FinishRegistrationTest().finishReg(self.client)
+        FinishRegistration(self.client) \
+            .check_response(self.client) \
+            .set_access_refresh_tokens(self.client)
 
+        GetOffer(self.client) \
+            .check_response(self.client)
 
+        AgreeOffer(self.client) \
+            .check_response(self.client)

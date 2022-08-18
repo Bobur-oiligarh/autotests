@@ -1,5 +1,7 @@
+import allure
 import requests
 import json
+from abc import ABC
 
 from utils.api_utils.test_response import TestResponse
 
@@ -11,7 +13,7 @@ methods = {
     "patch": requests.patch}
 
 
-class TestRequest:
+class RequestBase:
 
     def __init__(self,
                  url: dict,
@@ -48,3 +50,11 @@ class TestRequest:
             if not key.startswith("_"):
                 data[key] = getattr(self, key)
         return json.dumps(data)
+
+
+class TestRequest(RequestBase, ABC):
+
+    @allure.step("Проверка ответа на запрос")
+    def check_response(self, client, status: str = "Success", error_code: int = 0, error_note: str = "", **kwargs):
+        self.get_response().check_response(client, status, error_code, error_note, **kwargs)
+        return self

@@ -1,8 +1,7 @@
-from utils.api_utils.data.urls import urls
+from api_mobile.data import urls
 import os
 
 from utils.patterns.singleton import Singleton
-import pathlib
 
 
 class URLProviderBase:
