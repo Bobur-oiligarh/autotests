@@ -1,9 +1,7 @@
-import allure
-
 from api_mobile.response_data_types.registration_data_types import ConfirmMethod
 from utils.api_utils.test_request import TestRequest
-from utils.test_data.client import Client
-from utils.test_data.providers import URLProvider
+from api_mobile.test_data.client import Client
+from api_mobile.test_data.providers import URLProvider
 
 
 class CheckClientReg(TestRequest):

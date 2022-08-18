@@ -37,6 +37,7 @@ class RequestBase:
             headers=self._headers,
             cookies=self._cookies
         )
+        print(self.__dict__)
         self._response = TestResponse(response, self._data_type)
 
     def get_response(self, refresh: bool = False) -> TestResponse:
@@ -49,12 +50,16 @@ class RequestBase:
         for key in self.__dict__:
             if not key.startswith("_"):
                 data[key] = getattr(self, key)
+        print(data)
         return json.dumps(data)
 
 
 class TestRequest(RequestBase, ABC):
 
-    @allure.step("Проверка ответа на запрос")
+    @allure.step("Отправляем запрос, получаем ответ")
+    def _run(self):
+        super()._run()
+
     def check_response(self, client, status: str = "Success", error_code: int = 0, error_note: str = "", **kwargs):
         self.get_response().check_response(client, status, error_code, error_note, **kwargs)
         return self

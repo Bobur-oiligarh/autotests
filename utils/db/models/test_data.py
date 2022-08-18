@@ -7,7 +7,7 @@ import datetime
 import uuid
 
 from utils.db.db_engine import SessionMaker, EngineFabric
-from utils.db.models.base_db import BaseDB
+from utils.db.models.base_db_model import BaseDB
 from utils.patterns.singleton import Singleton
 
 Base = declarative_base()

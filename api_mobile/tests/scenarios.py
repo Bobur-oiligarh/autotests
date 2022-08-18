@@ -4,8 +4,8 @@ import unittest
 from api_mobile.requests.registration.finish_registration import FinishRegistration
 from api_mobile.requests.registration.offer import GetOffer, AgreeOffer
 from api_mobile.requests.registration.start_registration import StartRegistration
-from utils.db.models.dbo_signature import DBOSignature
-from utils.test_data.client import Client, User, Device
+from api_mobile.test_data.db_models.dbo_signature import DBOSignature
+from api_mobile.test_data.client import Client, User, Device
 
 
 @allure.story("Registration scenario, positive")

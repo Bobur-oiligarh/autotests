@@ -1,4 +1,4 @@
-from api_mobile.data import urls
+from api_mobile.test_data.data.urls import urls
 import os
 
 from utils.patterns.singleton import Singleton
@@ -22,7 +22,3 @@ class URLProviderBase:
 
 class URLProvider(URLProviderBase, metaclass=Singleton):
     pass
-
-
-if __name__ == "__main__":
-    print(URLProvider().url("registration", "finish_reg"))
