@@ -6,7 +6,7 @@ import datetime
 
 import uuid
 
-from utils.db.models.base_db import BaseDB
+from utils.db.models.base_db_model import BaseDB
 from utils.patterns.singleton import Singleton
 
 Base = declarative_base()
@@ -56,7 +56,7 @@ class Signature(Base):
     signed_at = Column(DateTime(), nullable=True)
     document_id = Column(Text(), nullable=True)
     created_at = Column(DateTime(), default=datetime.datetime.now, nullable=False)
-    otps = relationship("OTP")
+
 
 
 class DBOSignatureBase(BaseDB):

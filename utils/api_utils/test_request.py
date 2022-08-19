@@ -1,5 +1,7 @@
+import allure
 import requests
 import json
+from abc import ABC
 
 from utils.api_utils.test_response import TestResponse
 
@@ -11,7 +13,7 @@ methods = {
     "patch": requests.patch}
 
 
-class TestRequest:
+class RequestBase:
 
     def __init__(self,
                  url: dict,
@@ -35,6 +37,7 @@ class TestRequest:
             headers=self._headers,
             cookies=self._cookies
         )
+        print(self.__dict__)
         self._response = TestResponse(response, self._data_type)
 
     def get_response(self, refresh: bool = False) -> TestResponse:
@@ -47,4 +50,16 @@ class TestRequest:
         for key in self.__dict__:
             if not key.startswith("_"):
                 data[key] = getattr(self, key)
+        print(data)
         return json.dumps(data)
+
+
+class TestRequest(RequestBase, ABC):
+
+    @allure.step("Отправляем запрос, получаем ответ")
+    def _run(self):
+        super()._run()
+
+    def check_response(self, client, status: str = "Success", error_code: int = 0, error_note: str = "", **kwargs):
+        self.get_response().check_response(client, status, error_code, error_note, **kwargs)
+        return self

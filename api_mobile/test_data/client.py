@@ -39,6 +39,7 @@ class Device:
 
 class Client:
     first_name: str
+
     last_name: str
     middle_name: str
 
