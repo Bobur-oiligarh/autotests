@@ -1,6 +1,4 @@
-import allure
-
-from api_mobile.response_data_types.registration_data_types import SignId
+from api_mobile.response_data_types.registration.sign_id import SignId
 from utils.api_utils.test_request import TestRequest
 from api_mobile.test_data.client import Client
 from api_mobile.test_data.providers import URLProvider
@@ -21,8 +19,3 @@ class StartRegistration(TestRequest):
         self.device_os = client.device.device_os
         self.lang_id = client.device.lang_id
         self.app_version = client.app_version
-
-    @allure.step("Установить sign_id")
-    def set_sign_id(self, client):
-        client.sign_id = self.get_response().data.sign_id
-        return self

@@ -1,4 +1,4 @@
-from api_mobile.response_data_types.registration_data_types import ConfirmMethod
+from api_mobile.response_data_types.registration.confirm_method import ConfirmMethod
 from utils.api_utils.test_request import TestRequest
 from api_mobile.test_data.client import Client
 from api_mobile.test_data.providers import URLProvider
@@ -17,3 +17,5 @@ class CheckClientReg(TestRequest):
         self.device_info = client.device.device_info
         self.device_os = client.device.device_os
         self.app_version = client.app_version
+
+

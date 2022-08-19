@@ -1,6 +1,8 @@
 import allure
 import unittest
 
+from api_mobile.requests.registration.check_client_registration import CheckClientReg
+from api_mobile.requests.registration.client_sms_registration import ClientSMSRegistration
 from api_mobile.requests.registration.finish_registration import FinishRegistration
 from api_mobile.requests.registration.offer import GetOffer, AgreeOffer
 from api_mobile.requests.registration.start_registration import StartRegistration
@@ -27,20 +29,37 @@ class RegistrationScenarioTest(unittest.TestCase):
             )
         )
 
+    @allure.step("Имитируем получение СМС кода (запрос в dbo_signature)")
+    def set_SMS_code(self, client):
+        client.code = DBOSignature().sms_key(client.sign_id)
+
+    @allure.tag("Процесс регистрации")
     def testScenario(self):
         StartRegistration(self.client) \
-            .check_response(self.client) \
-            .set_sign_id(self.client)
+            .send_request_check_response(self.client) \
+            .response().data.set_sign_id(self.client)
 
-        with allure.step("Имитируем получение СМС кода (запрос в dbo_signature)"):
-            self.client.code = DBOSignature().sms_key(self.client.sign_id)
+        self.set_SMS_code(self.client)
 
         FinishRegistration(self.client) \
-            .check_response(self.client) \
-            .set_access_refresh_tokens(self.client)
+            .send_request_check_response(self.client) \
+            .response().data.set_access_refresh_tokens(self.client)
 
         GetOffer(self.client) \
-            .check_response(self.client)
+            .send_request_check_response(self.client)
 
         AgreeOffer(self.client) \
-            .check_response(self.client)
+            .send_request_check_response(self.client)
+
+        CheckClientReg(self.client) \
+            .send_request_check_response(self.client) \
+            .response().data.set_sign_id_and_confirm_method(self.client)
+
+        self.set_SMS_code(self.client)
+
+        ClientSMSRegistration(self.client). \
+            send_request_check_response(self.client) \
+            .response().data.set_access_refresh_tokens(self.client)
+
+        print(self.client.sign_id)
+        print(self.client.confirm_method)

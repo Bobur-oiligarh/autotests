@@ -17,7 +17,7 @@ class TestResponse:
         self.error_note = resp_dict["error_note"]
         self._set_data(resp_dict["data"], data_type)
 
-    @allure.step("проверка ответа на запрос")
+    @allure.step("Проверка ответа на запрос")
     def check_response(self, client, status, error_code, error_note, **kwargs):
         self.check_status(status)
         self.check_error_code(error_code)

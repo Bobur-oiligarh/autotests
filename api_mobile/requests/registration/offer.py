@@ -1,4 +1,4 @@
-from api_mobile.response_data_types.registration_data_types import Offer, AgreeOfferResult
+from api_mobile.response_data_types.registration.offer import Offer, AgreeOfferResult
 from utils.api_utils.test_request import TestRequest
 from api_mobile.test_data.client import Client
 from api_mobile.test_data.providers import URLProvider
@@ -21,4 +21,3 @@ class AgreeOffer(TestRequest):
             headers=client.auth_token()
         )
         self.action = client.action
-
