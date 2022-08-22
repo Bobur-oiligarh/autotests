@@ -16,11 +16,11 @@ class AccRefTokens(BaseType):
 
     @allure.step("access_token не пустой")
     def access_token_not_empty(self):
-        assert self.access_token != "", f"access_token ответа пустой"
+        self.tc.assertNotEqual(self.access_token, "", f"access_token ответа пустой" + self.__str__())
 
     @allure.step("refresh_token не пустой")
     def refresh_token_not_empty(self):
-        assert self.refresh_token != "", f"refresh_token ответа пустой"
+        self.tc.assertNotEqual(self.refresh_token, "", f"refresh_token ответа пустой" + self.__str__())
 
     @allure.step("Установить access_token и refresh_token")
     def set_access_refresh_tokens(self, client):
@@ -40,3 +40,9 @@ class StoreAccRefTokens(AccRefTokens):
     def __init__(self, data: dict):
         super().__init__(data)
         self.url = data["url"]
+
+    def check(self, client, **kwargs):
+        super().check(client, **kwargs)
+
+    def url_not_empty(self):
+        self.tc.assertNotEqual(self.url, "", f"url в ответе пустой" + self.__str__())

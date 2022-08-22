@@ -16,7 +16,8 @@ class RegistrationScenarioTest(unittest.TestCase):
             User(
                 "998935087121",
                 "8600120436901998",
-                "1023"
+                "1023",
+                residence_of_uz=False
             ),
             Device(
                 phone_type="1",

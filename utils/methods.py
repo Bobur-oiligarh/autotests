@@ -1,5 +1,5 @@
 def obj_to_string(obj: object):
-    string = ""
+    string = "\n"
 
     for name in obj.__dir__():
         if not name.startswith("_"):
