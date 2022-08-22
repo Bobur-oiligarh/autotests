@@ -14,9 +14,9 @@ class RegistrationScenarioTest(unittest.TestCase):
     def setUp(self) -> None:
         self.client = Client(
             User(
-                "998935087121",
-                "8600120436901998",
-                "1023",
+                "998941775859",
+                "8600120480409831",
+                "0923",
                 residence_of_uz=False
             ),
             Device(
@@ -39,6 +39,7 @@ class RegistrationScenarioTest(unittest.TestCase):
         self.step_finish_reg()
         self.step_get_offer()
         self.step_agree_offer()
+        self.step_check_client_reg()
         self.set_SMS_code(self.client)
         self.step_client_sms_reg()
 
