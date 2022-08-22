@@ -1,11 +1,12 @@
 import allure
 
-from utils.api_utils.response_data_base import BaseType
+from api_mobile.response_data_types.response_data_base import BaseType
 
 
 class AccRefTokens(BaseType):
 
     def __init__(self, data: dict):
+        super().__init__()
         self.access_token = data["access_token"]
         self.refresh_token = data["refresh_token"]
 

@@ -45,6 +45,18 @@ class RequestBase:
             self._run()
         return self._response
 
+    def status(self):
+        return self.response().status
+
+    def error_code(self):
+        return self.response().error_code
+
+    def error_note(self):
+        return self.response().error_note
+
+    def data(self):
+        return self.response().data
+
     def _get_data(self) -> str:
         data = {}
         for key in self.__dict__:
@@ -58,13 +70,3 @@ class TestRequest(RequestBase, ABC):
     @allure.step("Отправляем запрос, получаем ответ")
     def _run(self):
         super()._run()
-
-    def send_request_check_response(self,
-                                    client,
-                                    status: str = "Success",
-                                    error_code: int = 0,
-                                    error_note: str = "",
-                                    **kwargs):
-        self.response(kwargs["refresh"] if "refresh" in kwargs.keys() else None) \
-            .check_response(client, status, error_code, error_note, **kwargs)
-        return self

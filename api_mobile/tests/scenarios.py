@@ -1,13 +1,11 @@
 import allure
 import unittest
 
-from api_mobile.requests.registration.check_client_registration import CheckClientReg
-from api_mobile.requests.registration.client_sms_registration import ClientSMSRegistration
-from api_mobile.requests.registration.finish_registration import FinishRegistration
-from api_mobile.requests.registration.offer import GetOffer, AgreeOffer
-from api_mobile.requests.registration.start_registration import StartRegistration
+from api_mobile.requests.registration import StartRegistration, FinishRegistration, GetOffer, AgreeOffer, \
+    CheckClientRegistration, ClientSMSRegistration
 from api_mobile.test_data.db_models.dbo_signature import DBOSignature
 from api_mobile.test_data.client import Client, User, Device
+from utils.universal_steps.check_response import check_response_status
 
 
 @allure.story("Registration scenario, positive")
@@ -33,33 +31,46 @@ class RegistrationScenarioTest(unittest.TestCase):
     def set_SMS_code(self, client):
         client.code = DBOSignature().sms_key(client.sign_id)
 
-    @allure.tag("Процесс регистрации")
+    @allure.testcase("Процесс регистрации")
     def testScenario(self):
-        StartRegistration(self.client) \
-            .send_request_check_response(self.client) \
-            .response().data.set_sign_id(self.client)
-
+        self.step_start_reg()
         self.set_SMS_code(self.client)
-
-        FinishRegistration(self.client) \
-            .send_request_check_response(self.client) \
-            .response().data.set_access_refresh_tokens(self.client)
-
-        GetOffer(self.client) \
-            .send_request_check_response(self.client)
-
-        AgreeOffer(self.client) \
-            .send_request_check_response(self.client)
-
-        CheckClientReg(self.client) \
-            .send_request_check_response(self.client) \
-            .response().data.set_sign_id_and_confirm_method(self.client)
-
+        self.step_finish_reg()
+        self.step_get_offer()
+        self.step_agree_offer()
         self.set_SMS_code(self.client)
+        self.step_client_sms_reg()
 
-        ClientSMSRegistration(self.client). \
-            send_request_check_response(self.client) \
-            .response().data.set_access_refresh_tokens(self.client)
+    @allure.step("Начало регистрации start_registration")
+    def step_start_reg(self):
+        response = StartRegistration(self.client).response()
+        check_response_status(response)
+        response.data.set_sign_id(self.client)
 
-        print(self.client.sign_id)
-        print(self.client.confirm_method)
+    @allure.step("Подтверждение номера телефона finish_registration")
+    def step_finish_reg(self):
+        response = FinishRegistration(self.client).response()
+        check_response_status(response)
+        response.data.set_access_refresh_tokens(self.client)
+
+    @allure.step("Запрос оферты get_offer")
+    def step_get_offer(self):
+        response = GetOffer(self.client).response()
+        check_response_status(response)
+
+    @allure.step("Подтверждение оферты agree_offer")
+    def step_agree_offer(self):
+        response = AgreeOffer(self.client).response()
+        check_response_status(response)
+
+    @allure.step("Добавление карты check_client_registration")
+    def step_check_client_reg(self):
+        response = CheckClientRegistration(self.client).response()
+        check_response_status(response)
+        response.data.set_sign_id_and_confirm_method(self.client)
+
+    @allure.step("Подтверждение номера карты через СМС client_sms_registration")
+    def step_client_sms_reg(self):
+        response = ClientSMSRegistration(self.client).response()
+        check_response_status(response)
+        response.data.set_access_refresh_tokens(self.client)

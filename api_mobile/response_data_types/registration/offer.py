@@ -1,10 +1,11 @@
 import allure
 
-from utils.api_utils.response_data_base import BaseType
+from api_mobile.response_data_types.response_data_base import BaseType
 
 
 class Offer(BaseType):
     def __init__(self, data: dict):
+        super().__init__()
         self.text = data["text"]
         self.is_short_title = data["is_short_title"]
         self.short_text = data["short_text"]
@@ -26,6 +27,7 @@ class Offer(BaseType):
 class AgreeOfferResult(BaseType):
 
     def __init__(self, data: dict):
+        super().__init__()
         self.result = data["result"]
 
     def check(self, client, **kwargs):

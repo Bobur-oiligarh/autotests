@@ -4,7 +4,7 @@ from api_mobile.test_data.client import Client
 from api_mobile.test_data.providers import URLProvider
 
 
-class CheckClientReg(TestRequest):
+class CheckClientRegistration(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
