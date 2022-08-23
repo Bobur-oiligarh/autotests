@@ -40,17 +40,28 @@ class RequestBase:
         print(self.__dict__)
         self._response = TestResponse(response, self._data_type)
 
-    def get_response(self, refresh: bool = False) -> TestResponse:
+    def response(self, refresh: bool = False) -> TestResponse:
         if refresh or self._response is None:
             self._run()
         return self._response
+
+    def status(self):
+        return self.response().status
+
+    def error_code(self):
+        return self.response().error_code
+
+    def error_note(self):
+        return self.response().error_note
+
+    def data(self):
+        return self.response().data
 
     def _get_data(self) -> str:
         data = {}
         for key in self.__dict__:
             if not key.startswith("_"):
                 data[key] = getattr(self, key)
-        print(data)
         return json.dumps(data)
 
 
@@ -59,7 +70,3 @@ class TestRequest(RequestBase, ABC):
     @allure.step("Отправляем запрос, получаем ответ")
     def _run(self):
         super()._run()
-
-    def check_response(self, client, status: str = "Success", error_code: int = 0, error_note: str = "", **kwargs):
-        self.get_response().check_response(client, status, error_code, error_note, **kwargs)
-        return self

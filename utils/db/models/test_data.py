@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session, relationship
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy import Integer, Column, Text, DateTime, Numeric, ForeignKey, Enum, Date
+from sqlalchemy import Integer, Column, Text, DateTime, Numeric, ForeignKey, Enum, Date, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
@@ -47,6 +47,7 @@ class User(Base):
     doc_series = Column(Text())
     doc_number = Column(Text())
     pinfl = Column(Text())
+    residence_of_uz = Column(Boolean(), nullable=False, default=True)
 
     cards = relationship("Card")
 

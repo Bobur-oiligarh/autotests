@@ -17,32 +17,6 @@ class TestResponse:
         self.error_note = resp_dict["error_note"]
         self._set_data(resp_dict["data"], data_type)
 
-    @allure.step("проверка ответа на запрос")
-    def check_response(self, client, status, error_code, error_note, **kwargs):
-        self.check_status(status)
-        self.check_error_code(error_code)
-        self.check_error_note(error_note)
-        self.check_data(client, **kwargs)
-
-    @allure.step("статус ответа соответствует ожидаемому")
-    def check_status(self, status):
-        assert self.status == status, \
-            f"статус ответа ({self.status}) не соответствует ожидаемому ({status})"
-
-    @allure.step("error_code ответа соответствует ожидаемому")
-    def check_error_code(self, error_code):
-        assert self.error_code == error_code, \
-            f"error_code ответа ({self.error_code}) не соответствует ожидаемому ({error_code})"
-
-    @allure.step("error_note ответа соответствует ожидаемому")
-    def check_error_note(self, error_note):
-        assert self.error_note == error_note, \
-            f"error_note ответа ({self.error_note}) не соответствует ожидаемому ({error_note})"
-
-    @allure.step("проверка параметров ответа")
-    def check_data(self, client, **kwargs):
-        self.data.check(client, **kwargs)
-
     def _set_data(self, data, data_type: type):
         try:
             if data_type:

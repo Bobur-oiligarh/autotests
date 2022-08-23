@@ -35,5 +35,14 @@ urls = {
             "method": "post",
             "path": "api/v1/mobile/bio-identification"
         }
+    },
+    "main_page": {
+        "environment": {
+            "all": "https://test-mobilebank.hamkorbank.uz/"
+        },
+        "client_cards": {
+            "path": "api/v1/mobile/client-cards",
+            "method": "get"
+        }
     }
 }

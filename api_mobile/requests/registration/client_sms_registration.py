@@ -1,15 +1,16 @@
 from api_mobile.response_data_types.registration.access_refresh_tokens import AccRefTokens
-from utils.api_utils.test_request import TestRequest
 from api_mobile.test_data.client import Client
 from api_mobile.test_data.providers import URLProvider
+from utils.api_utils.test_request import TestRequest
 
 
-class FinishRegistration(TestRequest):
+class ClientSMSRegistration(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("registration", "finish_reg"),
-            data_type=AccRefTokens
+            URLProvider().url("registration", "client-sms-reg"),
+            data_type=AccRefTokens,
+            headers=client.auth_token()
         )
         self.code = client.code
         self.device_id = client.device.device_id

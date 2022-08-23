@@ -58,7 +58,6 @@ class Signature(Base):
     created_at = Column(DateTime(), default=datetime.datetime.now, nullable=False)
 
 
-
 class DBOSignatureBase(BaseDB):
     __db_name__ = "dbo_signature"
 

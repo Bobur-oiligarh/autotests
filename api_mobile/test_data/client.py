@@ -10,7 +10,8 @@ class User:
                  doc_number: str = None,
                  doc_series: str = None,
                  doc_type: str = None,
-                 photo: dict = None):
+                 photo: dict = None,
+                 residence_of_uz: bool = True):
         self.phone_number = phone_number
         self.card_number = card_number
         self.date_expire = date_expire
@@ -19,6 +20,8 @@ class User:
         self.doc_series = doc_series
         self.doc_type = doc_type
         self.photo = photo
+        self.residence_of_uz = residence_of_uz
+
 
     def __str__(self):
         return obj_to_string(self)
@@ -59,10 +62,11 @@ class Client:
         self.user = user
         self.device = device
         self.app_version = app_version
-        self.action = action
+        self.offer_sign_action = action
+        self.expired_confirm_method = "BIO" if user.residence_of_uz else "SMS"
 
     def auth_token(self) -> dict:
         return {"Authorization": "Bearer " + self.access_token}
 
     def __str__(self):
-        return "\nClient\n" + obj_to_string(self) + "\n"
+        return "\nClient" + obj_to_string(self) + "\n"
