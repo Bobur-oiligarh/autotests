@@ -16,7 +16,7 @@ class ConfirmMethod(SignId):
     @allure.step("проверка confirm_method")
     def check_confirm_method(self, client: Client):
         self.confirm_method_not_empty()
-        self.confirm_method_is_true(client)
+        self.confirm_method_is_true(client.confirm_method)
 
     @allure.step("confirm_method не пустой")
     def confirm_method_not_empty(self):

@@ -37,7 +37,6 @@ class RequestBase:
             headers=self._headers,
             cookies=self._cookies
         )
-        print(self.__dict__)
         self._response = TestResponse(response, self._data_type)
 
     def response(self, refresh: bool = False) -> TestResponse:
@@ -62,6 +61,7 @@ class RequestBase:
         for key in self.__dict__:
             if not key.startswith("_"):
                 data[key] = getattr(self, key)
+        print(data)
         return json.dumps(data)
 
 

@@ -1,6 +1,7 @@
 import allure
 
 from api_mobile.response_data_types.response_data_base import BaseType
+from api_mobile.test_data.client import Client
 
 
 class Cards(BaseType):
@@ -13,7 +14,7 @@ class Cards(BaseType):
 
     def _set_cards(self, data: dict):
         self.cards = []
-        for value in data["cards"].values():
+        for value in data["cards"]:
             self.cards.append(Card(value))
 
     def check(self, client, **kwargs):
@@ -23,6 +24,26 @@ class Cards(BaseType):
             with allure.step(f"проверка параметров карты {card.mask_num}"):
                 card.check(client, **kwargs)
             total_sum_uzs += card.balance
+
+    def get_cards_by(self, param: str = None, value=None):
+        if param is None:
+            return self.cards
+
+        cards = []
+        for card in self.cards:
+            if value is card.__dict__[param]:
+                cards.append(value)
+        return cards
+
+    def get_card_id_ps_code_from(self, cards):
+        result = []
+        for card in cards:
+            result.append({"card_id": card.card_id, "ps_code": card.ps_code})
+        return result
+
+    @allure.step("Установить карты")
+    def set_cards(self, client: Client):
+        client.cards = self
 
     @allure.step("проверка наличия total_sum")
     def total_sum_not_null(self):
@@ -40,6 +61,7 @@ class Card(BaseType):
 
     def __init__(self, data: dict):
         super().__init__()
+        print(data)
         self.card_id = data["card_id"]
         self.card_type = data["card_type"]
         self.mfo = data["mfo"]

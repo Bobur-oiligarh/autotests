@@ -7,7 +7,7 @@ class BaseDB:
     __db_name__ = None
 
     def __init__(self):
-        self._session: Session
+        self._session: Session = None
 
     def _get_session(self) -> Session:
         if not self._session:

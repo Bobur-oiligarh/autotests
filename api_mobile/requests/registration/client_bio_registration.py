@@ -9,7 +9,7 @@ from utils.api_utils.test_request import TestRequest
 class BioIdentification(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider.url("registration", ""),
+            URLProvider.url("registration", "bio_identification"),
             data_type=StoreAccRefTokens
         )
         self.birth_date = client.user.birth_date

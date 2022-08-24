@@ -15,6 +15,5 @@ class BaseType(ABC):
         return obj_to_string(self)
 
     @abstractmethod
-    @allure.step("Проверка параметров в данных ответа")
     def check(self, client, **kwargs):
         pass

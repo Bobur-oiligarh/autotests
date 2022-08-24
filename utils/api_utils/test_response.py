@@ -9,8 +9,8 @@ class TestResponse:
     def __init__(self, response: Response, data_type: type):
         resp_dict = json.loads(response.text)
 
+        self._raw_response_text = response.text
         self.data: data_type = None
-
         self.status = resp_dict["status"]
         self.error_code = resp_dict["error_code"]
         self.error_note = resp_dict["error_note"]
@@ -28,3 +28,7 @@ class TestResponse:
 
     def __str__(self):
         return obj_to_string(self)
+
+    # @property
+    # def raw_response_text(self):
+    #     return self._raw_response_text
