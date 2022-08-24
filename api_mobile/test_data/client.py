@@ -22,7 +22,6 @@ class User:
         self.photo = photo
         self.residence_of_uz = residence_of_uz
 
-
     def __str__(self):
         return obj_to_string(self)
 

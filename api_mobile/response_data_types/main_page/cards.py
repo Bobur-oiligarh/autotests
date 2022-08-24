@@ -52,7 +52,14 @@ class Card(BaseType):
 
     def check(self, client, **kwargs):
         self.card_id_not_empty()
-        pass
+        self.card_type_not_empty()
+        self.mfo_not_empty()
+        self.mask_num_not_empty()
+        self.state_not_empty()
+        self.balance_not_none()
+        self.ps_code_not_empty()
+        self.expire_not_empty()
+        self.owner_not_empty()
 
     @allure.step("проверка наличия card_id")
     def card_id_not_empty(self):
