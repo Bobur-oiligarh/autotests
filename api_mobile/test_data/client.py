@@ -48,6 +48,7 @@ class Client:
     user: User = None
     device: Device = None
     cards = None
+    operations = None
 
     sign_id: str = None
     code: str = None
