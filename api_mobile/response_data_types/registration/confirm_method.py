@@ -16,7 +16,7 @@ class ConfirmMethod(SignId):
     @allure.step("проверка confirm_method")
     def check_confirm_method(self, client: Client):
         self.confirm_method_not_empty()
-        self.confirm_method_is_true(client)
+        self.confirm_method_is_true(client.confirm_method)
 
     @allure.step("confirm_method не пустой")
     def confirm_method_not_empty(self):
@@ -27,6 +27,9 @@ class ConfirmMethod(SignId):
         self.tc.assertEqual(self.confirm_method, expired_confirm_method,
                             f"confirm_method ответа ({self.confirm_method}) не "
                             f"совпадает с ожидаемым ({expired_confirm_method})" + self.__str__())
+
+    def set_data_to(self, obj: Client):
+        self.set_sign_id_and_confirm_method(obj)
 
     @allure.step("Установить sign_id и confirm_method")
     def set_sign_id_and_confirm_method(self, client):

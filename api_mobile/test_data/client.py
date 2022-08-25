@@ -22,7 +22,6 @@ class User:
         self.photo = photo
         self.residence_of_uz = residence_of_uz
 
-
     def __str__(self):
         return obj_to_string(self)
 
@@ -41,22 +40,23 @@ class Device:
 
 
 class Client:
-    first_name: str
+    first_name: str = None
 
-    last_name: str
-    middle_name: str
+    last_name: str = None
+    middle_name: str = None
 
-    user: User
-    device: Device
+    user: User = None
+    device: Device = None
+    cards = None
 
-    sign_id: str
-    code: str
+    sign_id: str = None
+    code: str = None
 
-    access_token: str
-    refresh_token: str
-    confirm_method: str
+    access_token: str = None
+    refresh_token: str = None
+    confirm_method: str = None
 
-    app_version: str
+    app_version: str = None
 
     def __init__(self, user: User, device: Device, app_version: str = "1.0.1", action: str = "accept"):
         self.user = user

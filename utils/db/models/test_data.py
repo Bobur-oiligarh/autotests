@@ -1,14 +1,11 @@
-from sqlalchemy.orm import Session, relationship
-from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy import Integer, Column, Text, DateTime, Numeric, ForeignKey, Enum, Date, Boolean
-from sqlalchemy.ext.declarative import declarative_base
-import datetime
-
 import uuid
 
-from utils.db.db_engine import SessionMaker, EngineFabric
-from utils.db.models.base_db_model import BaseDB
-from utils.patterns.singleton import Singleton
+from sqlalchemy import Column, Text, ForeignKey, Boolean
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+
+from utils.db.db_engine import EngineFabric
 
 Base = declarative_base()
 

@@ -23,15 +23,15 @@ urls = {
             "method": "post",
             "path": "api/v1/mobile/check-client-registration"
         },
-        "client-bio-reg": {
+        "client_bio_reg": {
             "method": "post",
             "path": "api/v1/mobile/client-bio-registration"
         },
-        "client-sms-reg": {
+        "client_sms_reg": {
             "method": "post",
             "path": "api/v1/mobile/client-registration"
         },
-        "bio-identification": {
+        "bio_identification": {
             "method": "post",
             "path": "api/v1/mobile/bio-identification"
         }
@@ -43,6 +43,10 @@ urls = {
         "client_cards": {
             "path": "api/v1/mobile/client-cards",
             "method": "get"
+        },
+        "cards_balances": {
+            "path": "api/v2/mobile/cards-balances",
+            "method": "post"
         }
     }
 }
