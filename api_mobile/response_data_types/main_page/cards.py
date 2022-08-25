@@ -18,7 +18,6 @@ class Cards(BaseTypeParent):
             self.cards.append(Card(value))
 
     def check(self, client, **kwargs):
-        super().check(client, **kwargs)
         total_sum_uzs = 0.0
         for card in self.cards:
             with allure.step(f"проверка параметров карты {card.mask_num}"):

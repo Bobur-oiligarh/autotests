@@ -12,7 +12,6 @@ class AccRefTokens(BaseTypeParent):
         self.refresh_token = data["refresh_token"]
 
     def check(self, client, **kwargs):
-        super().check(client, **kwargs)
         self.access_token_not_empty()
         self.refresh_token_not_empty()
 
@@ -50,6 +49,7 @@ class StoreAccRefTokens(AccRefTokens):
 
     def check(self, client, **kwargs):
         super().check(client, **kwargs)
+        self.url_not_empty()
 
     @allure.step("url в ответе не пустой")
     def url_not_empty(self):
