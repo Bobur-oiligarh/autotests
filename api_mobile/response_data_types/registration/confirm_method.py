@@ -10,7 +10,6 @@ class ConfirmMethod(SignId):
         self.confirm_method = data["confirm_method"]
 
     def check(self, client, **kwargs):
-        super().check(client, **kwargs)
         self.check_confirm_method(client)
 
     @allure.step("проверка confirm_method")

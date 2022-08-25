@@ -20,6 +20,8 @@ class BaseType(ABC):
 
 
 class BaseTypeParent(BaseType, ABC):
+    def __init__(self):
+        super().__init__()
 
     @abstractmethod
     def set_data_to(self, obj):
