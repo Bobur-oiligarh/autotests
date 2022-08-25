@@ -20,7 +20,9 @@ class RequestBase:
                  data_type: type = None,
                  data: str = None,
                  headers: dict = None,
-                 cookies: dict = None):
+                 cookies: dict = None,
+                 parameters_in_list: bool = False,
+                 name_of_list: str = None):
 
         self._response = None
         self._data_type = data_type
@@ -29,6 +31,9 @@ class RequestBase:
         self._data = data
         self._headers = headers
         self._cookies = cookies
+
+        self._parameters_in_list = parameters_in_list
+        self._name_of_list = name_of_list
 
     def _run(self):
         response = methods[self._method](
@@ -57,11 +62,13 @@ class RequestBase:
         return self.response().data
 
     def _get_data(self) -> str:
-        data = {}
-        for key in self.__dict__:
-            if not key.startswith("_"):
-                data[key] = getattr(self, key)
-        print(data)
+        if not self._parameters_in_list:
+            data = {}
+            for key in self.__dict__:
+                if not key.startswith("_"):
+                    data[key] = getattr(self, key)
+        else:
+            data = self.__dict__[self._name_of_list]
         return json.dumps(data)
 
 

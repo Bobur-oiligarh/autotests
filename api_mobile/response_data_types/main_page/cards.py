@@ -1,10 +1,10 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseType
+from api_mobile.response_data_types.response_data_base import BaseType, BaseTypeParent
 from api_mobile.test_data.client import Client
 
 
-class Cards(BaseType):
+class Cards(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
@@ -24,6 +24,7 @@ class Cards(BaseType):
             with allure.step(f"проверка параметров карты {card.mask_num}"):
                 card.check(client, **kwargs)
             total_sum_uzs += card.balance
+        self.total_sum_is_true(total_sum_uzs)
 
     def get_cards_by(self, param: str = None, value=None):
         if param is None:
@@ -35,33 +36,51 @@ class Cards(BaseType):
                 cards.append(value)
         return cards
 
-    def get_card_id_ps_code_from(self, cards):
+    @staticmethod
+    def get_card_id_ps_code_from(cards):
         result = []
         for card in cards:
             result.append({"card_id": card.card_id, "ps_code": card.ps_code})
         return result
 
+    def set_data_to(self, obj: Client):
+        self.set_cards(obj)
+
     @allure.step("Установить карты")
-    def set_cards(self, client: Client):
+    def set_cards(self, client):
         client.cards = self
+
+    @allure.step("Обновить балансы карт")
+    def refresh_balances(self, balances: list):
+        for balance in balances:
+            for card in self.cards:
+                if card.card_id == balance.card_id:
+                    card.balance = balance.balance
+                    break
+
+    @allure.step("Обновить общюю сумму")
+    def refresh_total_sum(self):
+        total_sum = 0.0
+        for card in self.cards:
+            total_sum += card.balance
+        self.total_sum = total_sum
 
     @allure.step("проверка наличия total_sum")
     def total_sum_not_null(self):
         self.tc.assertNotEqual(self.total_sum, "",
-                               f"total_sum пустой")
+                               f"total_sum пустой" + self.__str__())
 
     @allure.step("total_sum соответствует сумме балансов")
     def total_sum_is_true(self, expired_total_sum):
         self.tc.assertEqual(self.total_sum, expired_total_sum,
                             f"total_sum {self.total_sum} не соответствует "
-                            f"сумме полученных карт {expired_total_sum}")
+                            f"сумме полученных карт {expired_total_sum}" + self.__str__())
 
 
 class Card(BaseType):
 
     def __init__(self, data: dict):
         super().__init__()
-        print(data)
         self.card_id = data["card_id"]
         self.card_type = data["card_type"]
         self.mfo = data["mfo"]

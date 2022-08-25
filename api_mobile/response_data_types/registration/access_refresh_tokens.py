@@ -1,9 +1,10 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseType
+from api_mobile.response_data_types.response_data_base import BaseType, BaseTypeParent
+from api_mobile.test_data.client import Client
 
 
-class AccRefTokens(BaseType):
+class AccRefTokens(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
@@ -24,6 +25,9 @@ class AccRefTokens(BaseType):
     def refresh_token_not_empty(self):
         self.tc.assertNotEqual(self.refresh_token, "",
                                f"refresh_token ответа пустой" + self.__str__())
+
+    def set_data_to(self, obj: Client):
+        self.set_access_refresh_tokens(obj)
 
     @allure.step("Установить access_token и refresh_token")
     def set_access_refresh_tokens(self, client):

@@ -5,7 +5,7 @@ from api_mobile.tests.scenarios.main_page_scenarios import scenario_open_main_pa
 from api_mobile.tests.scenarios.registration_scenarios import scenario_registration
 
 
-class RegistrationScenarioTestCase(TestCase):
+class DemoScenarioTestCase(TestCase):
     def setUp(self) -> None:
         self.client = Client(
             User(
@@ -24,8 +24,8 @@ class RegistrationScenarioTestCase(TestCase):
         )
         self.client.confirm_method = "SMS"
 
-    def test_registration(self):
-        scenario_registration(self.client)
+    # def test_registration(self):
+    #     scenario_registration(self.client)
 
     def test_main_page(self):
         scenario_registration(self.client)

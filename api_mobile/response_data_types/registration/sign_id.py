@@ -1,9 +1,10 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseType
+from api_mobile.response_data_types.response_data_base import BaseTypeParent
+from api_mobile.test_data.client import Client
 
 
-class SignId(BaseType):
+class SignId(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
@@ -11,6 +12,9 @@ class SignId(BaseType):
 
     def check(self, client, **kwargs):
         self.sign_id_not_empty()
+
+    def set_data_to(self, obj: Client):
+        self.set_sign_id(obj)
 
     @allure.step("sign_id не пустой")
     def sign_id_not_empty(self):

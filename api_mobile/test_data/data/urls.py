@@ -45,7 +45,7 @@ urls = {
             "method": "get"
         },
         "cards_balances": {
-            "path": "api/v1/mobile/cards-balances",
+            "path": "api/v2/mobile/cards-balances",
             "method": "post"
         }
     }

@@ -9,14 +9,14 @@ from utils.universal_steps.check_response import check_response
 def step_start_reg(client):
     response = StartRegistration(client).response()
     check_response(response, client)
-    response.data.set_sign_id(client)
+    response.data.set_data_to(client)
 
 
 @allure.step("Подтверждение номера телефона finish_registration")
 def step_finish_reg(client):
     response = FinishRegistration(client).response()
     check_response(response, client)
-    response.data.set_access_refresh_tokens(client)
+    response.data.set_data_to(client)
 
 
 @allure.step("Запрос оферты get_offer")
@@ -35,11 +35,11 @@ def step_agree_offer(client):
 def step_check_client_reg(client):
     response = CheckClientRegistration(client).response()
     check_response(response, client)
-    response.data.set_sign_id_and_confirm_method(client)
+    response.data.set_data_to(client)
 
 
 @allure.step("Подтверждение номера карты через СМС client_sms_registration")
 def step_client_sms_reg(client):
     response = ClientSMSRegistration(client).response()
     check_response(response, client)
-    response.data.set_access_refresh_tokens(client)
+    response.data.set_data_to(client)

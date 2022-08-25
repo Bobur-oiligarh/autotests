@@ -28,6 +28,9 @@ class ConfirmMethod(SignId):
                             f"confirm_method ответа ({self.confirm_method}) не "
                             f"совпадает с ожидаемым ({expired_confirm_method})" + self.__str__())
 
+    def set_data_to(self, obj: Client):
+        self.set_sign_id_and_confirm_method(obj)
+
     @allure.step("Установить sign_id и confirm_method")
     def set_sign_id_and_confirm_method(self, client):
         self.set_sign_id(client)

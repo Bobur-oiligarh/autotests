@@ -17,3 +17,10 @@ class BaseType(ABC):
     @abstractmethod
     def check(self, client, **kwargs):
         pass
+
+
+class BaseTypeParent(BaseType, ABC):
+
+    @abstractmethod
+    def set_data_to(self, obj):
+        pass
