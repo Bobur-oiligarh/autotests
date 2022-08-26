@@ -36,10 +36,10 @@ class Cards(BaseTypeParent):
         return cards
 
     @staticmethod
-    def get_card_id_ps_code_from(cards):
+    def get_card_id_ps_code_from(cards, full=True):
         result = []
         for card in cards:
-            result.append({"card_id": card.card_id, "ps_code": card.ps_code})
+            result.append({"card_id" if full else "id": card.card_id, "ps_code": card.ps_code})
         return result
 
     def set_data_to(self, obj: Client):

@@ -9,9 +9,9 @@ class DemoScenarioTestCase(TestCase):
     def setUp(self) -> None:
         self.client = Client(
             User(
-                "998 97 773 99 22",
-                "8600121043938118",
-                "0327",
+                "998941775859",
+                "8600120480409831",
+                "0923",
                 residence_of_uz=False
             ),
             Device(
@@ -30,4 +30,5 @@ class DemoScenarioTestCase(TestCase):
     def test_main_page(self):
         scenario_registration(self.client)
         scenario_open_main_page(self.client)
+
 
