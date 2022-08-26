@@ -3,6 +3,7 @@ from unittest import TestCase
 from api_mobile.test_data.client import Client, User, Device
 from api_mobile.tests.scenarios.main_page_scenarios import scenario_open_main_page
 from api_mobile.tests.scenarios.registration_scenarios import scenario_registration
+from api_mobile.tests.steps.auth_steps import step_refresh_token
 
 
 class DemoScenarioTestCase(TestCase):
@@ -30,5 +31,6 @@ class DemoScenarioTestCase(TestCase):
     def test_main_page(self):
         scenario_registration(self.client)
         scenario_open_main_page(self.client)
+        step_refresh_token(self.client)
 
 

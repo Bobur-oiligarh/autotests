@@ -56,5 +56,14 @@ urls = {
             "path": "api/v2/mobile/cards-operations",
             "method": "post"
         }
+    },
+    "auth": {
+        "environment": {
+            "all": "https://test-mobilebank.hamkorbank.uz/"
+        },
+        "refreshtoken": {
+            "path": "api/v1/mobile/refresh",
+            "method": "post"
+        }
     }
 }

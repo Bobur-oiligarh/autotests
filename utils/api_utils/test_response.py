@@ -28,7 +28,3 @@ class TestResponse:
 
     def __str__(self):
         return obj_to_string(self)
-
-    # @property
-    # def raw_response_text(self):
-    #     return self._raw_response_text
