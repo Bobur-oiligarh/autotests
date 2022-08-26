@@ -4,6 +4,7 @@ from api_mobile.test_data.client import Client, User, Device
 from api_mobile.tests.scenarios.main_page_scenarios import scenario_open_main_page
 from api_mobile.tests.scenarios.registration_scenarios import scenario_registration
 from api_mobile.tests.steps.auth_steps import step_refresh_token, step_login
+from api_mobile.tests.steps.settings_steps import step_change_language
 
 
 class DemoScenarioTestCase(TestCase):
@@ -25,13 +26,12 @@ class DemoScenarioTestCase(TestCase):
         )
         self.client.confirm_method = "SMS"
 
-    # def test_registration(self):
-    #     scenario_registration(self.client)
-
     def test_main_page(self):
         scenario_registration(self.client)
         scenario_open_main_page(self.client)
         step_refresh_token(self.client)
         step_login(self.client)
+        step_change_language(self.client, "uz")
+        step_change_language(self.client, "ru")
 
 

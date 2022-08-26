@@ -69,5 +69,14 @@ urls = {
             "path": "api/v1/mobile/login",
             "method": "post"
         }
+    },
+    "settings": {
+        "environment": {
+            "all": "https://test-mobilebank.hamkorbank.uz/"
+        },
+        "change_language": {
+            "path": "api/v1/mobile/settings/language",
+            "method": "put"
+        }
     }
 }
