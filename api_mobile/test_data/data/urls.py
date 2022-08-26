@@ -64,6 +64,10 @@ urls = {
         "refreshtoken": {
             "path": "api/v1/mobile/refresh",
             "method": "post"
+        },
+        "login": {
+            "path": "api/v1/mobile/login",
+            "method": "post"
         }
     }
 }
