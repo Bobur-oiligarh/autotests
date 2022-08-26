@@ -8,13 +8,14 @@ class Operations(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
+        print(data["operations"])
         self.operations = self._operations(data)
         self.state = self._state(data)
 
     @staticmethod
-    def _operations(date):
+    def _operations(data):
         operations = []
-        for operation in date["operations"]:
+        for operation in data["operations"]:
             operations.append(Operation(operation))
         return operations
 
@@ -34,10 +35,11 @@ class Operations(BaseTypeParent):
 
     def check(self, client, **kwargs):
         self.check_operations(client, **kwargs)
-        pass
+        self.check_states(client, **kwargs)
 
     @allure.step("Проверика операций")
     def check_operations(self, client, **kwargs):
+        print("operations:\n" + str(self.operations))
         for operation in self.operations:
             with allure.step(
                     f"проверка параметров операции {operation.torg_name} {operation.pan}"

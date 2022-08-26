@@ -51,6 +51,10 @@ urls = {
         "client_name": {
             "path": "api/v1/mobile/client-name",
             "method": "get"
+        },
+        "cards_operations": {
+            "path": "api/v2/mobile/cards-operations",
+            "method": "post"
         }
     }
 }
