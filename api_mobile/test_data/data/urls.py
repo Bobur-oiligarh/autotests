@@ -86,6 +86,10 @@ urls = {
         "p2p_templates": {
             "path": "api/v1/mobile/payment/p2p-templates",
             "method": "get"
+        },
+        "p2p_info": {
+            "path": "api/v1/mobile/payment/p2p-info/",
+            "method": "get"
         }
     }
 }

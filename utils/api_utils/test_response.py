@@ -17,15 +17,10 @@ class TestResponse:
         self._set_data(resp_dict["data"], data_type)
 
     def _set_data(self, data, data_type: type):
-        try:
-            if data_type:
-                self.data = data_type(data)
-            else:
-                self.data = data
-        except Exception as ex:
-            print(ex)
-            if data is None:
-                assert f"data is None: {data}"
+        if data_type:
+            self.data = data_type(data)
+        else:
+            self.data = data
 
     def __str__(self):
         return obj_to_string(self)
