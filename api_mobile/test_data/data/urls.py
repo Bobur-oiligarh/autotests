@@ -78,5 +78,14 @@ urls = {
             "path": "api/v1/mobile/settings/language",
             "method": "put"
         }
+    },
+    "payment": {
+        "environment": {
+            "all": "https://test-mobilebank.hamkorbank.uz/"
+        },
+        "p2p_templates": {
+            "path": "api/v1/mobile/payment/p2p-templates",
+            "method": "get"
+        }
     }
 }

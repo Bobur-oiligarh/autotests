@@ -22,7 +22,8 @@ class TestResponse:
                 self.data = data_type(data)
             else:
                 self.data = data
-        except:
+        except Exception as ex:
+            print(ex)
             if data is None:
                 assert f"data is None: {data}"
 
