@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-import allure
-
 from utils.methods import obj_to_string
 from unittest import TestCase
 

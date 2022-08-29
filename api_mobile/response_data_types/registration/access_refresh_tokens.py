@@ -1,6 +1,6 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseType, BaseTypeParent
+from api_mobile.response_data_types.response_data_base import BaseTypeParent
 from api_mobile.test_data.client import Client
 
 
