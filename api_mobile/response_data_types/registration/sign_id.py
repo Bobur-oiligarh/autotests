@@ -18,7 +18,7 @@ class SignId(BaseTypeParent):
 
     @allure.step("sign_id не пустой")
     def sign_id_not_empty(self):
-        self.tc.assertNotEqual(self.sign_id, "", f"sign_id ответа пустой" + self.__str__())
+        self._tc.assertNotEqual(self.sign_id, "", f"sign_id ответа пустой" + self.__str__())
 
     @allure.step("Установить sign_id")
     def set_sign_id(self, client):

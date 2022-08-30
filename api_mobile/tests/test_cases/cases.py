@@ -1,5 +1,7 @@
 from unittest import TestCase
 
+import allure
+
 from api_mobile.test_data.client import Client, User, Device
 from api_mobile.tests.scenarios.main_page_scenarios import scenario_open_main_page
 from api_mobile.tests.scenarios.p2p_scenarios import scenario_template_p2p_transaction, scenario_card_p2p_transaction
@@ -34,7 +36,9 @@ class DemoScenarioTestCase(TestCase):
         step_login(self.client)
         step_change_language(self.client, "uz")
         step_change_language(self.client, "ru")
-        # scenario_template_p2p_transaction(self.client)
-        scenario_card_p2p_transaction(self.client, "8600120467515865")
+        scenario_template_p2p_transaction(self.client)
+        # scenario_card_p2p_transaction(self.client, "8600120467515865")
+        with allure.step(f"{self.client.p2p_confirm}"):
+            pass
 
 

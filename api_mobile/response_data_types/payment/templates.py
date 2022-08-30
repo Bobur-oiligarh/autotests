@@ -7,10 +7,10 @@ class Templates(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        self.templates = self.templates(data)
+        self.templates: list = self._deserialize_templates(data)
 
     @staticmethod
-    def templates(data):
+    def _deserialize_templates(data):
         templates = []
         for item in data:
             templates.append(Template(item))
@@ -60,27 +60,27 @@ class Template(BaseType):
 
     @allure.step("sum не пустой")
     def sum_not_null(self):
-        self.tc.assertIsNotNone(self.sum,
+        self._tc.assertIsNotNone(self.sum,
                                 f"sum ({self.sum}) пустой" + self.__str__())
 
     @allure.step("commission_sum не пустой")
     def commission_sum_not_null(self):
-        self.tc.assertIsNotNone(self.commission_sum,
+        self._tc.assertIsNotNone(self.commission_sum,
                                 f"commission_sum ({self.commission_sum}) пустой" + self.__str__())
 
     @allure.step("status не пустой")
     def status_not_empty(self):
-        self.tc.assertNotEqual(self.status, "",
+        self._tc.assertNotEqual(self.status, "",
                                f"status ({self.status}) пустой" + self.__str__())
 
     @allure.step("operation_time не пустой")
     def operation_time_not_empty(self):
-        self.tc.assertNotEqual(self.operation_time, "",
+        self._tc.assertNotEqual(self.operation_time, "",
                                f"operation_time ({self.operation_time}) пустой" + self.__str__())
 
     @allure.step("template_id не пустой")
     def template_id_not_empty(self):
-        self.tc.assertNotEqual(self.template_id, "",
+        self._tc.assertNotEqual(self.template_id, "",
                                f"template_id ({self.template_id}) пустой" + self.__str__())
 
 
@@ -104,25 +104,25 @@ class TransactionParticipant(BaseType):
 
     @allure.step("id не пустой")
     def id_not_empty(self):
-        self.tc.assertNotEqual(self.id, "",
+        self._tc.assertNotEqual(self.id, "",
                                f"id ({self.id}) пустой" + self.__str__())
 
     @allure.step("pan не пустой")
     def pan_not_empty(self):
-        self.tc.assertNotEqual(self.pan, "",
+        self._tc.assertNotEqual(self.pan, "",
                                f"pan ({self.pan}) пустой" + self.__str__())
 
     @allure.step("ps_code не пустой")
     def ps_code_not_empty(self):
-        self.tc.assertNotEqual(self.ps_code, "",
+        self._tc.assertNotEqual(self.ps_code, "",
                                f"ps_code ({self.ps_code} пустой" + self.__str__())
 
     @allure.step("bank_code не пустой")
     def bank_code_not_empty(self):
-        self.tc.assertNotEqual(self.bank_code, "",
+        self._tc.assertNotEqual(self.bank_code, "",
                                f"bank_code ({self.bank_code}) пустой" + self.__str__())
 
     @allure.step("owner не пустой")
     def owner_not_empty(self):
-        self.tc.assertNotEqual(self.owner, "",
+        self._tc.assertNotEqual(self.owner, "",
                                f"owner ({self.owner}) пустой" + self.__str__())

@@ -3,6 +3,7 @@ import requests
 import json
 from abc import ABC
 
+from api_mobile.response_data_types.response_data_base import BaseType
 from utils.api_utils.test_response import TestResponse
 
 methods = {
@@ -66,7 +67,11 @@ class RequestBase:
             data = {}
             for key in self.__dict__:
                 if not key.startswith("_"):
-                    data[key] = getattr(self, key)
+                    if isinstance(getattr(self, key), BaseType):
+                        data[key] = getattr(self, key).dict()
+                        print(data[key])
+                    else:
+                        data[key] = getattr(self, key)
         else:
             data = self.__dict__[self._name_of_list]
         return json.dumps(data)
