@@ -19,11 +19,11 @@ class ConfirmMethod(SignId):
 
     @allure.step("confirm_method не пустой")
     def confirm_method_not_empty(self):
-        self.tc.assertNotEqual(self.confirm_method, "", f"confirm_method пустой" + self.__str__())
+        self._tc.assertNotEqual(self.confirm_method, "", f"confirm_method пустой" + self.__str__())
 
     @allure.step("confirm_method совпадает с ожидаемым")
     def confirm_method_is_true(self, expired_confirm_method):
-        self.tc.assertEqual(self.confirm_method, expired_confirm_method,
+        self._tc.assertEqual(self.confirm_method, expired_confirm_method,
                             f"confirm_method ответа ({self.confirm_method}) не "
                             f"совпадает с ожидаемым ({expired_confirm_method})" + self.__str__())
 

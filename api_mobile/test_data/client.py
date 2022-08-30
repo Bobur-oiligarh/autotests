@@ -47,8 +47,14 @@ class Client:
 
     user: User = None
     device: Device = None
+
     cards = None
+    main_card = None
     operations = None
+
+    templates = None
+    receiver = None
+    p2p_confirm = None
 
     sign_id: str = None
     code: str = None

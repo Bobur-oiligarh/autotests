@@ -16,7 +16,7 @@ class Offer(BaseType):
 
     @allure.step("текст не пустой")
     def text_not_empty(self):
-        self.tc.assertNotEqual(self.text, "", f"текст в ответе пустой" + self.__str__())
+        self._tc.assertNotEqual(self.text, "", f"текст в ответе пустой" + self.__str__())
 
     @allure.step("язык текста совпадает с ожидаемым")
     def true_text_language(self, client):
@@ -35,6 +35,6 @@ class AgreeOfferResult(BaseType):
 
     @allure.step("проверка результата подписания оферты")
     def result_signing_offer(self, expected_result):
-        self.tc.assertEqual(self.result, expected_result,
+        self._tc.assertEqual(self.result, expected_result,
                             f"результат подписания оферты ({self.result}) "
                             f"отличается от ожидаемого ({expected_result})" + self.__str__())

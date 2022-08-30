@@ -8,7 +8,6 @@ class Operations(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        print(data["operations"])
         self.operations = self._operations(data)
         self.state = self._state(data)
 
@@ -39,7 +38,6 @@ class Operations(BaseTypeParent):
 
     @allure.step("Проверика операций")
     def check_operations(self, client, **kwargs):
-        print("operations:\n" + str(self.operations))
         for operation in self.operations:
             with allure.step(
                     f"проверка параметров операции {operation.torg_name} {operation.pan}"
@@ -66,12 +64,12 @@ class State(BaseType):
 
     @allure.step("ps_code не пустой")
     def ps_code_not_empty(self):
-        self.tc.assertNotEqual(self.ps_code, "",
+        self._tc.assertNotEqual(self.ps_code, "",
                                f"ps_code пустой")
 
     @allure.step("health не пустой")
     def health_not_null(self):
-        self.tc.assertIsInstance(self.health, bool,
+        self._tc.assertIsInstance(self.health, bool,
                                  f"health пустой")
 
 
@@ -102,45 +100,45 @@ class Operation(BaseType):
 
     @allure.step("ps_code не пустой")
     def ps_code_not_empty(self):
-        self.tc.assertNotEqual(self.ps_code, "",
+        self._tc.assertNotEqual(self.ps_code, "",
                                f"ps_code пустой")
 
     @allure.step("pan не пустой")
     def pan_not_empty(self):
-        self.tc.assertNotEqual(self.pan, "",
+        self._tc.assertNotEqual(self.pan, "",
                                f"pan пустой")
 
     @allure.step("time не пустой")
     def time_not_empty(self):
-        self.tc.assertNotEqual(self.time, "",
+        self._tc.assertNotEqual(self.time, "",
                                f"time пустой")
 
     @allure.step("sum не null")
     def sum_not_null(self):
-        self.tc.assertIsNotNone(self.sum,
+        self._tc.assertIsNotNone(self.sum,
                                 f"sum является null")
 
     @allure.step("torg_name не пустой")
     def torg_name_not_empty(self):
-        self.tc.assertNotEqual(self.torg_name, "",
+        self._tc.assertNotEqual(self.torg_name, "",
                                f"torg_name пустой")
 
     @allure.step("torg_address не пустой")
     def torg_address_not_empty(self):
-        self.tc.assertNotEqual(self.torg_address, "",
+        self._tc.assertNotEqual(self.torg_address, "",
                                f"torg_address пустой")
 
     @allure.step("tran_type не пустой")
     def tran_type_not_empty(self):
-        self.tc.assertNotEqual(self.tran_type, "",
+        self._tc.assertNotEqual(self.tran_type, "",
                                f"tran_type пустой")
 
     @allure.step("curr_code не пустой")
     def curr_code_not_empty(self):
-        self.tc.assertNotEqual(self.curr_code, "",
+        self._tc.assertNotEqual(self.curr_code, "",
                                f"curr_code пустой")
 
     @allure.step("is_credit не пустой")
     def is_credit_not_empty(self):
-        self.tc.assertIsInstance(self.is_credit, bool,
+        self._tc.assertIsInstance(self.is_credit, bool,
                                  f"is_credit пустой")

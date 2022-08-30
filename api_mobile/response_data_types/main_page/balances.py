@@ -35,7 +35,7 @@ class Balances(BaseTypeParent):
             expected_total_sum = 0.0
             for balance in self.balances:
                 expected_total_sum += balance.balance
-        self.tc.assertEqual(self.total_sum, expected_total_sum,
+        self._tc.assertEqual(self.total_sum, expected_total_sum,
                             f"Общий баланс ответа ({self.total_sum}) "
                             f"не совпадает с ожидаемым ({expected_total_sum})" + self.__str__())
 
@@ -57,10 +57,10 @@ class Balance(BaseType):
 
     @allure.step("проверка наличия card_id")
     def card_id_not_empty(self):
-        self.tc.assertNotEqual(self.card_id, "",
+        self._tc.assertNotEqual(self.card_id, "",
                                f"card_id пустой" + self.__str__())
 
     @allure.step("проверка наличия balance")
     def balance_not_null(self):
-        self.tc.assertIsNotNone(self.balance,
+        self._tc.assertIsNotNone(self.balance,
                                 f"balance пустой" + self.__str__())

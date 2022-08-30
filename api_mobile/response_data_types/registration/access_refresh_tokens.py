@@ -17,12 +17,12 @@ class AccRefTokens(BaseTypeParent):
 
     @allure.step("access_token не пустой")
     def access_token_not_empty(self):
-        self.tc.assertNotEqual(self.access_token, "",
+        self._tc.assertNotEqual(self.access_token, "",
                                f"access_token ответа пустой" + self.__str__())
 
     @allure.step("refresh_token не пустой")
     def refresh_token_not_empty(self):
-        self.tc.assertNotEqual(self.refresh_token, "",
+        self._tc.assertNotEqual(self.refresh_token, "",
                                f"refresh_token ответа пустой" + self.__str__())
 
     def set_data_to(self, obj: Client):
@@ -53,5 +53,5 @@ class StoreAccRefTokens(AccRefTokens):
 
     @allure.step("url в ответе не пустой")
     def url_not_empty(self):
-        self.tc.assertNotEqual(self.url, "",
+        self._tc.assertNotEqual(self.url, "",
                                f"url в ответе пустой" + self.__str__())
