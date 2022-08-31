@@ -54,7 +54,8 @@ class Client:
 
     templates = None
     receiver = None
-    p2p_confirm = None
+    p2p_validate_result = None
+    operation_check = None
 
     sign_id: str = None
     code: str = None
@@ -69,7 +70,7 @@ class Client:
         self.user = user
         self.device = device
         self.app_version = app_version
-        self.offer_sign_action = action
+        self.action = action
         self.expired_confirm_method = "BIO" if user.residence_of_uz else "SMS"
 
     def auth_token(self) -> dict:

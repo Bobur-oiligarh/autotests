@@ -20,4 +20,4 @@ class AgreeOffer(TestRequest):
             data_type=AgreeOfferResult,
             headers=client.auth_token()
         )
-        self.action = client.offer_sign_action
+        self.action = client.action

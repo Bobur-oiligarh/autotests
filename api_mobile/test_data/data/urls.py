@@ -94,6 +94,14 @@ urls = {
         "p2p_validate": {
             "path": "api/v1/mobile/payment/p2p-validate",
             "method": "post"
+        },
+        "p2p_init": {
+            "path": "api/v1/mobile/payment/p2p-init",
+            "method": "post"
+        },
+        "p2p_confirm": {
+            "path": "api/v1/mobile/payment/p2p-confirm",
+            "method": "post"
         }
     }
 }

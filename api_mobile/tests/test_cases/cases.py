@@ -32,13 +32,9 @@ class DemoScenarioTestCase(TestCase):
     def test_main_page(self):
         scenario_registration(self.client)
         scenario_open_main_page(self.client)
-        step_refresh_token(self.client)
-        step_login(self.client)
-        step_change_language(self.client, "uz")
-        step_change_language(self.client, "ru")
         scenario_template_p2p_transaction(self.client)
         # scenario_card_p2p_transaction(self.client, "8600120467515865")
-        with allure.step(f"{self.client.p2p_confirm}"):
+        with allure.step(f"{self.client.p2p_validate_result}"):
             pass
 
 
