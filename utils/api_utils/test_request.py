@@ -67,18 +67,6 @@ class RequestBase:
             data = self.__dict__[self._name_of_list]
         return json.dumps(data)
 
-    # def status(self):
-    #     return self.response().status
-    #
-    # def error_code(self):
-    #     return self.response().error_code
-    #
-    # def error_note(self):
-    #     return self.response().error_note
-    #
-    # def data(self):
-    #     return self.response().data
-
 
 class TestRequest(RequestBase, ABC):
 
