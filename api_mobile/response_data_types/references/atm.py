@@ -7,8 +7,6 @@ class ATMs(BaseTypeParent):
 
     def __init__(self, data: list):
         super().__init__()
-        print("ATMs")
-        print(data)
         self.atm_list: list = self.deserialize_data(data)
 
     @staticmethod
