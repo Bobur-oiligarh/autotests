@@ -3,14 +3,7 @@ import allure
 from api_mobile.response_data_types.response_data_base import BaseTypeParent
 
 
-class P2PConfirm(BaseTypeParent):
-
-    def set_data_to(self, obj):
-        self._set_confirm_data(obj)
-
-    @allure.step("Установить p2p_confirm клиенту")
-    def _set_confirm_data(self, client):
-        client.p2p_confirm = self
+class P2PValidateResult(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
@@ -18,6 +11,13 @@ class P2PConfirm(BaseTypeParent):
         self.confirm_method = data["confirm_method"]
         self.is_confirm = data["is_confirm"]
         self.transact_id = data["transact_id"]
+
+    def set_data_to(self, obj):
+        self._set_confirm_data(obj)
+
+    @allure.step("Установить p2p_confirm клиенту")
+    def _set_confirm_data(self, client):
+        client.p2p_validate_result = self
 
     def check(self, client, **kwargs):
         self.commission_sum_not_null()

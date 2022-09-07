@@ -23,7 +23,8 @@ class RequestBase:
                  headers: dict = None,
                  cookies: dict = None,
                  parameters_in_list: bool = False,
-                 name_of_list: str = None):
+                 name_of_list: str = None,
+                 params: dict = None):
 
         self._response = None
         self._data_type = data_type
@@ -32,6 +33,7 @@ class RequestBase:
         self._data = data
         self._headers = headers
         self._cookies = cookies
+        self._params = params
 
         self._parameters_in_list = parameters_in_list
         self._name_of_list = name_of_list
@@ -41,7 +43,8 @@ class RequestBase:
             url=self._url,
             data=self._get_data(),
             headers=self._headers,
-            cookies=self._cookies
+            cookies=self._cookies,
+            params=self._params
         )
         self._response = TestResponse(response, self._data_type)
 
@@ -49,18 +52,6 @@ class RequestBase:
         if refresh or self._response is None:
             self._run()
         return self._response
-
-    def status(self):
-        return self.response().status
-
-    def error_code(self):
-        return self.response().error_code
-
-    def error_note(self):
-        return self.response().error_note
-
-    def data(self):
-        return self.response().data
 
     def _get_data(self) -> str:
         if not self._parameters_in_list:
