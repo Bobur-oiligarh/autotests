@@ -56,6 +56,7 @@ class Client:
     receiver = None
     p2p_validate_result = None
     operation_check = None
+    atm_list = None
 
     sign_id: str = None
     code: str = None
@@ -66,12 +67,15 @@ class Client:
 
     app_version: str = None
 
-    def __init__(self, user: User, device: Device, app_version: str = "1.0.1", action: str = "accept"):
+    def __init__(self, user: User, device: Device, app_version: str = "1.0.1", offer_sign_action: str = "accept",
+                 p2p_init_action: str = "accept", region_code: str = "10"):
         self.user = user
         self.device = device
         self.app_version = app_version
-        self.action = action
+        self.offer_sign_action = offer_sign_action
+        self.p2p_init_action = p2p_init_action
         self.expired_confirm_method = "BIO" if user.residence_of_uz else "SMS"
+        self.region_code = region_code
 
     def auth_token(self) -> dict:
         return {"Authorization": "Bearer " + self.access_token}

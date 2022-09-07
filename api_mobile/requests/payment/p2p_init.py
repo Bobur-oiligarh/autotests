@@ -11,5 +11,5 @@ class P2PInit(TestRequest):
             data_type=SignId,
             headers=client.auth_token()
         )
-        self.action = client.action
+        self.action = client.p2p_init_action
         self.transact_id = client.p2p_validate_result.transact_id

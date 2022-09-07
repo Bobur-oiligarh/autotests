@@ -103,5 +103,14 @@ urls = {
             "path": "api/v1/mobile/payment/p2p-confirm",
             "method": "post"
         }
+    },
+    "references": {
+        "environment": {
+            "all": "https://test-mobilebank.hamkorbank.uz/"
+        },
+        "bancomates": {
+            "path": "api/v1/mobile/dict/bankomates",
+            "method": "get"
+        }
     }
 }
