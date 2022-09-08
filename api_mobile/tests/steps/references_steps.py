@@ -2,6 +2,7 @@ import allure
 
 from api_mobile.requests.references.bankomates import Bancomates
 from api_mobile.requests.references.languages import Languages
+from api_mobile.requests.references.operators import Operators
 from utils.universal_steps.check_response import check_response
 
 
@@ -15,5 +16,12 @@ def step_bankomates(client):
 @allure.step("Запрос доступных языков")
 def step_languages(client):
     response = Languages().response()
+    check_response(response, client)
+    response.data.set_data_to(client)
+
+
+@allure.step("Запрос доступных операторов")
+def step_operators(client):
+    response = Operators().response()
     check_response(response, client)
     response.data.set_data_to(client)
