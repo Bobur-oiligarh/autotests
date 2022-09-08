@@ -15,5 +15,4 @@ class DeviceIdentifySign(AccRefTokens):
     @allure.step("device_identify_sign не null")
     def device_identify_sign_not_null(self):
         self._tc.assertIsNotNone(self.device_identify_sign,
-                                f"device_identify_sign является null" + self.__str__())
-
+                                 f"device_identify_sign является null" + self.__str__())

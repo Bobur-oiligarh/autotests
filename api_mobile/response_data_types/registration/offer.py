@@ -36,5 +36,5 @@ class AgreeOfferResult(BaseType):
     @allure.step("проверка результата подписания оферты")
     def result_signing_offer(self, expected_result):
         self._tc.assertEqual(self.result, expected_result,
-                            f"результат подписания оферты ({self.result}) "
-                            f"отличается от ожидаемого ({expected_result})" + self.__str__())
+                             f"результат подписания оферты ({self.result}) "
+                             f"отличается от ожидаемого ({expected_result})" + self.__str__())

@@ -44,39 +44,39 @@ class CardInfo(BaseTypeParent):
     @allure.step("card_id не пустой")
     def card_id_not_empty(self):
         self._tc.assertNotEqual(self.card_id, "",
-                               f"card_id ({self.card_id}) пустой" + self.__str__())
+                                f"card_id ({self.card_id}) пустой" + self.__str__())
 
     @allure.step("owner не пустой")
     def owner_not_empty(self):
         self._tc.assertNotEqual(self.owner, "",
-                               f"owner ({self.owner} пустой" + self.__str__())
+                                f"owner ({self.owner} пустой" + self.__str__())
 
     @allure.step("pan не пустой")
     def pan_not_empty(self):
         self._tc.assertNotEqual(self.pan, "",
-                               f"pan ({self.pan}) пустой" + self.__str__())
+                                f"pan ({self.pan}) пустой" + self.__str__())
 
     @allure.step("expire не пустой")
     def expire_not_empty(self):
         self._tc.assertNotEqual(self.expire, "",
-                               f"expire ({self.expire}) пустой" + self.__str__())
+                                f"expire ({self.expire}) пустой" + self.__str__())
 
     @allure.step("card_type не пустой")
     def card_type_not_empty(self):
         self._tc.assertNotEqual(self.card_type, "",
-                               f"card_type ({self.card_type}) пустой" + self.__str__())
+                                f"card_type ({self.card_type}) пустой" + self.__str__())
 
     @allure.step("bank_code не пустой")
     def bank_code_not_empty(self):
         self._tc.assertNotEqual(self.bank_code, "",
-                               f"bank_code ({self.bank_code}) пустой" + self.__str__())
+                                f"bank_code ({self.bank_code}) пустой" + self.__str__())
 
     @allure.step("processing не пустой")
     def processing_not_empty(self):
         self._tc.assertNotEqual(self.processing, "",
-                               f"processing ({self.processing}) пустой" + self.__str__())
+                                f"processing ({self.processing}) пустой" + self.__str__())
 
     @allure.step("is_bank_card не пустой")
     def is_bank_card_not_null(self):
         self._tc.assertIsNotNone(self.is_bank_card,
-                                f"is_bank_card ({self.is_bank_card}) пустой" + self.__str__())
+                                 f"is_bank_card ({self.is_bank_card}) пустой" + self.__str__())
