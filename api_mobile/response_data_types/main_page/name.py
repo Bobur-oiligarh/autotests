@@ -30,14 +30,14 @@ class ClientNameType(BaseTypeParent):
     @allure.step("проверка наличия first_name")
     def first_name_not_empty(self):
         self._tc.assertNotEqual(self.first_name, "",
-                               f"first_name пустой" + self.__str__())
+                                f"first_name пустой" + self.__str__())
 
     @allure.step("проверка наличия last_name")
     def last_name_not_empty(self):
         self._tc.assertNotEqual(self.last_name, "",
-                               f"last_name пустой" + self.__str__())
+                                f"last_name пустой" + self.__str__())
 
     @allure.step("проверка наличия middle_name")
     def middle_name_not_empty(self):
         self._tc.assertNotEqual(self.middle_name, "",
-                               f"middle_name пустой")
+                                f"middle_name пустой")
