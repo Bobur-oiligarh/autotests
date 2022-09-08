@@ -8,7 +8,7 @@ class TestResponse:
 
     def __init__(self, response: Response, data_type: type):
         resp_dict = json.loads(response.text)
-
+        print(resp_dict)
         self._raw_response_text = response.text
         self.data: data_type = None
         self.status = resp_dict["status"]
