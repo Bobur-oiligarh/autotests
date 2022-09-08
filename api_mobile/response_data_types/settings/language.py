@@ -18,12 +18,10 @@ class ChangeLangResult(BaseType):
     @allure.step("result не пустой")
     def result_not_empty(self):
         self._tc.assertIsNotNone(self.result,
-                                f"result пустой")
+                                 f"result пустой")
 
     @allure.step("result соответствует ожидаемому")
     def result_is_true(self, expected_result):
         self._tc.assertEqual(self.result, expected_result,
-                            f"result ({self.result}) не соответствует "
-                            f"ожидаемому ({expected_result})" + self.__str__())
-
-
+                             f"result ({self.result}) не соответствует "
+                             f"ожидаемому ({expected_result})" + self.__str__())

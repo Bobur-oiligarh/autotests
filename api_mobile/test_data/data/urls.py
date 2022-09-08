@@ -115,6 +115,10 @@ urls = {
         "languages": {
             "path": "api/v1/mobile/dict/languages",
             "method": "get"
+        },
+        "operators": {
+            "path": "api/v1/mobile/dict/operators",
+            "method": "get"
         }
     }
 }
