@@ -4,7 +4,6 @@ import allure
 
 from api_mobile.test_data.client import Client, User, Device
 from api_mobile.tests.scenarios.product_scenarios import scenario_products
-from api_mobile.tests.scenarios.references_scenarios import scenario_references
 from api_mobile.tests.scenarios.registration_scenarios import scenario_registration
 
 
