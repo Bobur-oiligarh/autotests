@@ -8,14 +8,8 @@ class Cards(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        self.cards: list
-        self._deserialize_cards(data)
+        self.cards: list = self.deserialize_to_list_of(Card, data["cards"])
         self.total_sum = data["total_sum"]
-
-    def _deserialize_cards(self, data: dict):
-        self.cards = []
-        for value in data["cards"]:
-            self.cards.append(Card(value))
 
     def check(self, client, **kwargs):
         total_sum_uzs = 0.0

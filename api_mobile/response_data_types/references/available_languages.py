@@ -6,14 +6,7 @@ from api_mobile.response_data_types.response_data_base import BaseType, BaseType
 class AvailableLanguages(BaseTypeParent):
     def __init__(self, data: list):
         super().__init__()
-        self.lang_list: list = self.deserialize_langs(data)
-
-    @staticmethod
-    def deserialize_langs(data) -> list:
-        result = []
-        for lang in data:
-            result.append(Language(lang))
-        return result
+        self.lang_list: list = self.deserialize_to_list_of(Language, data)
 
     def set_data_to(self, obj):
         self.set_langs(obj)

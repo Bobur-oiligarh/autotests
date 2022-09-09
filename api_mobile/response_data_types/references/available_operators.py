@@ -6,14 +6,7 @@ from api_mobile.response_data_types.response_data_base import BaseType, BaseType
 class AvailableOperators(BaseTypeParent):
     def __init__(self, data: list):
         super().__init__()
-        self.operators_list = self.deserialize_operators(data)
-
-    @staticmethod
-    def deserialize_operators(data: list) -> list:
-        result = []
-        for o in data:
-            result.append(Operator(o))
-        return result
+        self.operators_list = self.deserialize_to_list_of(Operator, data)
 
     def set_data_to(self, obj):
         self.set_operators(obj)
