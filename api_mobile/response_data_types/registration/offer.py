@@ -31,7 +31,7 @@ class AgreeOfferResult(BaseType):
         self.result = data["result"]
 
     def check(self, client, **kwargs):
-        self.result_signing_offer("Success" if client.offer_sign_action is "accept" else kwargs["expected_sign_result"])
+        self.result_signing_offer("Success" if client.offer_sign_action == "accept" else kwargs["expected_sign_result"])
 
     @allure.step("проверка результата подписания оферты")
     def result_signing_offer(self, expected_result):

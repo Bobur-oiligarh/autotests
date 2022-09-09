@@ -14,7 +14,6 @@ class ClientNameType(BaseTypeParent):
 
     def set_data_to(self, obj: Client):
         self.set_name(obj)
-        pass
 
     @allure.step("Установить имя")
     def set_name(self, client):

@@ -56,9 +56,12 @@ class Client:
     receiver = None
     p2p_validate_result = None
     operation_check = None
+
     atm_list = None
     lang_list = None
     operators = None
+
+    loans = None
 
     sign_id: str = None
     code: str = None

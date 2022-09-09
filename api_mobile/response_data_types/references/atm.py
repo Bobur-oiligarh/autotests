@@ -7,14 +7,7 @@ class ATMs(BaseTypeParent):
 
     def __init__(self, data: list):
         super().__init__()
-        self.atm_list: list = self.deserialize_data(data)
-
-    @staticmethod
-    def deserialize_data(data: list) -> list:
-        result = []
-        for atm in data:
-            result.append(ATM(atm))
-        return result
+        self.atm_list: list = self.deserialize_to_list_of(ATM, data)
 
     def set_data_to(self, obj):
         self._set_atms(obj)
