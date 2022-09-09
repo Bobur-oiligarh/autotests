@@ -5,16 +5,9 @@ from api_mobile.response_data_types.response_data_base import BaseTypeParent, Ba
 
 class Templates(BaseTypeParent):
 
-    def __init__(self, data: dict):
+    def __init__(self, data: list):
         super().__init__()
-        self.templates: list = self._deserialize_templates(data)
-
-    @staticmethod
-    def _deserialize_templates(data):
-        templates = []
-        for item in data:
-            templates.append(Template(item))
-        return templates
+        self.templates: list = self.deserialize_to_list_of(Template, data)
 
     def set_data_to(self, obj):
         self._set_templates_to_client(obj)

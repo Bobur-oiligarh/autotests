@@ -8,14 +8,8 @@ class Balances(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        self.balances: list
+        self.balances: list = self.deserialize_to_list_of(Balance, data["balances"])
         self.total_sum = data["total_sum"]
-        self._set_balances(data)
-
-    def _set_balances(self, data: dict):
-        self.balances = []
-        for balance in data["balances"]:
-            self.balances.append(Balance(balance))
 
     def check(self, client, **kwargs):
         self.check_balances(client, **kwargs)
