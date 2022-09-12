@@ -29,7 +29,7 @@ class DemoScenarioTestCase(TestCase):
     def test_main_page(self):
         scenario_registration(self.client)
         scenario_products(self.client)
-        with allure.step(f"{self.client.loans}"):
+        with allure.step(f"{self.client.accounts}"):
             pass
         with allure.step(f"{self.client.deposits}"):
             pass

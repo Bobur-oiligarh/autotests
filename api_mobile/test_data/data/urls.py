@@ -129,6 +129,10 @@ urls = {
             "path": "api/v1/mobile/product/loans",
             "method": "get"
         },
+        "accounts": {
+            "path": "api/v1/mobile/product/accounts",
+            "method": "get"
+        },
         "deposits": {
             "path": "api/v1/mobile/product/deposits",
             "method": "get"
