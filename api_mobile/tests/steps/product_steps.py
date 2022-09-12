@@ -1,6 +1,6 @@
 import allure
 
-from api_mobile.requests.product.branches import Accounts
+from api_mobile.requests.product.accounts import Accounts
 from api_mobile.requests.product.deposits import Deposits
 from api_mobile.requests.product.loans import Loans
 from utils.universal_steps.check_response import check_response
