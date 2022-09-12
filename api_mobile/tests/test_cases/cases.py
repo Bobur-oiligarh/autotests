@@ -31,3 +31,5 @@ class DemoScenarioTestCase(TestCase):
         scenario_products(self.client)
         with allure.step(f"{self.client.loans}"):
             pass
+        with allure.step(f"{self.client.deposits}"):
+            pass
