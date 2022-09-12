@@ -62,6 +62,7 @@ class Client:
     operators = None
 
     loans = None
+    accounts = None
 
     sign_id: str = None
     code: str = None
