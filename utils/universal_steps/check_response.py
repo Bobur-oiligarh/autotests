@@ -6,18 +6,18 @@ from unittest import TestCase
 
 
 @allure.step("Проверка ответа")
-def check_response(response: TestResponse, client: Client, expired_status: str = "Success", **kwargs):
-    check_response_status(response, expired_status)
+def check_response(response: TestResponse, client: Client, expected_status: str = "Success", **kwargs):
+    check_response_status(response, expected_status)
     check_response_data_not_none(response)
     check_response_data(response, client, **kwargs)
 
 
 @allure.step("Проверка статуса ответа")
-def check_response_status(response: TestResponse, expired_status: str = "Success"):
+def check_response_status(response: TestResponse, expected_status: str = "Success"):
     tc = TestCase()
-    tc.assertEqual(response.status, expired_status,
+    tc.assertEqual(response.status, expected_status,
                    f"Статус ответа ({response.status}) не соответствует "
-                   f"ожидаемому ({expired_status})" + response.__str__())
+                   f"ожидаемому ({expected_status})" + response.__str__())
 
 
 @allure.step("Проверка data ответа")
