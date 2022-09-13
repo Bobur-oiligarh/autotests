@@ -7,6 +7,30 @@ from api_mobile.response_data_types.response_data_base import BaseType, BaseType
 from api_mobile.test_data.client import Client
 
 
+class AvailableBranches(BaseTypeParent):
+    """Implements available branches. """
+    def __init__(self, data: list):
+        super().__init__()
+        self.branches_list: list = self.deserialize_to_list_of(Branch, data)
+
+    def set_data_to(self, obj: Client):
+        self._set_branches(obj)
+
+    @allure.step("Установить филиалы клиенту.")
+    def _set_branches(self, client: Client):
+        client.branches_list = self
+
+    def check(self, client: Client, **kwargs: Any):
+        self.check_all_branches(client, **kwargs)
+
+    @allure.step("Проверка параметров всех филлиалов.")
+    def check_all_branches(self, client: Client, **kwargs: Any):
+        i = 0
+        for branch in self.branches_list:
+            with allure.step(f"branch {i}"):
+                branch.check(client, **kwargs)
+
+
 class Branch(BaseType):
     """Implements branch object."""
     def __init__(self, data: dict):
@@ -82,32 +106,3 @@ class Branch(BaseType):
         self.status_text.check(client, **kwargs)
 
 
-class AvailableBranches(BaseTypeParent):
-    """Implements available branches. """
-    def __init__(self, data: list):
-        super().__init__()
-        self.branches_list: list = self.deserialize_data(data)
-
-    @staticmethod
-    def deserialize_data(data: list) -> list:
-        result = []
-        for branch in data:
-            result.append(Branch(branch))
-        return result
-
-    def set_data_to(self, obj: Client):
-        self._set_branches(obj)
-
-    @allure.step("Установить филиалы клиенту.")
-    def _set_branches(self, client: Client):
-        client.branches_list = self
-
-    def check(self, client: Client, **kwargs: Any):
-        self.check_all_branches(client, **kwargs)
-
-    @allure.step("Проверка параметров всех филлиалов.")
-    def check_all_branches(self, client: Client, **kwargs: Any):
-        i = 0
-        for branch in self.branches_list:
-            with allure.step(f"branch {i}"):
-                branch.check(client, **kwargs)

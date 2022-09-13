@@ -13,11 +13,13 @@ def step_bankomates(client):
     check_response(response, client)
     response.data.set_data_to(client)
 
+
 @allure.step("Запрос филлиалов branches.")
 def step_branches(client):
     response = Branches(client).response()
     check_response(response, client)
     response.data.set_data_to(client)
+
 
 @allure.step("Запрос доступных языков")
 def step_languages(client):
