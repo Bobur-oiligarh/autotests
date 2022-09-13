@@ -29,7 +29,7 @@ class DemoScenarioTestCase(TestCase):
 
     def test_main_page(self):
         scenario_registration(self.client)
-        scenario_products(self.client)
+        scenario_references(self.client)
 
-        with allure.step(f"{self.client.branches}"):
+        with allure.step(f"Проверка {self.client.branches}"):
             pass
