@@ -18,16 +18,15 @@ class AvailableBranches(BaseTypeParent):
 
     @allure.step("Установить филиалы клиенту.")
     def _set_branches(self, client: Client):
-        client.branches_list = self
+        client.branches = self
 
     def check(self, client: Client, **kwargs: Any):
         self.check_all_branches(client, **kwargs)
 
     @allure.step("Проверка параметров всех филлиалов.")
     def check_all_branches(self, client: Client, **kwargs: Any):
-        i = 0
         for branch in self.branches_list:
-            with allure.step(f"branch {i}"):
+            with allure.step(f"branch {branch.mfo}"):
                 branch.check(client, **kwargs)
 
 
@@ -46,7 +45,7 @@ class Branch(BaseType):
         self.services = DiffLangTextParams(data['services'])
         self.address = DiffLangTextParams(data['address'])
         self.work_time = DiffLangTextParams(data['work_time'])
-        self.lunch_time = DiffLangTextParams(data['lunch_time'])
+        self.lunch_time = data['lunch_time']
         self.status_text = DiffLangTextParams(data['status_text'])
 
     def check(self, client, **kwargs):
