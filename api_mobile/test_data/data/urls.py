@@ -124,5 +124,18 @@ urls = {
             "path": "api/v1/mobile/dict/operators",
             "method": "get"
         }
+    },
+    "product": {
+        "environment": {
+            "all": "https://test-mobilebank.hamkorbank.uz/"
+        },
+        "loans": {
+            "path": "api/v1/mobile/product/loans",
+            "method": "get"
+        },
+        "accounts": {
+            "path": "api/v1/mobile/product/accounts",
+            "method": "get"
+        }
     }
 }

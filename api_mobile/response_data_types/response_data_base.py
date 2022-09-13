@@ -28,6 +28,13 @@ class BaseTypeParent(BaseType, ABC):
     def __init__(self):
         super().__init__()
 
+    @staticmethod
+    def deserialize_to_list_of(type_name: type, data: list):
+        result = []
+        for item in data:
+            result.append(type_name(item))
+        return result
+
     @abstractmethod
     def set_data_to(self, obj):
         pass

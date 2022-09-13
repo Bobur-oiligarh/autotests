@@ -8,22 +8,8 @@ class Operations(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        self.operations = self._operations(data)
-        self.state = self._state(data)
-
-    @staticmethod
-    def _operations(data):
-        operations = []
-        for operation in data["operations"]:
-            operations.append(Operation(operation))
-        return operations
-
-    @staticmethod
-    def _state(data):
-        states = []
-        for state in data["state"]:
-            states.append(State(state))
-        return states
+        self.operations = self.deserialize_to_list_of(Operation, data["operations"])
+        self.state = self.deserialize_to_list_of(State, data["state"])
 
     def set_data_to(self, obj: Client):
         self.set_operations(obj)
