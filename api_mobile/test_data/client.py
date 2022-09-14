@@ -64,6 +64,9 @@ class Client:
 
     loans = None
     accounts = None
+    deposits = None
+    webview_link = None
+
 
     sign_id: str = None
     code: str = None

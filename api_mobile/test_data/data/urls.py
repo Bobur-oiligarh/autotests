@@ -108,7 +108,7 @@ urls = {
         "environment": {
             "all": "https://test-mobilebank.hamkorbank.uz/"
         },
-        "bancomates": {
+        "bankomates": {
             "path": "api/v1/mobile/dict/bankomates",
             "method": "get"
         },
@@ -135,6 +135,14 @@ urls = {
         },
         "accounts": {
             "path": "api/v1/mobile/product/accounts",
+            "method": "get"
+        },
+        "deposits": {
+            "path": "api/v1/mobile/product/deposits",
+            "method": "get"
+        },
+        "store_link": {
+            "path": "api/v1/mobile/product/store/1",
             "method": "get"
         }
     }
