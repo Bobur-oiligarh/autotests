@@ -7,7 +7,7 @@ from utils.api_utils.test_request import TestRequest
 class Bancomates(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("references", "bancomates"),
+            URLProvider().url("references", "bankomates"),
             data_type=ATMs,
             headers=client.auth_token(),
             params={"region_code": client.region_code}

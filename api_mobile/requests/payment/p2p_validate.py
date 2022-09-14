@@ -10,7 +10,7 @@ class P2PValidate(TestRequest):
     def __init__(
             self,
             client: Client,
-            sum: float,
+            summ: float,
             template: Template = None,
             receiver: TransactionParticipant = None
     ):
@@ -23,7 +23,7 @@ class P2PValidate(TestRequest):
 
         self.sender: TransactionParticipant = self._set_sender(client, template)
         self.receiver: TransactionParticipant = receiver if receiver else template.receiver
-        self.sum: float = sum
+        self.sum: float = summ
         self.template_id = template.template_id if template else ""
 
     @staticmethod
