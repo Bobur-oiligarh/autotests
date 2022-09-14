@@ -112,6 +112,10 @@ urls = {
             "path": "api/v1/mobile/dict/bankomates",
             "method": "get"
         },
+        "branches": {
+            "path": "api/v1/mobile/dict/branches",
+            "method": "get"
+        },
         "languages": {
             "path": "api/v1/mobile/dict/languages",
             "method": "get"

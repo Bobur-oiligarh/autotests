@@ -58,6 +58,7 @@ class Client:
     operation_check = None
 
     atm_list = None
+    branches = None
     lang_list = None
     operators = None
 
