@@ -22,12 +22,12 @@ class StoreLinkType(BaseTypeParent):
         self.link_not_empty()
         self.count_order_not_null()
 
-    @allure.step("link не пустой")
-    def link_not_empty(self):
-        self._tc.assertNotEqual(self.link, "",
-                                f"link ({self.link}) пустой")
-
     @allure.step("count_order не пустой")
     def count_order_not_null(self):
         self._tc.assertNotEqual(self.count_order, None,
                                 f"cont_order ({self.count_order}) пустой")
+
+    @allure.step("link не пустой")
+    def link_not_empty(self):
+        self._tc.assertNotEqual(self.link, "",
+                                f"link ({self.link}) пустой")
