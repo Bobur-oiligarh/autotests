@@ -2,7 +2,7 @@ import allure
 
 from api_mobile.test_data.client import Client
 from utils.api_utils.test_response import TestResponse
-from unittest import TestCase
+from unittest import TestCase as tc
 
 
 @allure.step("Проверка ответа")
@@ -14,7 +14,6 @@ def check_response(response: TestResponse, client: Client, expected_status: str 
 
 @allure.step("Проверка статуса ответа")
 def check_response_status(response: TestResponse, expected_status: str = "Success"):
-    tc = TestCase()
     tc.assertEqual(response.status, expected_status,
                    f"Статус ответа ({response.status}) не соответствует "
                    f"ожидаемому ({expected_status})" + response.__str__())
@@ -22,7 +21,6 @@ def check_response_status(response: TestResponse, expected_status: str = "Succes
 
 @allure.step("Проверка data ответа")
 def check_response_data_not_none(response: TestResponse):
-    tc = TestCase()
     tc.assertIsNotNone(response.data, f"Параметр data ответа является None" + response.__str__())
 
 

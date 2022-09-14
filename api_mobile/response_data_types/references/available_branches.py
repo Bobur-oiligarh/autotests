@@ -1,7 +1,5 @@
 from typing import Any
-
 import allure
-
 from api_mobile.response_data_types.references.atm import Coordinates, DiffLangTextParams
 from api_mobile.response_data_types.response_data_base import BaseType, BaseTypeParent
 from api_mobile.test_data.client import Client
@@ -9,6 +7,7 @@ from api_mobile.test_data.client import Client
 
 class AvailableBranches(BaseTypeParent):
     """Implements available branches. """
+
     def __init__(self, data: list):
         super().__init__()
         self.branches_list: list = self.deserialize_to_list_of(Branch, data)
@@ -32,6 +31,7 @@ class AvailableBranches(BaseTypeParent):
 
 class Branch(BaseType):
     """Implements branch object."""
+
     def __init__(self, data: dict):
         """Initializes branch object attributes.
         :param data: dict
@@ -103,5 +103,3 @@ class Branch(BaseType):
     @allure.step('status_text - не пустой.')
     def check_status_text(self, client, **kwargs):
         self.status_text.check(client, **kwargs)
-
-

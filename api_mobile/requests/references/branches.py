@@ -5,6 +5,8 @@ from api_mobile.response_data_types.references.available_branches import Availab
 
 
 class Branches(TestRequest):
+    """Implements request to branches endpoint."""
+
     def __init__(self, client: Client):
         super().__init__(
             URLProvider().url("references", "branches"),
