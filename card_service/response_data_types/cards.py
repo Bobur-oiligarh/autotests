@@ -2,7 +2,6 @@ from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 
 
 class Cards(BaseTypeParent):
-
     """
     {
             "card_id": "9074192C56C900EAE053C0A865A6A81A",
@@ -29,7 +28,6 @@ class Cards(BaseTypeParent):
 
 
 class Card(BaseType):
-
     """
     {
         "card_id": "9074192C56C900EAE053C0A865A6A81A",
