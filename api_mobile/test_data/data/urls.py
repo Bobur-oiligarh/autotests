@@ -136,6 +136,10 @@ urls = {
         "deposits": {
             "path": "api/v1/mobile/product/deposits",
             "method": "get"
+        },
+        "store_link": {
+            "path": "api/v1/mobile/product/store/1",
+            "method": "get"
         }
     }
 }
