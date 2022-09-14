@@ -3,7 +3,7 @@ import requests
 import json
 from abc import ABC
 
-from api_mobile.response_data_types.response_data_base import BaseType
+from utils.api_utils.response_data_base import BaseType
 from utils.api_utils.test_response import TestResponse
 
 # методы библиотеки requests

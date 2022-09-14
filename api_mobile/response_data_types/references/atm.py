@@ -1,6 +1,6 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseType, BaseTypeParent
+from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
 
 class ATMs(BaseTypeParent):
