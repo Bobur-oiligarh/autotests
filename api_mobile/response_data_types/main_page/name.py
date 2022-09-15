@@ -1,6 +1,6 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseTypeParent
+from utils.api_utils.response_data_base import BaseTypeParent
 from api_mobile.test_data.client import Client
 
 
@@ -39,4 +39,4 @@ class ClientNameType(BaseTypeParent):
     @allure.step("проверка наличия middle_name")
     def middle_name_not_empty(self):
         self._tc.assertNotEqual(self.middle_name, "",
-                                f"middle_name пустой")
+                                f"middle_name пустой" + self.__str__())
