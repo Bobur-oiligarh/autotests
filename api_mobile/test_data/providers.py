@@ -1,4 +1,4 @@
-from api_mobile.test_data.data.urls import urls
+from api_mobile.test_data.urls import urls
 import os
 
 from utils.patterns.singleton import Singleton

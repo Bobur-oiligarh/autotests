@@ -39,4 +39,4 @@ class ClientNameType(BaseTypeParent):
     @allure.step("проверка наличия middle_name")
     def middle_name_not_empty(self):
         self._tc.assertNotEqual(self.middle_name, "",
-                                f"middle_name пустой")
+                                f"middle_name пустой" + self.__str__())
