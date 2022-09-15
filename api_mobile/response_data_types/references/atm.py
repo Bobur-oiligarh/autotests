@@ -25,6 +25,8 @@ class ATMs(BaseTypeParent):
         for atm in self.atm_list:
             with allure.step(f"atm {i}"):
                 atm.check(client, **kwargs)
+            i += 1
+
 
 
 class ATM(BaseType):
