@@ -3,11 +3,11 @@ import allure
 from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 
 
-class Cards(BaseTypeParent):
+class InfoCards(BaseTypeParent):
 
     def __init__(self, data: list):
         super().__init__()
-        self.cards_list: list[Card] = self.deserialize_to_list_of(Card, data)
+        self.cards_list: list[InfoCard] = self.deserialize_to_list_of(InfoCard, data)
 
     def set_data_to(self, obj):
         self.set_data_to_context(obj)
@@ -17,7 +17,7 @@ class Cards(BaseTypeParent):
         context.cards = self
 
     def check(self, client, **kwargs):
-        self.check_all_cards()
+        self.check_all_cards(client, **kwargs)
 
     @allure.step("Проверка всех карт ответа")
     def check_all_cards(self, client, **kwargs):
@@ -26,7 +26,7 @@ class Cards(BaseTypeParent):
                 card.check(client, **kwargs)
 
 
-class Card(BaseType):
+class InfoCard(BaseType):
 
     def __init__(self, data: dict):
         super().__init__()
