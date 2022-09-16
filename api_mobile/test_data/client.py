@@ -87,6 +87,14 @@ class Client:
         self.expired_confirm_method = "BIO" if user.residence_of_uz else "SMS"
         self.region_code = region_code
 
+    def get_by_name(self, name: str):
+        result = getattr(self, name, None)
+        if result is None:
+            result = getattr(self.device, name, None)
+        if result is None:
+            result = getattr(self.user, name, None)
+        return result
+
     def auth_token(self) -> dict:
         return {"Authorization": "Bearer " + self.access_token}
 

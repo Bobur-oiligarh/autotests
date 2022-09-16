@@ -1,6 +1,6 @@
 import allure
 
-from api_mobile.response_data_types.response_data_base import BaseTypeParent
+from utils.api_utils.response_data_base import BaseTypeParent
 
 
 class P2PValidateResult(BaseTypeParent):

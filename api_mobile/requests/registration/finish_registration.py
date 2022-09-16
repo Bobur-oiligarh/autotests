@@ -1,14 +1,14 @@
 from api_mobile.response_data_types.registration.access_refresh_tokens import AccRefTokens
 from utils.api_utils.test_request import TestRequest
 from api_mobile.test_data.client import Client
-from api_mobile.test_data.providers import URLProvider
+from utils.api_utils.url_provider import URLProvider
 
 
 class FinishRegistration(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("registration", "finish_reg"),
+            URLProvider().url("back_mobile", "registration", "finish_reg"),
             data_type=AccRefTokens
         )
         self.code = client.code
