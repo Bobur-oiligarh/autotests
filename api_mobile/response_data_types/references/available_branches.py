@@ -1,8 +1,8 @@
 from typing import Any
 import allure
 from api_mobile.response_data_types.references.atm import Coordinates, DiffLangTextParams
-from api_mobile.response_data_types.response_data_base import BaseType, BaseTypeParent
 from api_mobile.test_data.client import Client
+from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 
 
 class AvailableBranches(BaseTypeParent):
