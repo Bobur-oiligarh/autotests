@@ -28,7 +28,6 @@ class ATMs(BaseTypeParent):
             i += 1
 
 
-
 class ATM(BaseType):
 
     def __init__(self, data: dict):

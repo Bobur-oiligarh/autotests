@@ -123,6 +123,10 @@ urls = {
         "operators": {
             "path": "api/v1/mobile/dict/operators",
             "method": "get"
+        },
+        "exchange-rates": {
+            "path": "api/v1/mobile/exchange-rates",
+            "method": "get"
         }
     },
     "product": {

@@ -61,6 +61,7 @@ class Client:
     branches = None
     lang_list = None
     operators = None
+    exchange_rates = None
 
     loans = None
     accounts = None
