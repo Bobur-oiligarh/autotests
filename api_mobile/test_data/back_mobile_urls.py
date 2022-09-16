@@ -1,8 +1,8 @@
-urls = {
+back_mobile_urls = {
+    "environment": {
+        "all": "https://test-mobilebank.hamkorbank.uz/"
+    },
     "registration": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "start_reg": {
             "path": "api/v1/mobile/start-registration",
             "method": "post"
@@ -37,9 +37,6 @@ urls = {
         }
     },
     "main_page": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "client_cards": {
             "path": "api/v1/mobile/client-cards",
             "method": "get"
@@ -58,9 +55,6 @@ urls = {
         }
     },
     "auth": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "refreshtoken": {
             "path": "api/v1/mobile/refresh",
             "method": "post"
@@ -71,18 +65,12 @@ urls = {
         }
     },
     "settings": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "change_language": {
             "path": "api/v1/mobile/settings/language",
             "method": "put"
         }
     },
     "payment": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "p2p_templates": {
             "path": "api/v1/mobile/payment/p2p-templates",
             "method": "get"
@@ -105,9 +93,6 @@ urls = {
         }
     },
     "references": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "bankomates": {
             "path": "api/v1/mobile/dict/bankomates",
             "method": "get"
@@ -130,9 +115,6 @@ urls = {
         }
     },
     "product": {
-        "environment": {
-            "all": "https://test-mobilebank.hamkorbank.uz/"
-        },
         "loans": {
             "path": "api/v1/mobile/product/loans",
             "method": "get"

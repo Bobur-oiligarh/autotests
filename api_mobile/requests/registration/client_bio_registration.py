@@ -1,7 +1,7 @@
 import base64
 
 from api_mobile.response_data_types.registration import StoreAccRefTokens
-from api_mobile.test_data.providers import URLProvider
+from utils.api_utils.url_provider import URLProvider
 from api_mobile.test_data.client import Client
 from utils.api_utils.test_request import TestRequest
 
