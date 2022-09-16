@@ -1,7 +1,7 @@
 import allure
 
 from utils.api_utils.test_response import TestResponse
-from unittest import TestCase
+from unittest import TestCase as tc
 
 
 @allure.step("Проверка ответа")
