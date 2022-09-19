@@ -1,9 +1,10 @@
 from unittest import TestCase
-
 import allure
 
 from back_mobile.test_data.client import Client, User, Device
-from card_service.tests.scenarios.info_scenarios import card_info_scenario
+from back_mobile.tests.scenarios.product_scenarios import scenario_products
+from back_mobile.tests.scenarios.references_scenarios import scenario_references
+from back_mobile.tests.scenarios.registration_scenarios import scenario_registration
 
 
 class DemoScenarioTestCase(TestCase):
@@ -26,7 +27,7 @@ class DemoScenarioTestCase(TestCase):
         self.client.confirm_method = "SMS"
 
     def test_main_page(self):
-        card_info_scenario(self.client)
-
-        with allure.step(f"{self.client.cards}"):
+        scenario_registration(self.client)
+        scenario_references(self.client)
+        with allure.step(f"Проверка {self.client.exchange_rates}"):
             pass

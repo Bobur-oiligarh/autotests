@@ -1,4 +1,4 @@
-from api_mobile.test_data.back_mobile_urls import back_mobile_urls
+from back_mobile.test_data.back_mobile_urls import back_mobile_urls
 from card_service.test_data.card_service_urls import card_service_urls
 import os
 
