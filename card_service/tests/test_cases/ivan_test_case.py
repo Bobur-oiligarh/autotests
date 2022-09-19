@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import allure
 
-from api_mobile.test_data.client import Client, User, Device
+from back_mobile.test_data.client import Client, User, Device
 from card_service.tests.scenarios.info_scenarios import card_info_scenario
 
 
