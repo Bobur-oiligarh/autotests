@@ -24,14 +24,14 @@ def step_p2p_info(client, card_number: str):
 
 @allure.step("Валидация перевода по карте пользователя p2p_validate")
 def step_card_p2p_validate(client):
-    response = P2PValidate(client, sum=1000, receiver=client.receiver).response()
+    response = P2PValidate(client, summ=1000, receiver=client.receiver).response()
     check_response(response, client)
     response.data.set_data_to(client)
 
 
 @allure.step("Валидация перевода по шаблону p2p_validate")
 def step_template_p2p_validate(client):
-    response = P2PValidate(client, sum=1000, template=client.templates.templates[0]).response()
+    response = P2PValidate(client, summ=1000, template=client.templates.templates[0]).response()
     check_response(response, client)
     response.data.set_data_to(client)
 
