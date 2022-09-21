@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fc56c45-fdf3-474f-b5fc-4e0905e82a54" name="Changes" comment="коммитил оставшиеся файлы">
+    <list default="true" id="5fc56c45-fdf3-474f-b5fc-4e0905e82a54" name="Changes" comment="написал код для сервиса IABS, функционал запроса клиента">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/requests/search_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/search_client/requests/search_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/tests/steps/search_clients_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/search_client/tests/steps/search_clients_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/test_data/iabs_client_service_urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/test_data/iabs_clients_service_urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/api_utils/url_provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/api_utils/url_provider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +54,7 @@
       <recent name="$PROJECT_DIR$/iabs_client_service/models" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.search_client">
     <configuration name="bankomates" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="hamkor_auto_tests" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,9 +76,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="search_client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="hamkor_auto_tests" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/iabs_client_service/search_client/requests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/iabs_client_service/search_client/requests/search_client.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bankomates" />
+        <item itemvalue="Python.search_client" />
         <item itemvalue="Python.bankomates" />
         <item itemvalue="Python.bankomates" />
         <item itemvalue="Python.bankomates" />
@@ -161,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663572157299</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="написал код для сервиса IABS, функционал запроса клиента">
+      <created>1663740044644</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1663740044645</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,6 +229,7 @@
     <MESSAGE value="created test-scenario for references/exchange-rates" />
     <MESSAGE value="cosmetic fixes was made:&#10;   directory name api_mobile changed to back_mobile in all files" />
     <MESSAGE value="коммитил оставшиеся файлы" />
-    <option name="LAST_COMMIT_MESSAGE" value="коммитил оставшиеся файлы" />
+    <MESSAGE value="написал код для сервиса IABS, функционал запроса клиента" />
+    <option name="LAST_COMMIT_MESSAGE" value="написал код для сервиса IABS, функционал запроса клиента" />
   </component>
 </project>
