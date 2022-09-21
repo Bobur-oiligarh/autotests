@@ -12,7 +12,7 @@ class BaseType(ABC):
     def __str__(self):
         return obj_to_string(self)
 
-    def dict(self):
+    def to_dict(self):
         data = {}
         for key in self.__dict__.keys():
             if not key.startswith("_"):

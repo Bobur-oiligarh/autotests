@@ -85,7 +85,7 @@ class RequestBase:
             for key in self.__dict__:
                 if not key.startswith("_"):
                     if isinstance(getattr(self, key), BaseType):
-                        data[key] = getattr(self, key).dict()
+                        data[key] = getattr(self, key).to_dict()
                     else:
                         data[key] = getattr(self, key)
         else:
