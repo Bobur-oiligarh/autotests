@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fc56c45-fdf3-474f-b5fc-4e0905e82a54" name="Changes" comment="код для сервиса IABS, функционал запроса клиента - закончен, тест прогонен - успешно" />
+    <list default="true" id="5fc56c45-fdf3-474f-b5fc-4e0905e82a54" name="Changes" comment="удалил models папку в iabs service.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/requests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/requests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/response_data_types/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/requests/search_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/requests/search_clients.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/response_data_types/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/search_client/response_data_types/search_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/response_data_types/search_clients.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iabs_client_service/tests/steps/search_clients_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/iabs_client_service/tests/steps/search_clients_steps.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,13 +51,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/iabs_client_service/requests/" />
+      <recent name="$PROJECT_DIR$/iabs_client_service/requests/search_client_by_id" />
       <recent name="$PROJECT_DIR$/iabs_client_service/" />
       <recent name="$PROJECT_DIR$/iabs_client_service/search_client" />
       <recent name="$PROJECT_DIR$/iabs_client_service/response_data_types" />
-      <recent name="$PROJECT_DIR$/iabs_client_service/models" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for cases.DemoScenarioTestCase.test_iabs_clients_search">
+  <component name="RunManager" selected="Python.search_client">
     <configuration name="bankomates" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="hamkor_auto_tests" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for cases.DemoScenarioTestCase.test_iabs_clients_search" />
         <item itemvalue="Python.search_client" />
+        <item itemvalue="Python tests.Python tests for cases.DemoScenarioTestCase.test_iabs_clients_search" />
         <item itemvalue="Python.bankomates" />
         <item itemvalue="Python.bankomates" />
         <item itemvalue="Python.bankomates" />
@@ -215,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663752731798</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="удалил models папку в iabs service.">
+      <created>1663752923760</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1663752923760</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,6 +270,7 @@
     <MESSAGE value="коммитил оставшиеся файлы" />
     <MESSAGE value="написал код для сервиса IABS, функционал запроса клиента" />
     <MESSAGE value="код для сервиса IABS, функционал запроса клиента - закончен, тест прогонен - успешно" />
-    <option name="LAST_COMMIT_MESSAGE" value="код для сервиса IABS, функционал запроса клиента - закончен, тест прогонен - успешно" />
+    <MESSAGE value="удалил models папку в iabs service." />
+    <option name="LAST_COMMIT_MESSAGE" value="удалил models папку в iabs service." />
   </component>
 </project>

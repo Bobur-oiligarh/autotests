@@ -1,12 +1,12 @@
 import allure
 
-from iabs_client_service.search_client.requests.search_client import IABSClientById
+from iabs_client_service.requests.search_clients import IABSClientById
 from utils.universal_steps.check_response import check_response_status, check_response_data_not_none
 from unittest import TestCase as tc
 
 
 @allure.step("Запрос на получения клиента IABS")
-def step_iabs_client_by_id(client_uid):
+def step_iabs_client_by_id():
     response = IABSClientById(client_uid).response()
 
     # Проверим в ответе запроса: status_code, наличие data
