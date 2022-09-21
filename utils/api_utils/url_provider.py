@@ -2,12 +2,14 @@ from back_mobile.test_data.back_mobile_urls import back_mobile_urls
 from card_service.test_data.card_service_urls import card_service_urls
 import os
 
+from iabs_client_service.test_data import iabs_client_service_urls
 from utils.patterns.singleton import Singleton
 
 all_services_urls = {
     "back_mobile": back_mobile_urls,
-    "card_service": card_service_urls
-}
+    "card_service": card_service_urls,
+    "iabs_client_service": iabs_client_service_urls
+    }
 
 
 class URLProviderBase:
