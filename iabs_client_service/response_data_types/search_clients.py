@@ -7,30 +7,7 @@ from iabs_client_service.test_data.context import IABSContext
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
 
-class IABSClients(BaseTypeParent):
-
-    def __init__(self, data: list):
-        super().__init__()
-        self.iabs_clients: list = self.deserialize_to_list_of(IABSClient, data)
-
-    def set_data_to(self, obj: IABSContext):
-        self._set_iabs_client(obj)
-
-    @allure.step("Установим клиента iabs")
-    def _set_iabs_client(self, obj: IABSContext):
-        obj.iabs_client = self
-
-    def check(self, obj: IABSContext, **kwargs):
-        self.check_all_iabs_clients(obj, **kwargs)
-
-    @allure.step("Проверим все клиенты IABS")
-    def check_all_iabs_clients(self, obj: IABSContext, **kwargs):
-        for iabs in self.iabs_clients:
-            with allure.step(f"iabs_client {iabs.iabs_id}"):
-                iabs.check(obj, **kwargs)
-
-
-class IABSClient(BaseType):
+class IABSClient(BaseTypeParent):
     """Creates IABS client class."""
 
     def __init__(self, data: dict):
@@ -60,6 +37,13 @@ class IABSClient(BaseType):
         self.residence_district_code = data['residence_district_code']
         self.residence_full_address = data['residence_full_address']
         self.residence_kadastr = data['residence_kadastr']
+
+    def set_data_to(self, obj: IABSContext):
+        self._set_iabs_client(obj)
+
+    @allure.step("Установим клиента iabs")
+    def _set_iabs_client(self, obj: IABSContext):
+        obj.iabs_client = self
 
     def check(self, context: IABSContext, **kwargs: Any):
         self.iabs_id()
