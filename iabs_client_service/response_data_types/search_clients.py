@@ -178,7 +178,7 @@ class IABSClient(BaseTypeParent):
 
 
 class Branches(BaseTypeParent):
-
+    """Provides list of bank branches objects list. """
     def __init__(self, data: list):
         super().__init__()
         self.branches = self.deserialize_to_list_of(Branch, data)
@@ -201,7 +201,7 @@ class Branches(BaseTypeParent):
 
 
 class Branch(BaseType):
-
+    """Implements bank branch object. """
     def __init__(self, data: dict):
         super().__init__()
         self.mfo = data["mfo"]
