@@ -38,15 +38,8 @@ class IABSClient(BaseTypeParent):
         self.residence_full_address = data['residence_full_address']
         self.residence_kadastr = data['residence_kadastr']
 
-    def set_data_to(self, obj: IABSContext):
-        self._set_iabs_client(obj)
-
-    @allure.step("Установим клиента iabs")
-    def _set_iabs_client(self, obj: IABSContext):
-        obj.iabs_client = self
-
     def check(self, context: IABSContext, **kwargs: Any):
-        self.iabs_id()
+        self.check_iabs_id()
         self.check_doc_type()
         self.check_doc_series()
         self.check_doc_number()
@@ -70,7 +63,7 @@ class IABSClient(BaseTypeParent):
         self.check_residence_full_address()
 
     @allure.step("client_uid - не пустой")
-    def check_client_uid(self):
+    def check_iabs_id(self):
         tc().assertNotEqual(self.iabs_id, "",
                             f"client_uid ({self.iabs_id}) - пустой" + self.__str__())
 
@@ -175,6 +168,13 @@ class IABSClient(BaseTypeParent):
     def check_residence_full_address(self):
         tc().assertNotEqual(self.residence_full_address, "",
                             f"residence_full_address ({self.residence_full_address}) - пустой" + self.__str__())
+
+    def set_data_to(self, obj: IABSContext):
+        self._set_iabs_client(obj)
+
+    @allure.step("Установим клиента iabs")
+    def _set_iabs_client(self, obj: IABSContext):
+        obj.iabs_client = self
 
 
 class Branches(BaseTypeParent):
