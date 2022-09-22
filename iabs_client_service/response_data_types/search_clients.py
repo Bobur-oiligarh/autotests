@@ -1,9 +1,33 @@
+from abc import ABC
 from typing import Any
 from unittest import TestCase as tc
 import allure
 
-from back_mobile.test_data.client import Client
-from utils.api_utils.response_data_base import BaseType
+from iabs_client_service.test_data.context import IABSContext
+from utils.api_utils.response_data_base import BaseType, BaseTypeParent
+
+
+class IABSClients(BaseTypeParent):
+
+    def __init__(self, data: list):
+        super().__init__()
+        self.iabs_clients: list = self.deserialize_to_list_of(IABSClient, data)
+
+    def set_data_to(self, obj: IABSContext):
+        self._set_iabs_client(obj)
+
+    @allure.step("Установим клиента iabs")
+    def _set_iabs_client(self, obj: IABSContext):
+        obj.iabs_client = self
+
+    def check(self, obj: IABSContext, **kwargs):
+        self.check_all_iabs_clients(obj, **kwargs)
+
+    @allure.step("Проверим все клиенты IABS")
+    def check_all_iabs_clients(self, obj: IABSContext, **kwargs):
+        for iabs in self.iabs_clients:
+            with allure.step(f"iabs_client {iabs.iabs_id}"):
+                iabs.check(obj, **kwargs)
 
 
 class IABSClient(BaseType):
@@ -12,7 +36,7 @@ class IABSClient(BaseType):
     def __init__(self, data: dict):
         """Initializes IABS client response object attributes. """
         super().__init__()
-        self.client_uid = data['client_uid']
+        self.iabs_id = data['client_uid']
         self.doc_type = data['doc_type']
         self.doc_series = data['doc_series']
         self.doc_number = data['doc_number']
@@ -30,15 +54,15 @@ class IABSClient(BaseType):
         self.gender = data['gender']
         self.citizenship_country_code = data['citizenship_country_code']
         self.marital_status = data['marital_status']
-        self.branches = data['branches']
+        self.branches = Branches(data['branches'])
         self.residence_country_code = data['residence_country_code']
         self.residence_region_code = data['residence_region_code']
         self.residence_district_code = data['residence_district_code']
         self.residence_full_address = data['residence_full_address']
         self.residence_kadastr = data['residence_kadastr']
 
-    def check(self, client: Client = None, **kwargs: Any):
-        self.client_uid()
+    def check(self, context: IABSContext, **kwargs: Any):
+        self.iabs_id()
         self.check_doc_type()
         self.check_doc_series()
         self.check_doc_number()
@@ -55,7 +79,7 @@ class IABSClient(BaseType):
         self.check_birth_place()
         self.check_gender()
         self.check_citizenship_country_code()
-        self.check_branches()
+        self.check_branches(context, **kwargs)
         self.check_residence_country_code()
         self.check_residence_region_code()
         self.check_residence_district_code()
@@ -63,8 +87,8 @@ class IABSClient(BaseType):
 
     @allure.step("client_uid - не пустой")
     def check_client_uid(self):
-        tc().assertNotEqual(self.client_uid, "",
-                            f"client_uid ({self.client_uid}) - пустой" + self.__str__())
+        tc().assertNotEqual(self.iabs_id, "",
+                            f"client_uid ({self.iabs_id}) - пустой" + self.__str__())
 
     @allure.step("doc_type - не пустой")
     def check_doc_type(self):
@@ -145,8 +169,8 @@ class IABSClient(BaseType):
                             f"citizenship_country_code ({self.citizenship_country_code}) - пустой" + self.__str__())
 
     @allure.step("branches - не пустой")
-    def check_branches(self):
-        tc().assertNotEqual(self.branches, "", f"branches ({self.branches}) - пустой" + self.__str__())
+    def check_branches(self, iabs_client, **kwargs):
+        self.branches.check(iabs_client, **kwargs)
 
     @allure.step("residence_country_code - не пустой")
     def check_residence_country_code(self):
@@ -168,3 +192,46 @@ class IABSClient(BaseType):
         tc().assertNotEqual(self.residence_full_address, "",
                             f"residence_full_address ({self.residence_full_address}) - пустой" + self.__str__())
 
+
+class Branches(BaseTypeParent):
+
+    def __init__(self, data: list):
+        super().__init__()
+        self.branches = self.deserialize_to_list_of(Branch, data)
+
+    def set_data_to(self, obj: IABSContext):
+        self._set_branches_to_iabs_client(obj)
+
+    @allure.step("Установить филлиалы клиенту")
+    def _set_branches_to_iabs_client(self, obj):
+        obj.branches = self
+
+    def check(self, client, **kwargs):
+        self.check_all_branches(client, **kwargs)
+
+    @allure.step("Проверка параметров всех филлиалов")
+    def check_all_branches(self, client: IABSContext, **kwargs: Any):
+        for branch in self.branches:
+            with allure.step(f"branch {branch.mfo}"):
+                branch.check(client, **kwargs)
+
+
+class Branch(BaseType):
+
+    def __init__(self, data: dict):
+        super().__init__()
+        self.mfo = data["mfo"]
+        self.client_code = data["client_code"]
+
+    def check(self, client: IABSContext, **kwargs: Any):
+        self.check_mfo()
+        self.check_client_code()
+
+    @allure.step('mfo - пустой')
+    def check_mfo(self):
+        self._tc.assertNotEqual(self.mfo, "", f"mfo ({self.mfo}) пустой" + self.__str__())
+
+    @allure.step('client_code - пустой')
+    def check_client_code(self):
+        self._tc.assertNotEqual(self.client_code, "",
+                                f"client_code ({self.client_code}) пустой" + self.__str__())
