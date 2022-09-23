@@ -14,7 +14,7 @@ __all__ = [
 @allure.step("Начало регистрации start_registration")
 def step_start_reg_success(client: Client):
     response = StartRegistration(client).response()
-    response.check_success(response, client).data.set_data_to(client)
+    response.check_success(client).data.set_data_to(client)
 
 
 @allure.step("Начало регистрации start_registration")

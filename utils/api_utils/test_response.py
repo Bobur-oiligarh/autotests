@@ -37,14 +37,15 @@ class TestResponse:
         self.check_status("Success") \
             .check_error_code(0) \
             .check_error_note("") \
-            .check_data_not_null()
+            .check_data_not_null() \
+            .check_data_parameters(context)
         return self
 
     @allure.step("Проверка ответа - отрицательный результат")
     def check_failure(self, status, error_code, error_note):
-        self.check_status(status)\
-            .check_error_code(error_code)\
-            .check_error_note(error_note)\
+        self.check_status(status) \
+            .check_error_code(error_code) \
+            .check_error_note(error_note) \
             .check_data_is_null()
         return self
 
