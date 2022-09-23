@@ -38,6 +38,19 @@ class BaseType(ABC):
             self._tc.assertIsNotNone(value, self._empty_str(param_name, value))
         return self
 
+    def assert_equal(self, param_name, expected_value):
+        value = getattr(self, param_name)
+        with allure.step(param_name + " не совпадает с ожидаемым"):
+            self._tc.assertEqual(value, expected_value,
+                                 f"{param_name} ({value}) не соответствует "
+                                 f"ожидаемому ({expected_value})")
+        return self
+
+    def check_attrs_of(self, param_name, context, **kwargs):
+        with allure.step("Проверка параметров " + param_name):
+            getattr(self, param_name).check(context, **kwargs)
+        return self
+
     @staticmethod
     def _empty_str(parameter_name, value):
         return parameter_name + f" ({value} пустой)"

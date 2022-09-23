@@ -2,6 +2,11 @@ import allure
 
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
+__all__ = [
+    "OpenedAccounts",
+    "Account"
+]
+
 
 class OpenedAccounts(BaseTypeParent):
 
@@ -41,57 +46,12 @@ class Account(BaseType):
         self.id = data["id"]
 
     def check(self, client, **kwargs):
-        self.name_acc_not_empty()
-        self.account_not_empty()
-        self.code_currency_not_empty()
-        self.saldo_not_empty()
-        self.code_filial_not_empty()
-        self.code_coa_not_empty()
-        self.condition_not_empty()
-        self.create_date_not_empty()
-        self.id_not_empty()
-
-    @allure.step("name_acc не пустой")
-    def name_acc_not_empty(self):
-        self._tc.assertNotEqual(self.name_acc, "",
-                                f"name_acc ({self.name_acc}) пустой" + self.__str__())
-
-    @allure.step("account не пустой")
-    def account_not_empty(self):
-        self._tc.assertNotEqual(self.account, "",
-                                f"account ({self.account}) пустой" + self.__str__())
-
-    @allure.step("code_currency не пустой")
-    def code_currency_not_empty(self):
-        self._tc.assertNotEqual(self.code_currency, "",
-                                f"code_currency ({self.code_currency}) пустой" + self.__str__())
-
-    @allure.step("saldo не пустой")
-    def saldo_not_empty(self):
-        self._tc.assertNotEqual(self.saldo, "",
-                                f"saldo ({self.saldo}) пустой" + self.__str__())
-
-    @allure.step("code_filial не пустой")
-    def code_filial_not_empty(self):
-        self._tc.assertNotEqual(self.code_filial, "",
-                                f"code_filial ({self.code_filial}) пустой" + self.__str__())
-
-    @allure.step("code_coa не пустой")
-    def code_coa_not_empty(self):
-        self._tc.assertNotEqual(self.code_coa, "",
-                                f"code_coa ({self.code_coa}) пустой" + self.__str__())
-
-    @allure.step("condition не пустой")
-    def condition_not_empty(self):
-        self._tc.assertNotEqual(self.condition, "",
-                                f"condition ({self.condition}) пустой" + self.__str__())
-
-    @allure.step("create_date не пустой")
-    def create_date_not_empty(self):
-        self._tc.assertNotEqual(self.create_date, "",
-                                f"create_date ({self.create_date}) пустой" + self.__str__())
-
-    @allure.step("id не пустой")
-    def id_not_empty(self):
-        self._tc.assertNotEqual(self.id, "",
-                                f"id ({self.id}) пустой" + self.__str__())
+        self.assert_not_empty("name_acc")
+        self.assert_not_empty("account")
+        self.assert_not_empty("code_currency")
+        self.assert_not_empty("saldo")
+        self.assert_not_empty("code_filial")
+        self.assert_not_empty("code_coa")
+        self.assert_not_empty("condition")
+        self.assert_not_empty("create_date")
+        self.assert_not_empty("id")
