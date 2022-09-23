@@ -3,6 +3,10 @@ import allure
 from utils.api_utils.response_data_base import BaseTypeParent
 from back_mobile.test_data.client import Client
 
+__all__ = [
+    "SignId"
+]
+
 
 class SignId(BaseTypeParent):
 
@@ -11,14 +15,10 @@ class SignId(BaseTypeParent):
         self.sign_id = data["sign_id"]
 
     def check(self, client, **kwargs):
-        self.sign_id_not_empty()
+        self.assert_not_empty("sign_id")
 
     def set_data_to(self, obj: Client):
         self.set_sign_id(obj)
-
-    @allure.step("sign_id не пустой")
-    def sign_id_not_empty(self):
-        self._tc.assertNotEqual(self.sign_id, "", f"sign_id ответа пустой" + self.__str__())
 
     @allure.step("Установить sign_id")
     def set_sign_id(self, client):
