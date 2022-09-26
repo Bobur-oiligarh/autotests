@@ -9,9 +9,7 @@ from utils.patterns.singleton import Singleton
 all_services_urls = {
     "back_mobile": back_mobile_urls,
     "card_service": card_service_urls,
-    "iabs_clients_service": iabs_clients_service
-    }
-    "card_service": card_service_urls,
+    "iabs_clients_service": iabs_clients_service,
     "reference_service": reference_service_urls
 }
 
