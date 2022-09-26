@@ -24,9 +24,7 @@ class Templates(BaseTypeParent):
 
     @allure.step("Проверка всех шаблонов")
     def check(self, client, **kwargs):
-        for template in self.templates:
-            with allure.step(f"Проверка шаблона {template.template_id}"):
-                template.check(client, **kwargs)
+        self.check_list_of("templates", client, **kwargs)
 
 
 class Template(BaseType):
@@ -65,7 +63,7 @@ class TransactionParticipant(BaseType):
     def check(self, client, **kwargs):
         self.assert_not_empty("id")
         self.assert_not_empty("pan")
-        self.assert_not_empty("expire")
+        self.assert_not_none("expire")
         self.assert_not_empty("ps_code")
         self.assert_not_empty("bank_code")
         self.assert_not_empty("owner")

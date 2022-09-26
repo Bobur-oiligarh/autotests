@@ -84,7 +84,7 @@ class Client:
         self.app_version = app_version
         self.offer_sign_action = offer_sign_action
         self.p2p_init_action = p2p_init_action
-        self.expired_confirm_method = "BIO" if user.residence_of_uz else "SMS"
+        self.expected_confirm_method = "BIO" if user.residence_of_uz else "SMS"
         self.region_code = region_code
 
     def get_by_name(self, name: str):

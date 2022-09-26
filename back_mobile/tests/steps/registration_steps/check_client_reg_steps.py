@@ -11,5 +11,4 @@ __all__ = [
 @allure.step("Добавление карты check_client_registration")
 def step_check_client_reg(client):
     response = CheckClientRegistration(client).response()
-    check_response(response, client)
-    response.data.set_data_to(client)
+    response.check_success(client).data.set_data_to(client)

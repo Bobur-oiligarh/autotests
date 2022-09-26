@@ -40,20 +40,27 @@ class BaseType(ABC):
 
     def assert_equal(self, param_name, expected_value):
         value = getattr(self, param_name)
-        with allure.step(param_name + " не совпадает с ожидаемым"):
+        with allure.step(param_name + " совпадает с ожидаемым"):
             self._tc.assertEqual(value, expected_value,
                                  f"{param_name} ({value}) не соответствует "
                                  f"ожидаемому ({expected_value})")
         return self
+
+    def check_list_of(self, list_param_name, context, **kwargs):
+        with allure.step(f"Проверка объектов в списке {list_param_name}"):
+            i = 0
+            for item in getattr(self, list_param_name):
+                with allure.step(f"Проверка параметров {type(item)} - {i}"):
+                    item.check(context, **kwargs)
+                i += 1
 
     def check_attrs_of(self, param_name, context, **kwargs):
         with allure.step("Проверка параметров " + param_name):
             getattr(self, param_name).check(context, **kwargs)
         return self
 
-    @staticmethod
-    def _empty_str(parameter_name, value):
-        return parameter_name + f" ({value} пустой)"
+    def _empty_str(self, parameter_name, value):
+        return parameter_name + f" ({value}) пустой" + self.__str__()
 
 
 class BaseTypeParent(BaseType, ABC):
