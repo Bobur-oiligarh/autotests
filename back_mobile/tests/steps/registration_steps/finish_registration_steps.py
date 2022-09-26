@@ -10,5 +10,4 @@ __all__ = [
 @allure.step("Подтверждение номера телефона finish_registration")
 def step_finish_reg(client):
     response = FinishRegistration(client).response()
-    response.check_success(response, client)
-    response.data.set_data_to(client)
+    response.check_success(client).data.set_data_to(client)

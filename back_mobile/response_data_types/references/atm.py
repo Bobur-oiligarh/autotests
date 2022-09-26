@@ -3,9 +3,15 @@ import allure
 from back_mobile.test_data.client import Client
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
+__all__ = [
+    "ATMs",
+    "ATM",
+    "Coordinates",
+    "DiffLangTextParams"
+]
+
 
 class ATMs(BaseTypeParent):
-    """Provides list of ATM objects. """
 
     def __init__(self, data: list):
         super().__init__()
@@ -19,19 +25,10 @@ class ATMs(BaseTypeParent):
         client.atm_list = self
 
     def check(self, client, **kwargs):
-        self.check_all_atms(client, **kwargs)
-
-    @allure.step("Проверка параметров всех банкоматов")
-    def check_all_atms(self, client, **kwargs):
-        i = 0
-        for atm in self.atm_list:
-            with allure.step(f"atm {i}"):
-                atm.check(client, **kwargs)
-            i += 1
+        self.check_list_of("atm_list", client, **kwargs)
 
 
 class ATM(BaseType):
-    """Creates instance of automated teller machine class. """
 
     def __init__(self, data: dict):
         super().__init__()
@@ -46,52 +43,17 @@ class ATM(BaseType):
         self.address = DiffLangTextParams(data["address"])
 
     def check(self, client, **kwargs):
-        self.type_not_empty()
-        self.check_coords(client, **kwargs)
-        self.region_code_not_empty()
-        self.check_orienter(client, **kwargs)
-        self.check_work_time(client, **kwargs)
-        self.check_work_days(client, **kwargs)
-        self.check_atm_type(client, **kwargs)
-        self.check_address(client, **kwargs)
-
-    @allure.step("type не пустой")
-    def type_not_empty(self):
-        self._tc.assertNotEqual(self.type, "",
-                                f"type ({self.type}) пустой" + self.__str__())
-
-    @allure.step("Coords не пустой")
-    def check_coords(self, client, **kwargs):
-        self.Coords.check(client, **kwargs)
-
-    @allure.step("region_code не пустой")
-    def region_code_not_empty(self):
-        self._tc.assertNotEqual(self.region_code, "",
-                                f"region_code ({self.region_code}) пустой" + self.__str__())
-
-    @allure.step("проверка параметров orienter")
-    def check_orienter(self, client, **kwargs):
-        self.orienter.check(client, **kwargs)
-
-    @allure.step("проверка параметров work_time")
-    def check_work_time(self, client, **kwargs):
-        self.work_time.check(client, **kwargs)
-
-    @allure.step("проверка параметров work_days")
-    def check_work_days(self, client, **kwargs):
-        self.work_days.check(client, **kwargs)
-
-    @allure.step("проверка параметров atm_type")
-    def check_atm_type(self, client, **kwargs):
-        self.atm_type.check(client, **kwargs)
-
-    @allure.step("проверка параметров address")
-    def check_address(self, client, **kwargs):
-        self.address.check(client, **kwargs)
+        self.assert_not_empty("type")
+        self.check_attrs_of("Coords", client, **kwargs)
+        self.assert_not_empty("region_code")
+        self.check_attrs_of("orienter", client, **kwargs)
+        self.check_attrs_of("work_time", client, **kwargs)
+        self.check_attrs_of("work_days", client, **kwargs)
+        self.check_attrs_of("atm_type", client, **kwargs)
+        self.check_attrs_of("address", client, **kwargs)
 
 
 class Coordinates(BaseType):
-    """Implements objects' coordinates. """
 
     def __init__(self, data: dict):
         super().__init__()
@@ -99,29 +61,18 @@ class Coordinates(BaseType):
         self.lng = data["lng"]
 
     def check(self, client, **kwargs):
-        self.lat_not_empty()
-        self.lng_not_empty()
-
-    @allure.step("lat не пустой")
-    def lat_not_empty(self):
-        self._tc.assertNotEqual(self.lat, "",
-                                f"lat ({self.lat}) пустой" + self.__str__())
-
-    @allure.step("lng не пустой")
-    def lng_not_empty(self):
-        self._tc.assertNotEqual(self.lng, "",
-                                f"lng ({self.lng}) пустой" + self.__str__())
+        self.assert_not_empty("lat")
+        self.assert_not_empty("lng")
 
 
 class DiffLangTextParams(BaseType):
-    """Produces datas from all languages. """
 
     def __init__(self, data: dict):
         super().__init__()
         self.uz = data["uz"]
         self.ru = data["ru"]
 
-    def check(self, client: Client, **kwargs: Any):
+    def check(self, client: Client, **kwargs):
         self.uz_not_null()
         self.ru_not_null()
 

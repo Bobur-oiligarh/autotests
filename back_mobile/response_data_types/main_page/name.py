@@ -3,6 +3,10 @@ import allure
 from utils.api_utils.response_data_base import BaseTypeParent
 from back_mobile.test_data.client import Client
 
+__all__ = [
+    "ClientNameType"
+]
+
 
 class ClientNameType(BaseTypeParent):
 
@@ -22,21 +26,6 @@ class ClientNameType(BaseTypeParent):
         client.middle_name = self.middle_name
 
     def check(self, client, **kwargs):
-        self.first_name_not_empty()
-        self.last_name_not_empty()
-        self.middle_name_not_empty()
-
-    @allure.step("проверка наличия first_name")
-    def first_name_not_empty(self):
-        self._tc.assertNotEqual(self.first_name, "",
-                                f"first_name пустой" + self.__str__())
-
-    @allure.step("проверка наличия last_name")
-    def last_name_not_empty(self):
-        self._tc.assertNotEqual(self.last_name, "",
-                                f"last_name пустой" + self.__str__())
-
-    @allure.step("проверка наличия middle_name")
-    def middle_name_not_empty(self):
-        self._tc.assertNotEqual(self.middle_name, "",
-                                f"middle_name пустой" + self.__str__())
+        self.assert_not_empty("first_name")
+        self.assert_not_empty("last_name")
+        self.assert_not_empty("middle_name")

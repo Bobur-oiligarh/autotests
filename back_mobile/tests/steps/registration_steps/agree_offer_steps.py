@@ -11,4 +11,4 @@ __all__ = [
 @allure.step("Подтверждение оферты agree_offer")
 def step_agree_offer(client):
     response = AgreeOffer(client).response()
-    check_response(response, client)
+    response.check_success(client)

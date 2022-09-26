@@ -5,7 +5,6 @@ from utils.api_utils.url_provider import URLProvider
 
 
 class ExchangeRateRequest(TestRequest):
-    """Implements request to get exchange rates."""
 
     def __init__(self, client: Client):
         super().__init__(

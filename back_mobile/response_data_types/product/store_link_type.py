@@ -3,6 +3,10 @@ import allure
 from utils.api_utils.response_data_base import BaseTypeParent
 from back_mobile.test_data.client import Client
 
+__all__ = [
+    "StoreLinkType"
+]
+
 
 class StoreLinkType(BaseTypeParent):
 
@@ -19,15 +23,5 @@ class StoreLinkType(BaseTypeParent):
         client.webview_link = self
 
     def check(self, client, **kwargs):
-        self.link_not_empty()
-        self.count_order_not_null()
-
-    @allure.step("count_order не пустой")
-    def count_order_not_null(self):
-        self._tc.assertNotEqual(self.count_order, None,
-                                f"cont_order ({self.count_order}) пустой" + self.__str__())
-
-    @allure.step("link не пустой")
-    def link_not_empty(self):
-        self._tc.assertNotEqual(self.link, "",
-                                f"link ({self.link}) пустой" + self.__str__())
+        self.assert_not_empty("link")
+        self.assert_not_none("count_order")

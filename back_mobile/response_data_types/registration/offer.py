@@ -2,6 +2,11 @@ import allure
 
 from utils.api_utils.response_data_base import BaseType
 
+__all__ = [
+    "Offer",
+    "AgreeOfferResult"
+]
+
 
 class Offer(BaseType):
     def __init__(self, data: dict):
@@ -11,12 +16,8 @@ class Offer(BaseType):
         self.short_text = data["short_text"]
 
     def check(self, client, **kwargs):
-        self.text_not_empty()
+        self.assert_not_empty("text")
         self.true_text_language(client)
-
-    @allure.step("текст не пустой")
-    def text_not_empty(self):
-        self._tc.assertNotEqual(self.text, "", f"текст в ответе пустой" + self.__str__())
 
     @allure.step("язык текста совпадает с ожидаемым")
     def true_text_language(self, client):
