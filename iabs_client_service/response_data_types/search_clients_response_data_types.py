@@ -1,10 +1,10 @@
-from abc import ABC
-from typing import Any
 from unittest import TestCase as tc
 import allure
 
 from iabs_client_service.test_data.context import IABSContext
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
+
+__all__ = ['IABSClient', 'Branches', 'Branch']
 
 
 class IABSClient(BaseTypeParent):
@@ -38,7 +38,7 @@ class IABSClient(BaseTypeParent):
         self.residence_full_address = data['residence_full_address']
         self.residence_kadastr = data['residence_kadastr']
 
-    def check(self, context: IABSContext, **kwargs: Any):
+    def check(self, context: IABSContext, **kwargs):
         self.check_iabs_id()
         self.check_doc_type()
         self.check_doc_series()
@@ -194,7 +194,7 @@ class Branches(BaseTypeParent):
         self.check_all_branches(client, **kwargs)
 
     @allure.step("Проверка параметров всех филлиалов")
-    def check_all_branches(self, client: IABSContext, **kwargs: Any):
+    def check_all_branches(self, client: IABSContext, **kwargs):
         for branch in self.branches:
             with allure.step(f"branch {branch.mfo}"):
                 branch.check(client, **kwargs)
@@ -207,7 +207,7 @@ class Branch(BaseType):
         self.mfo = data["mfo"]
         self.client_code = data["client_code"]
 
-    def check(self, client: IABSContext, **kwargs: Any):
+    def check(self, client: IABSContext, **kwargs):
         self.check_mfo()
         self.check_client_code()
 

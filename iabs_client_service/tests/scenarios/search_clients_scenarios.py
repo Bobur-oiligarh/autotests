@@ -1,6 +1,8 @@
 import allure
 
-from iabs_client_service.tests.steps.search_clients_steps import step_search_clients
+from iabs_client_service.tests.steps import step_search_clients
+
+__all__ = ['scenario_search_clients']
 
 
 @allure.step("Сценарий запроса IABS клиента")

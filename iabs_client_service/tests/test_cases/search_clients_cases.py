@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from iabs_client_service.test_data.context import IABSContext
-from iabs_client_service.tests.scenarios.search_clients_scenarios import scenario_search_clients
+from iabs_client_service.test_data import IABSContext
+from iabs_client_service.tests.scenarios import scenario_search_clients
 
 
 class DemoScenarioTestCase(TestCase):
