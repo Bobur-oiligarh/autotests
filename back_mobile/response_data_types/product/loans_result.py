@@ -21,13 +21,7 @@ class LoansResult(BaseTypeParent):
         client.loans = self
 
     def check(self, client, **kwargs):
-        self.check_all_loans(client, **kwargs)
-
-    @allure.step("Проверка кредитов")
-    def check_all_loans(self, client, **kwargs):
-        for loan in self.loans_list:
-            with allure.step(f"Проверка параметров loan - {loan.name}"):
-                loan.check(client, **kwargs)
+        self.check_list_of("loans_list", client, **kwargs)
 
 
 class Loan(BaseType):

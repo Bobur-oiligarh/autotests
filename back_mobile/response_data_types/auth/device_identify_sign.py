@@ -1,6 +1,8 @@
-import allure
-
 from back_mobile.response_data_types.registration import AccRefTokens
+
+__all__ = [
+    "DeviceIdentifySign"
+]
 
 
 class DeviceIdentifySign(AccRefTokens):
@@ -10,9 +12,4 @@ class DeviceIdentifySign(AccRefTokens):
 
     def check(self, client, **kwargs):
         super().check(client, **kwargs)
-        self.device_identify_sign_not_null()
-
-    @allure.step("device_identify_sign не null")
-    def device_identify_sign_not_null(self):
-        self._tc.assertIsNotNone(self.device_identify_sign,
-                                 f"device_identify_sign является null" + self.__str__())
+        self.assert_not_none("device_identify_sign")

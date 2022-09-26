@@ -22,13 +22,7 @@ class AvailableOperators(BaseTypeParent):
         client.operators = self
 
     def check(self, client, **kwargs):
-        self.check_operators(client, **kwargs)
-
-    @allure.step("Проверка всех доступных операторов")
-    def check_operators(self, client, **kwargs):
-        for o in self.operators_list:
-            with allure.step(f"проверка параметров {o.name}"):
-                o.check(client, **kwargs)
+        self.check_list_of("operators_list", client, **kwargs)
 
 
 class Operator(BaseType):

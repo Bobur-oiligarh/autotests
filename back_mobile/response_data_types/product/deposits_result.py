@@ -22,13 +22,7 @@ class OpenedDeposits(BaseTypeParent):
         client.deposits = self
 
     def check(self, client, **kwargs):
-        self.check_all_deposits(client, **kwargs)
-
-    @allure.step("Проверка всех депозитов")
-    def check_all_deposits(self, client, **kwargs):
-        for deposit in self.deposits:
-            with allure.step(f"Проверка параметров {deposit.name}"):
-                deposit.check(client, **kwargs)
+        self.check_list_of("deposits", client, **kwargs)
 
 
 class Deposit(BaseType):

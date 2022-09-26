@@ -25,15 +25,7 @@ class ATMs(BaseTypeParent):
         client.atm_list = self
 
     def check(self, client, **kwargs):
-        self.check_all_atms(client, **kwargs)
-
-    @allure.step("Проверка параметров всех банкоматов")
-    def check_all_atms(self, client, **kwargs):
-        i = 0
-        for atm in self.atm_list:
-            with allure.step(f"atm {i}"):
-                atm.check(client, **kwargs)
-            i += 1
+        self.check_list_of("atm_list", client, **kwargs)
 
 
 class ATM(BaseType):

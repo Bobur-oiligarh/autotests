@@ -23,13 +23,7 @@ class ExchangeRateList(BaseTypeParent):
         client.exchange_rates = self
 
     def check(self, client: Client, **kwargs):
-        self.check_exchange_rates(client, **kwargs)
-
-    @allure.step("Проверка параметров курсов валют")
-    def check_exchange_rates(self, client: Client, **kwargs):
-        for exchange_rate in self.exchange_rates:
-            with allure.step(f"currency {exchange_rate.currency_char}"):
-                exchange_rate.check(client, **kwargs)
+        self.check_list_of("exchange_rates", client, **kwargs)
 
 
 class ExchangeRate(BaseType):

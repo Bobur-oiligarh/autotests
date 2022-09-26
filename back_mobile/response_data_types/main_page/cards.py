@@ -1,9 +1,12 @@
-from typing import Any
-
 import allure
 
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 from back_mobile.test_data.client import Client
+
+__all__ = [
+    "Cards",
+    "Card"
+]
 
 
 class Cards(BaseTypeParent):
@@ -13,18 +16,21 @@ class Cards(BaseTypeParent):
         self.cards: list = self.deserialize_to_list_of(Card, data["cards"])
         self.total_sum = data["total_sum"]
 
-    def check(self, client: Client, **kwargs: Any):
+    def check(self, client: Client, **kwargs):
         total_sum_uzs = 0.0
         for card in self.cards:
             with allure.step(f"проверка параметров карты {card.mask_num}"):
                 card.check(client, **kwargs)
             total_sum_uzs += card.balance
+        self.assert_not_none("total_sum")
         self.total_sum_is_true(total_sum_uzs)
+
+    def total_sum_is_true(self, expected_total_sum):
+        self.assert_equal("total_sum", expected_total_sum)
 
     def get_cards_by(self, param: str = None, value=None):
         if param is None:
             return self.cards
-
         cards = []
         for card in self.cards:
             if value is card.__dict__[param]:
@@ -71,17 +77,6 @@ class Cards(BaseTypeParent):
             total_sum += card.balance
         self.total_sum = total_sum
 
-    @allure.step("проверка наличия total_sum")
-    def total_sum_not_null(self):
-        self._tc.assertNotEqual(self.total_sum, "",
-                                f"total_sum пустой" + self.__str__())
-
-    @allure.step("total_sum соответствует сумме балансов")
-    def total_sum_is_true(self, expired_total_sum):
-        self._tc.assertEqual(self.total_sum, expired_total_sum,
-                             f"total_sum {self.total_sum} не соответствует "
-                             f"сумме полученных карт {expired_total_sum}" + self.__str__())
-
 
 class Card(BaseType):
 
@@ -98,57 +93,12 @@ class Card(BaseType):
         self.owner = data["owner"]
 
     def check(self, client, **kwargs):
-        self.card_id_not_empty()
-        self.card_type_not_empty()
-        self.mfo_not_empty()
-        self.mask_num_not_empty()
-        self.state_not_empty()
-        self.balance_not_none()
-        self.ps_code_not_empty()
-        self.expire_not_empty()
-        self.owner_not_empty()
-
-    @allure.step("проверка наличия card_id")
-    def card_id_not_empty(self):
-        self._tc.assertNotEqual(self.card_id, "",
-                                f"card_id пустой" + self.__str__())
-
-    @allure.step("проверка наличия card_type")
-    def card_type_not_empty(self):
-        self._tc.assertNotEqual(self.card_type, "",
-                                f"card_type пустой" + self.__str__())
-
-    @allure.step("проверка наличия mfo")
-    def mfo_not_empty(self):
-        self._tc.assertNotEqual(self.mfo, "",
-                                f"mfo пустой" + self.__str__())
-
-    @allure.step("проверка наличия mask_num")
-    def mask_num_not_empty(self):
-        self._tc.assertNotEqual(self.mask_num, "",
-                                f"mask_num пустой" + self.__str__())
-
-    @allure.step("проверка наличия state")
-    def state_not_empty(self):
-        self._tc.assertNotEqual(self.state, "",
-                                f"state пустой" + self.__str__())
-
-    @allure.step("проверка наличия balance")
-    def balance_not_none(self):
-        self._tc.assertNotEqual(self.balance, None,
-                                f"balance пустой" + self.__str__())
-
-    @allure.step("проверка наличия ps_code")
-    def ps_code_not_empty(self):
-        self._tc.assertNotEqual(self.ps_code, "",
-                                f"ps_code пустой" + self.__str__())
-
-    @allure.step("проверка наличия expire")
-    def expire_not_empty(self):
-        self._tc.assertNotEqual(self.expire, "",
-                                f"expire пустой" + self.__str__())
-
-    @allure.step("проверка наличия owner")
-    def owner_not_empty(self):
-        self._tc.assertNotEqual(self.owner, "",
-                                f"owner пустой" + self.__str__())
+        self.assert_not_empty("card_id")
+        self.assert_not_empty("card_type")
+        self.assert_not_empty("mfo")
+        self.assert_not_empty("mask_num")
+        self.assert_not_empty("state")
+        self.assert_not_none("balance")
+        self.assert_not_empty("ps_code")
+        self.assert_not_empty("expire")
+        self.assert_not_empty("owner")

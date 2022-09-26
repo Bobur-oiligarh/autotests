@@ -22,13 +22,7 @@ class OpenedAccounts(BaseTypeParent):
         client.accounts = self
 
     def check(self, client, **kwargs):
-        self.check_all_accounts(client, **kwargs)
-
-    @allure.step("Проверк всех счетов клиента")
-    def check_all_accounts(self, client, **kwargs):
-        for acc in self.accounts:
-            with allure.step(f"Проверка параметров счета {acc.name_acc}"):
-                acc.check(client, **kwargs)
+        self.check_list_of("accounts", client, **kwargs)
 
 
 class Account(BaseType):

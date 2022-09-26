@@ -24,13 +24,7 @@ class AvailableBranches(BaseTypeParent):
         client.branches = self
 
     def check(self, client: Client, **kwargs):
-        self.check_all_branches(client, **kwargs)
-
-    @allure.step("Проверка параметров всех филлиалов.")
-    def check_all_branches(self, client: Client, **kwargs):
-        for branch in self.branches_list:
-            with allure.step(f"branch {branch.mfo}"):
-                branch.check(client, **kwargs)
+        self.check_list_of("branches_list", client, **kwargs)
 
 
 class Branch(BaseType):

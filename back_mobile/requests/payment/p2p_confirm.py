@@ -5,7 +5,7 @@ from utils.api_utils.test_request import TestRequest
 
 
 class P2PConfirm(TestRequest):
-    def __init__(self, client: Client, confirm_code: str = ""):
+    def __init__(self, client: Client, confirm_code):
         super().__init__(
             URLProvider().url("back_mobile", "payment", "p2p_confirm"),
             data_type=P2PConfirmResult,

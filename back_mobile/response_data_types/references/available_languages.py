@@ -23,12 +23,7 @@ class AvailableLanguages(BaseTypeParent):
         client.lang_list = self
 
     def check(self, client, **kwargs):
-        self.check_all_languages(client, **kwargs)
-
-    def check_all_languages(self, client, **kwargs):
-        for lang in self.lang_list:
-            with allure.step(f"Проверка параметров lang {lang.name}"):
-                lang.check(client, **kwargs)
+        self.check_list_of("lang_list", client, **kwargs)
 
 
 class Language(BaseType):
