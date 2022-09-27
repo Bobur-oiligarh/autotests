@@ -12,4 +12,4 @@ __all__ = [
 def step_client_sms_reg(client):
     response = ClientSMSRegistration(client).response()
     response.check_success(client)\
-        .response.data.set_data_to(client)
+        .data.set_data_to(client)

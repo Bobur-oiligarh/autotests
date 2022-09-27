@@ -1,9 +1,12 @@
-from typing import Any
-
 import allure
 
 from back_mobile.test_data.client import Client
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
+
+__all__ = [
+    "AvailableOperators",
+    "Operator"
+]
 
 
 class AvailableOperators(BaseTypeParent):
@@ -19,13 +22,7 @@ class AvailableOperators(BaseTypeParent):
         client.operators = self
 
     def check(self, client, **kwargs):
-        self.check_operators(client, **kwargs)
-
-    @allure.step("Проверка всех доступных операторов")
-    def check_operators(self, client, **kwargs):
-        for o in self.operators_list:
-            with allure.step(f"проверка параметров {o.name}"):
-                o.check(client, **kwargs)
+        self.check_list_of("operators_list", client, **kwargs)
 
 
 class Operator(BaseType):
@@ -36,22 +33,7 @@ class Operator(BaseType):
         self.mask = data["mask"]
         self.name = data["name"]
 
-    def check(self, client: Client, **kwargs: Any):
-        self.operator_id_not_empty()
-        self.mask_not_empty()
-        self.name_not_empty()
-
-    @allure.step("operator_id не пустой")
-    def operator_id_not_empty(self):
-        self._tc.assertNotEqual(self.operator_id, "",
-                                f"operator_id ({self.operator_id}) пустой" + self.__str__())
-
-    @allure.step("mask не пустой")
-    def mask_not_empty(self):
-        self._tc.assertNotEqual(self.mask, "",
-                                f"mask ({self.mask}) пустой" + self.__str__())
-
-    @allure.step("name не пустой")
-    def name_not_empty(self):
-        self._tc.assertNotEqual(self.name, "",
-                                f"name ({self.name}) пустой" + self.__str__())
+    def check(self, client: Client, **kwargs):
+        self.assert_not_empty("operator_id")
+        self.assert_not_empty("mask")
+        self.assert_not_empty("name")

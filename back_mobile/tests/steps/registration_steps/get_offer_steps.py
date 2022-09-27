@@ -11,4 +11,4 @@ __all__ = [
 @allure.step("Запрос оферты get_offer")
 def step_get_offer(client):
     response = GetOffer(client).response()
-    check_response(response, client)
+    response.check_success(client)

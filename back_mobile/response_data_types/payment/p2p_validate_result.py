@@ -2,6 +2,10 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent
 
+__all__ = [
+    "P2PValidateResult"
+]
+
 
 class P2PValidateResult(BaseTypeParent):
 
@@ -20,27 +24,7 @@ class P2PValidateResult(BaseTypeParent):
         client.p2p_validate_result = self
 
     def check(self, client, **kwargs):
-        self.commission_sum_not_null()
-        self.confirm_method_not_empty()
-        self.is_confirm_not_null()
-        self.transact_id_not_empty()
-
-    @allure.step("commission_sum не пустой")
-    def commission_sum_not_null(self):
-        self._tc.assertIsNotNone(self.commission_sum,
-                                 f"commission_sum ({self.commission_sum}) пустой" + self.__str__())
-
-    @allure.step("confirm_method не пустой")
-    def confirm_method_not_empty(self):
-        self._tc.assertNotEqual(self.confirm_method, "",
-                                f"confirm_method ({self.confirm_method}) пустой" + self.__str__())
-
-    @allure.step("is_confirm не пустой")
-    def is_confirm_not_null(self):
-        self._tc.assertIsNotNone(self.is_confirm,
-                                 f"is_confirm ({self.is_confirm}) пустой" + self.__str__())
-
-    @allure.step("transact_id не пустой")
-    def transact_id_not_empty(self):
-        self._tc.assertNotEqual(self.transact_id, "",
-                                f"transact_id ({self.transact_id}) пустой" + self.__str__())
+        self.assert_not_none("commission_sum")
+        self.assert_not_empty("confirm_method")
+        self.assert_not_none("is_confirm")
+        self.assert_not_empty("transact_id")

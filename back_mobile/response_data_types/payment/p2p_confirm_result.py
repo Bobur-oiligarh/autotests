@@ -2,6 +2,10 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent
 
+__all__ = [
+    "P2PConfirmResult"
+]
+
 
 class P2PConfirmResult(BaseTypeParent):
 
@@ -26,63 +30,13 @@ class P2PConfirmResult(BaseTypeParent):
         client.operation_check = self
 
     def check(self, client, **kwargs):
-        self.product_name_not_empty()
-        self.transact_id_not_empty()
-        self.sender_name_not_empty()
-        self.sender_pan_not_empty()
-        self.receiver_name_not_empty()
-        self.receiver_pan_not_empty()
-        self.sum_not_null()
-        self.commission_sum_not_null()
-        self.status_not_empty()
-        self.operation_time_not_empty()
-
-    @allure.step("product_name не пустой")
-    def product_name_not_empty(self):
-        self._tc.assertNotEqual(self.product_name, "",
-                                f"product_name ({self.product_name}) пустой" + self.__str__())
-
-    @allure.step("transact_id не пустой")
-    def transact_id_not_empty(self):
-        self._tc.assertNotEqual(self.transact_id, "",
-                                f"transact_id ({self.transact_id}) пустой" + self.__str__())
-
-    @allure.step("sender_name не пустой")
-    def sender_name_not_empty(self):
-        self._tc.assertNotEqual(self.sender_name, "",
-                                f"sender_name ({self.sender_name}) пустой" + self.__str__())
-
-    @allure.step("sender_pan не пустой")
-    def sender_pan_not_empty(self):
-        self._tc.assertNotEqual(self.sender_pan, "",
-                                f"sender_pan ({self.sender_pan}) пустой" + self.__str__())
-
-    @allure.step("receiver_name не пустой")
-    def receiver_name_not_empty(self):
-        self._tc.assertNotEqual(self.receiver_name, "",
-                                f"receiver_name ({self.receiver_name}) пустой" + self.__str__())
-
-    @allure.step("receiver_pan не пустой")
-    def receiver_pan_not_empty(self):
-        self._tc.assertNotEqual(self.receiver_pan, "",
-                                f"receiver_pan ({self.receiver_pan}) пустой" + self.__str__())
-
-    @allure.step("sum не пустой")
-    def sum_not_null(self):
-        self._tc.assertIsNotNone(self.sum,
-                                 f"sum ({self.sum}) пустой" + self.__str__())
-
-    @allure.step("commission_sum не пустой")
-    def commission_sum_not_null(self):
-        self._tc.assertIsNotNone(self.commission_sum,
-                                 f"commission_sum ({self.commission_sum} пустой" + self.__str__())
-
-    @allure.step("status не пустой")
-    def status_not_empty(self):
-        self._tc.assertNotEqual(self.status, "",
-                                f"status ({self.status}) пустой" + self.__str__())
-
-    @allure.step("operation_time не пустой")
-    def operation_time_not_empty(self):
-        self._tc.assertNotEqual(self.operation_time, "",
-                                f"operation_time ({self.operation_time}) пустой" + self.__str__())
+        self.assert_not_empty("product_name")
+        self.assert_not_empty("transact_id")
+        self.assert_not_empty("sender_name")
+        self.assert_not_empty("sender_pan")
+        self.assert_not_empty("receiver_name")
+        self.assert_not_empty("receiver_pan")
+        self.assert_not_none("sum")
+        self.assert_not_none("commission_sum")
+        self.assert_not_empty("status")
+        self.assert_not_empty("operation_time")

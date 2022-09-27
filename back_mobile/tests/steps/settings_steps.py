@@ -9,4 +9,4 @@ def step_change_language(client, lang_id: str = None):
     if lang_id:
         client.device.lang_id = lang_id
     response = ChangeLanguage(client).response()
-    check_response(response, client)
+    response.check_success(client)
