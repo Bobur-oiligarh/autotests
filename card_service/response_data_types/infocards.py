@@ -52,4 +52,4 @@ class InfoCard(BaseType):
         self.assert_not_empty("processing")
         self.assert_not_empty("account")
         self.assert_not_empty("expire")
-        self.assert_not_empty("bank_code")
+        self.assert_not_none("bank_code")
