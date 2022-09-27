@@ -8,10 +8,8 @@ __all__ = ['IABSClient', 'Branches', 'Branch']
 
 
 class IABSClient(BaseTypeParent):
-    """Creates IABS client class."""
 
     def __init__(self, data: dict):
-        """Initializes IABS client response object attributes. """
         super().__init__()
         self.iabs_id = data['client_uid']
         self.doc_type = data['doc_type']

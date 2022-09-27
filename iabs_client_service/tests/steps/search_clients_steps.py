@@ -1,4 +1,3 @@
-"""Contains steps for IABS service scenarios."""
 import allure
 
 from iabs_client_service.requests import IABSClientByIdRequest

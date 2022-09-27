@@ -5,7 +5,6 @@ from utils.api_utils.url_provider import URLProvider
 
 
 class IABSClientByIdRequest(TestRequest):
-    """Makes request to get IABS client by his ID."""
 
     def __init__(self, context: IABSContext):
         super().__init__(
