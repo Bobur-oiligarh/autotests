@@ -34,7 +34,7 @@ class BaseType(ABC):
 
     def assert_not_none(self, param_name):
         value = getattr(self, param_name)
-        with allure.step(param_name + " не пустой"):
+        with allure.step(param_name + " не none"):
             self._tc.assertIsNotNone(value, self._empty_str(param_name, value))
         return self
 
