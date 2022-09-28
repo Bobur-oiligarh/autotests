@@ -1,4 +1,4 @@
-cred_service = {
+credentials_service = {
     "environment": {
         "all": "http://172.38.107.149:7076/"
     },
@@ -9,6 +9,10 @@ cred_service = {
         },
         "update_user": {
             "path": "update-user",
+            "method": "post"
+        },
+        "get_device_info": {
+            "path": "get-device-info",
             "method": "post"
         }
     }
