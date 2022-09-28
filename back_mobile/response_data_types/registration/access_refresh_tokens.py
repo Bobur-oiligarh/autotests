@@ -16,7 +16,7 @@ class AccRefTokens(BaseTypeParent):
         self.access_token = data["access_token"]
         self.refresh_token = data["refresh_token"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty("access_token")
         self.assert_not_empty("refresh_token")
 
