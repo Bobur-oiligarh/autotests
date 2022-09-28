@@ -1,5 +1,6 @@
 from back_mobile.test_data.back_mobile_urls import back_mobile_urls
 from card_service.test_data.card_service_urls import card_service_urls
+from credentials_service.test_data.credential_service_urls import cred_service
 from iabs_client_service.test_data.iabs_clients_service_urls import iabs_clients_service
 import os
 
@@ -12,7 +13,8 @@ all_services_urls = {
     "card_service": card_service_urls,
     "tariff_calculator": tariff_calculator_urls,
     "iabs_clients_service": iabs_clients_service,
-    "reference_service": reference_service_urls
+    "reference_service": reference_service_urls,
+    "cred_service": cred_service
 }
 
 

@@ -1,10 +1,17 @@
-class P2PParticipant:
+from utils.api_utils.response_data_base import BaseType
+
+
+class P2PParticipant(BaseType):
 
     def __init__(self, id: str, number: str, bank_code: str, ps_code: str):
+        super().__init__()
         self.id = id
         self.number = number
         self.bank_code = bank_code
         self.ps_code = ps_code
+
+    def check(self, context, **kwargs):
+        pass
 
 
 class TariffCalcContext:
@@ -15,5 +22,5 @@ class TariffCalcContext:
         self.iabs_id = iabs_id
         self.product_id = product_id
         self.sum = sum
-        self.sender = sender.__dict__
-        self.receiver = receiver.__dict__
+        self.sender = sender
+        self.receiver = receiver
