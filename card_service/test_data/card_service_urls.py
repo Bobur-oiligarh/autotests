@@ -6,6 +6,10 @@ card_service_urls = {
         "cards_by_phone": {
             "path": "card/bank-cards/by-phone/",
             "method": "get"
+        },
+        'card_contract': {
+            'path': 'card/contract/',
+            'method': 'post'
         }
     }
 }
