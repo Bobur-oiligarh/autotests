@@ -1,7 +1,6 @@
 import allure
 
 from card_service.tests.steps.card_contract_steps import step_get_and_check_card_contract
-from card_service.tests.steps.info_steps import cards_by_phone
 from card_service.tests.steps.info_steps import step_cards_by_phone
 
 
