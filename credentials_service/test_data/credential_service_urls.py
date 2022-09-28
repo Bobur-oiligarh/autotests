@@ -6,6 +6,10 @@ cred_service = {
         "create_user": {
             "path": "create-user",
             "method": "post"
+        },
+        "update_user": {
+            "path": "update-user",
+            "method": "post"
         }
     }
 }
