@@ -1,6 +1,7 @@
 class CredentialServiceContext:
 
     device_info = None
+    device_auth = None
 
     def __init__(self,
                  prospect_id: str = None,

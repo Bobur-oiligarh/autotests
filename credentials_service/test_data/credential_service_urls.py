@@ -14,6 +14,10 @@ credentials_service = {
         "get_device_info": {
             "path": "get-device-info",
             "method": "post"
+        },
+        "device_auth": {
+            "path": "device-auth",
+            "method": "post"
         }
     }
 }
