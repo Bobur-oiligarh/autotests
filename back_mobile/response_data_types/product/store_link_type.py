@@ -23,5 +23,5 @@ class StoreLinkType(BaseTypeParent):
         client.webview_link = self
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("link")
-        self.assert_not_none("count_order")
+        self.assert_not_empty_str("link")
+        self.assert_not_empty_int("count_order")

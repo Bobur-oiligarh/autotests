@@ -17,8 +17,8 @@ class AccRefTokens(BaseTypeParent):
         self.refresh_token = data["refresh_token"]
 
     def check(self, context, **kwargs):
-        self.assert_not_empty("access_token")
-        self.assert_not_empty("refresh_token")
+        self.assert_not_empty_str("access_token")
+        self.assert_not_empty_str("refresh_token")
 
     def set_data_to(self, obj: Client):
         self.set_access_refresh_tokens(obj)
@@ -44,4 +44,4 @@ class StoreAccRefTokens(AccRefTokens):
 
     def check(self, client, **kwargs):
         super().check(client, **kwargs)
-        self.assert_not_empty("url")
+        self.assert_not_empty_str("url")

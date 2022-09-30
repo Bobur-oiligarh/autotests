@@ -22,7 +22,7 @@ class Cards(BaseTypeParent):
             with allure.step(f"проверка параметров карты {card.mask_num}"):
                 card.check(client, **kwargs)
             total_sum_uzs += card.balance
-        self.assert_not_none("total_sum")
+        self.assert_not_empty_float("total_sum")
         self.total_sum_is_true(total_sum_uzs)
 
     def total_sum_is_true(self, expected_total_sum):
@@ -93,12 +93,12 @@ class Card(BaseType):
         self.owner = data["owner"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("card_id")
-        self.assert_not_empty("card_type")
-        self.assert_not_empty("mfo")
-        self.assert_not_empty("mask_num")
-        self.assert_not_empty("state")
-        self.assert_not_none("balance")
-        self.assert_not_empty("ps_code")
-        self.assert_not_empty("expire")
-        self.assert_not_empty("owner")
+        self.assert_not_empty_str("card_id")
+        self.assert_not_empty_str("card_type")
+        self.assert_not_empty_str("mfo")
+        self.assert_not_empty_str("mask_num")
+        self.assert_not_empty_str("state")
+        self.assert_not_empty_float("balance")
+        self.assert_not_empty_str("ps_code")
+        self.assert_not_empty_str("expire")
+        self.assert_not_empty_str("owner")

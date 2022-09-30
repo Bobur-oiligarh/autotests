@@ -28,7 +28,7 @@ class Balances(BaseTypeParent):
             expected_total_sum = 0.0
             for balance in self.balances:
                 expected_total_sum += balance.balance
-        self.assert_not_none("total_sum")
+        self.assert_not_empty_float("total_sum")
         self.assert_equal("total_sum", expected_total_sum)
 
     def set_data_to(self, obj):
@@ -48,5 +48,5 @@ class Balance(BaseType):
         self.balance = data["balance"]
 
     def check(self, client: Client, **kwargs):
-        self.assert_not_empty("card_id")
-        self.assert_not_empty("balance")
+        self.assert_not_empty_str("card_id")
+        self.assert_not_empty_float("balance")

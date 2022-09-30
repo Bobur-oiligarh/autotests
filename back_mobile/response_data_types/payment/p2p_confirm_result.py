@@ -30,13 +30,13 @@ class P2PConfirmResult(BaseTypeParent):
         client.operation_check = self
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("product_name")
-        self.assert_not_empty("transact_id")
-        self.assert_not_empty("sender_name")
-        self.assert_not_empty("sender_pan")
-        self.assert_not_empty("receiver_name")
-        self.assert_not_empty("receiver_pan")
-        self.assert_not_none("sum")
-        self.assert_not_none("commission_sum")
-        self.assert_not_empty("status")
-        self.assert_not_empty("operation_time")
+        self.assert_not_empty_str("product_name")
+        self.assert_not_empty_str("transact_id")
+        self.assert_not_empty_str("sender_name")
+        self.assert_not_empty_str("sender_pan")
+        self.assert_not_empty_str("receiver_name")
+        self.assert_not_empty_str("receiver_pan")
+        self.assert_not_empty_int("sum")
+        self.assert_not_empty_int("commission_sum")
+        self.assert_not_empty_str("status")
+        self.assert_not_empty_str("operation_time")

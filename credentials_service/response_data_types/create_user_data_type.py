@@ -25,4 +25,4 @@ class CreateUserDataType(AccRefTokens):
 
     def check(self, context, **kwargs):
         super().check(context, **kwargs)
-        self.assert_not_empty("user_id")
+        self.assert_not_empty_str("user_id")

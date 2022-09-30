@@ -25,10 +25,42 @@ class BaseType(ABC):
     def check(self, context, **kwargs):
         pass
 
+    def assert_not_empty_str(self, param_name: str):
+        self.assert_not_none_and_true_type(param_name, str)
+        with allure.step(param_name + " не пустой"):
+            value = getattr(self, param_name)
+            self._tc.assertNotEqual(value, "", self._empty_str(param_name, value))
+        return self
+
+    def assert_not_empty_int(self, param_name: str):
+        self.assert_not_none_and_true_type(param_name, int)
+        return self
+
+    def assert_not_empty_float(self, param_name: str):
+        self.assert_not_none_and_true_type(param_name, float)
+        return self
+
+    def assert_not_empty_bool(self, param_name: str):
+        self.assert_not_none_and_true_type(param_name, bool)
+        return self
+
+    def assert_not_none_and_true_type(self, param_name: str, expected_type: type):
+        self.assert_not_none(param_name)
+        self.assert_type_is_true(param_name, expected_type)
+        return self
+
+    def assert_type_is_true(self, param_name: str, expected_type: type):
+        with allure.step("Проверка типа параметра " + param_name):
+            value = getattr(self, param_name)
+            self._tc.assertIsInstance(value, expected_type,
+                                      f"Тип {param_name} ({type(value)}) не совпадает с "
+                                      f"ожидаемым {expected_type.__name__}" + self.__str__())
+        return self
+
     def assert_not_empty(self, param_name):
         self.assert_not_none(param_name)
-        value = getattr(self, param_name)
         with allure.step(param_name + " не пустой"):
+            value = getattr(self, param_name)
             self._tc.assertNotEqual(value, "", self._empty_str(param_name, value))
         return self
 

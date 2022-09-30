@@ -43,9 +43,10 @@ class ATM(BaseType):
         self.address = DiffLangTextParams(data["address"])
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("type")
+        self.assert_not_none_and_true_type("mfo", str)
+        self.assert_not_empty_str("type")
         self.check_attrs_of("Coords", client, **kwargs)
-        self.assert_not_empty("region_code")
+        self.assert_not_empty_str("region_code")
         self.check_attrs_of("orienter", client, **kwargs)
         self.check_attrs_of("work_time", client, **kwargs)
         self.check_attrs_of("work_days", client, **kwargs)
@@ -61,8 +62,8 @@ class Coordinates(BaseType):
         self.lng = data["lng"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("lat")
-        self.assert_not_empty("lng")
+        self.assert_not_empty_str("lat")
+        self.assert_not_empty_str("lng")
 
 
 class DiffLangTextParams(BaseType):
