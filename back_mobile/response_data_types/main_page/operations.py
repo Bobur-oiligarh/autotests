@@ -37,8 +37,8 @@ class State(BaseType):
         self.health = data["health"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("ps_code")
-        self.assert_not_none("health")
+        self.assert_not_empty_str("ps_code")
+        self.assert_not_empty_bool("health")
 
 
 class Operation(BaseType):
@@ -56,12 +56,12 @@ class Operation(BaseType):
         self.is_credit = data["is_credit"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("ps_code")
-        self.assert_not_empty("pan")
-        self.assert_not_empty("time")
-        self.assert_not_none("sum")
-        self.assert_not_empty("torg_name")
-        self.assert_not_empty("torg_address")
-        self.assert_not_empty("tran_type")
-        self.assert_not_empty("curr_code")
-        self.assert_not_empty("is_credit")
+        self.assert_not_empty_str("ps_code")
+        self.assert_not_empty_str("pan")
+        self.assert_not_empty_str("time")
+        self.assert_not_empty_int("sum")
+        self.assert_not_empty_str("torg_name")
+        self.assert_not_empty_str("torg_address")
+        self.assert_not_empty_str("tran_type")
+        self.assert_not_empty_str("curr_code")
+        self.assert_not_empty_bool("is_credit")

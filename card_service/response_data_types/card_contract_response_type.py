@@ -16,12 +16,12 @@ class CardContract(BaseTypeParent):
         self.contract_type = data['contractType']
 
     def check(self, context, **kwargs):
-        self.assert_not_empty('contract_id')
-        self.assert_not_empty('client_uid')
-        self.assert_not_empty('client_id')
-        self.assert_not_empty('embossed_name')
-        self.assert_not_empty('account')
-        self.assert_not_empty('contract_type')
+        self.assert_not_empty_int('contract_id')
+        self.assert_not_empty_int('client_uid')
+        self.assert_not_empty_int('client_id')
+        self.assert_not_empty_str('embossed_name')
+        self.assert_not_empty_str('account')
+        self.assert_not_empty_int('contract_type')
 
     def set_data_to(self, obj: CardServiceContext):
         self._set_card_contract_to_obj(obj)

@@ -15,7 +15,7 @@ class ConfirmMethod(SignId):
 
     def check(self, client, **kwargs):
         super().check(client, **kwargs)
-        self.assert_not_empty("confirm_method")
+        self.assert_not_empty_str("confirm_method")
         self.assert_equal("confirm_method", client.confirm_method)
 
     def set_data_to(self, obj: Client):

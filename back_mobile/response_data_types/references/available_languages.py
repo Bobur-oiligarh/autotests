@@ -34,5 +34,5 @@ class Language(BaseType):
         self.name = data["name"]
 
     def check(self, client: Client, **kwargs: Any):
-        self.assert_not_empty("lang_code")
-        self.assert_not_empty("name")
+        self.assert_not_empty_str("lang_code")
+        self.assert_not_empty_str("name")

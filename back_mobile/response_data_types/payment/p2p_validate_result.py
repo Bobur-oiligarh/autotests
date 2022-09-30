@@ -24,7 +24,7 @@ class P2PValidateResult(BaseTypeParent):
         client.p2p_validate_result = self
 
     def check(self, client, **kwargs):
-        self.assert_not_none("commission_sum")
-        self.assert_not_empty("confirm_method")
-        self.assert_not_none("is_confirm")
-        self.assert_not_empty("transact_id")
+        self.assert_not_empty_int("commission_sum")
+        self.assert_not_empty_str("confirm_method")
+        self.assert_not_empty_bool("is_confirm")
+        self.assert_not_empty_str("transact_id")

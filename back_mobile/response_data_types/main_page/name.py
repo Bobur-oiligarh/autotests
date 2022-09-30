@@ -26,6 +26,6 @@ class ClientNameType(BaseTypeParent):
         client.middle_name = self.middle_name
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("first_name")
-        self.assert_not_empty("last_name")
-        self.assert_not_empty("middle_name")
+        self.assert_not_empty_str("first_name")
+        self.assert_not_empty_str("last_name")
+        self.assert_not_empty_str("middle_name")

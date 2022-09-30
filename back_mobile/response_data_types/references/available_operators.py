@@ -34,6 +34,6 @@ class Operator(BaseType):
         self.name = data["name"]
 
     def check(self, client: Client, **kwargs):
-        self.assert_not_empty("operator_id")
-        self.assert_not_empty("mask")
-        self.assert_not_empty("name")
+        self.assert_not_empty_str("operator_id")
+        self.assert_not_empty_str("mask")
+        self.assert_not_empty_str("name")

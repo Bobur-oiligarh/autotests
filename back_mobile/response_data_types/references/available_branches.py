@@ -31,6 +31,7 @@ class Branch(BaseType):
 
     def __init__(self, data: dict):
         super().__init__()
+        self.title = data["title"]
         self.mfo = data['mfo']
         self.Coords = Coordinates(data['Coords'])
         self.region_code = data['region_code']
@@ -43,13 +44,14 @@ class Branch(BaseType):
         self.status_text = DiffLangTextParams(data['status_text'])
 
     def check(self, client: Client, **kwargs):
-        self.assert_not_empty("mfo")
+        self.assert_not_empty_str("title")
+        self.assert_not_empty_str("mfo")
         self.check_attrs_of("Coords", client, **kwargs)
-        self.assert_not_empty("region_code")
-        self.assert_not_empty("is_open")
+        self.assert_not_empty_str("region_code")
+        self.assert_not_empty_bool("is_open")
         self.check_attrs_of("weekends", client, **kwargs)
         self.check_attrs_of("services", client, **kwargs)
         self.check_attrs_of("address", client, **kwargs)
         self.check_attrs_of("work_time", client, **kwargs)
-        self.assert_not_empty("lunch_time")
+        self.assert_not_empty_str("lunch_time")
         self.check_attrs_of("status_text", client, **kwargs)
