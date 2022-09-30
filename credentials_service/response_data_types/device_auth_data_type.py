@@ -1,14 +1,13 @@
+from back_mobile.response_data_types import AccRefTokens
 from credentials_service.test_data.credential_service_context import CredentialServiceContext
 from utils.api_utils.response_data_base import BaseTypeParent
 import allure
 
 
-class DeviceAuthDataType(BaseTypeParent):
+class DeviceAuthDataType(AccRefTokens):
 
     def __init__(self, data):
         super().__init__()
-        self.access_token = data['access_token']
-        self.refresh_token = data['refresh_token']
         self.identity_sign = data['identity_sign']
 
     def check(self, context, **kwargs):
