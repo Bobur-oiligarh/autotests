@@ -11,7 +11,7 @@ __all__ = [
 class UpdateUser(TestRequest):
     def __init__(self, context: CredentialServiceContext):
         super().__init__(
-            URLProvider().url("cred_service", "references", "update_user"),
+            URLProvider().url("credentials_service", "references", "update_user"),
             data_type=CreateUserDataType
         )
         self.device_id = context.device_id
