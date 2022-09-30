@@ -21,8 +21,8 @@ class DeviceResponseType(BaseTypeParent):
         self.assert_not_empty('refresh_token')
         self.assert_not_empty('language')
         self.assert_not_empty('model')
-        self.assert_not_empty('identity_sign')
-        self.assert_not_empty('active')
+        self.assert_not_empty_int('identity_sign')
+        self.assert_not_empty_bool('active')
 
     def set_data_to(self, obj: CredentialServiceContext):
         self._set_info_to_device(obj)
