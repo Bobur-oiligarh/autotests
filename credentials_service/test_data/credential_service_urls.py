@@ -18,6 +18,10 @@ credentials_service = {
         "device_auth": {
             "path": "device-auth",
             "method": "post"
+        },
+        "device_language_update": {
+            "path": "device-language-update",
+            "method": "post"
         }
     }
 }
