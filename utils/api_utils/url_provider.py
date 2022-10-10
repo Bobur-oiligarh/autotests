@@ -5,6 +5,7 @@ from iabs_client_service.test_data.iabs_clients_service_urls import iabs_clients
 import os
 
 from limit_module.test_data.limit_module_urls import limit_module_urls
+from onboarding_physical.test_data.onboarding_physical_urls import onboarding_physical_urls
 from reference_service.test_data.reference_service_urls import reference_service_urls
 from tariff_calculator.test_data.tariff_calculator_urls import tariff_calculator_urls
 from utils.patterns.singleton import Singleton
@@ -16,7 +17,8 @@ all_services_urls = {
     "iabs_clients_service": iabs_clients_service,
     "reference_service": reference_service_urls,
     "credentials_service": credentials_service,
-    "limit_module": limit_module_urls
+    "limit_module": limit_module_urls,
+    "onboarding_physical": onboarding_physical_urls
 }
 
 
