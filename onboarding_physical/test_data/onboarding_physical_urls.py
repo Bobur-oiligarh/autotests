@@ -6,6 +6,10 @@ onboarding_physical_urls = {
         "check_phone": {
             "path": "check-phone",
             "method": "get"
-        }
+        },
+        "get_prospect_profile": {
+            "path": "get-prospect-profile",
+            "method": "get"
+        },
     }
 }
