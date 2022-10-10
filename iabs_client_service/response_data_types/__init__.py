@@ -1,1 +1,1 @@
-from .search_clients_response_data_types import *
+from .search_client_data_type import *

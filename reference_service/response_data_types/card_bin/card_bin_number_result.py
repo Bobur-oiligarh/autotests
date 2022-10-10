@@ -28,16 +28,16 @@ class CardBinNumberResult(BaseTypeParent):
         context.card_bins = self
 
     def check(self, context, **kwargs):
-        self.assert_not_empty("number")
-        self.assert_not_empty("name")
-        self.assert_not_empty("currency_code")
-        self.assert_not_empty("currency_id")
-        self.assert_not_none("is_bank_card")
-        self.assert_not_none("is_add_allowed")
+        self.assert_not_empty_str("number")
+        self.assert_not_empty_str("name")
+        self.assert_not_empty_str("currency_code")
+        self.assert_not_empty_str("currency_id")
+        self.assert_not_empty_bool("is_bank_card")
+        self.assert_not_empty_bool("is_add_allowed")
         self.processing.check(context, **kwargs)
-        self.assert_not_empty("bank_code")
-        self.assert_not_none("bank_logo_file_id")
-        self.assert_not_empty("mfo")
+        self.assert_not_empty_str("bank_code")
+        self.assert_not_none_and_true_type("bank_logo_file_id", str)
+        self.assert_not_empty_str("mfo")
 
 
 class Processing(BaseType):
@@ -49,6 +49,6 @@ class Processing(BaseType):
         self.is_pay_allowed = data["is_pay_allowed"]
 
     def check(self, context, **kwargs):
-        self.assert_not_empty("code")
-        self.assert_not_empty("name")
-        self.assert_not_none("is_pay_allowed")
+        self.assert_not_empty_str("code")
+        self.assert_not_empty_str("name")
+        self.assert_not_empty_bool("is_pay_allowed")

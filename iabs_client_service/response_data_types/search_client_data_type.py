@@ -1,4 +1,3 @@
-from unittest import TestCase as tc
 import allure
 
 from iabs_client_service.test_data.context import IABSContext
@@ -37,28 +36,30 @@ class IABSClient(BaseTypeParent):
         self.residence_kadastr = data['residence_kadastr']
 
     def check(self, context: IABSContext, **kwargs):
-        self.assert_not_empty('iabs_id')
-        self.assert_not_empty('doc_type')
-        self.assert_not_empty('doc_series')
-        self.assert_not_empty('doc_number')
-        self.assert_not_empty('doc_issued_at')
-        self.assert_not_empty('doc_expires_at')
-        self.assert_not_empty('doc_issued_by')
-        self.assert_not_empty('pinfl')
-        self.assert_not_empty('tin')
-        self.assert_not_empty('last_name')
-        self.assert_not_empty('first_name')
-        self.assert_not_empty('middle_name')
-        self.assert_not_empty('birth_date')
-        self.assert_not_empty('birth_country_code')
-        self.assert_not_empty('birth_place')
-        self.assert_not_empty('gender')
-        self.assert_not_empty('citizenship_country_code')
+        self.assert_not_empty_str('iabs_id')
+        self.assert_not_empty_str('doc_type')
+        self.assert_not_empty_str('doc_series')
+        self.assert_not_empty_str('doc_number')
+        self.assert_not_empty_str('doc_issued_at')
+        self.assert_not_empty_str('doc_expires_at')
+        self.assert_not_empty_str('doc_issued_by')
+        self.assert_not_empty_str('pinfl')
+        self.assert_not_empty_str('tin')
+        self.assert_not_empty_str('last_name')
+        self.assert_not_empty_str('first_name')
+        self.assert_not_empty_str('middle_name')
+        self.assert_not_empty_str('birth_date')
+        self.assert_not_empty_str('birth_country_code')
+        self.assert_not_empty_str('birth_place')
+        self.assert_not_empty_str('gender')
+        self.assert_not_empty_str('citizenship_country_code')
+        self.assert_not_none_and_true_type('marital_status', str)
         self.check_attrs_of('branches', context, **kwargs)
-        self.assert_not_empty('residence_country_code')
-        self.assert_not_empty('residence_region_code')
-        self.assert_not_empty('residence_district_code')
-        self.assert_not_empty('residence_full_address')
+        self.assert_not_empty_str('residence_country_code')
+        self.assert_not_empty_str('residence_region_code')
+        self.assert_not_empty_str('residence_district_code')
+        self.assert_not_empty_str('residence_full_address')
+        self.assert_not_none_and_true_type('residence_full_address', str)
 
     def set_data_to(self, obj: IABSContext):
         self._set_iabs_client(obj)
@@ -69,7 +70,6 @@ class IABSClient(BaseTypeParent):
 
 
 class Branches(BaseTypeParent):
-    """Provides list of bank branches objects list. """
     def __init__(self, data: list):
         super().__init__()
         self.branches = self.deserialize_to_list_of(Branch, data)
@@ -86,12 +86,11 @@ class Branches(BaseTypeParent):
 
 
 class Branch(BaseType):
-    """Implements bank branch object. """
     def __init__(self, data: dict):
         super().__init__()
         self.mfo = data["mfo"]
         self.client_code = data["client_code"]
 
     def check(self, client: IABSContext, **kwargs):
-        self.assert_not_empty('mfo')
-        self.assert_not_empty('client_code')
+        self.assert_not_empty_str('mfo')
+        self.assert_not_empty_str('client_code')

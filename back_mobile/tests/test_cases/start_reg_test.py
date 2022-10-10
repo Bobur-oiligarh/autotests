@@ -4,8 +4,12 @@ from back_mobile.test_data.client import Client, User, Device
 from back_mobile.tests.steps import step_start_reg_unsupported_version, step_start_reg_empty_phone, \
     step_start_reg_empty_phone_type
 
+__all__ = [
+    "StartRegTestCase"
+]
 
-class StartRegTC(TestCase):
+
+class StartRegTestCase(TestCase):
 
     def setUp(self) -> None:
         self.client = Client(

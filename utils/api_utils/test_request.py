@@ -50,6 +50,16 @@ class RequestBase:
         self._parameters_in_list: bool = parameters_in_list  #
         self._name_of_list: str = name_of_list  #
 
+    def response(self, refresh: bool = False) -> TestResponse:
+        """
+        Возвращает ответ на запрос
+        :param refresh: true если нужно отправить запрос повторно
+        :return: TestResponse объект ответа
+        """
+        if refresh or self._response is None:
+            self._run()
+        return self._response
+
     def _run(self):
         """
         Отправляет запрос, создает и сохраняет объект ответа
@@ -63,16 +73,6 @@ class RequestBase:
             params=self._params
         )
         self._response = TestResponse(response, self._data_type)
-
-    def response(self, refresh: bool = False) -> TestResponse:
-        """
-        Возвращает ответ на запрос
-        :param refresh: true если нужно отправить запрос повторно
-        :return: TestResponse объект ответа
-        """
-        if refresh or self._response is None:
-            self._run()
-        return self._response
 
     def _get_data(self) -> str:
         """
