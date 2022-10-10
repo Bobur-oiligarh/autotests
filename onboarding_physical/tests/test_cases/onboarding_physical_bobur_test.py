@@ -4,6 +4,7 @@ import allure
 
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.check_phone_steps import step_check_phone
+from onboarding_physical.tests.steps.get_prospect_profile_steps import step_get_prospect_profile
 
 
 class OnboardingPhysicalTC(TestCase):
