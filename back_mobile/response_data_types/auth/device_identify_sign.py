@@ -12,4 +12,4 @@ class DeviceIdentifySign(AccRefTokens):
 
     def check(self, client, **kwargs):
         super().check(client, **kwargs)
-        self.assert_not_none("device_identify_sign")
+        self.assert_not_empty_int("device_identify_sign")

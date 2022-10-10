@@ -37,9 +37,9 @@ class Deposit(BaseType):
         self.close_data = data["CloseData"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("name")
-        self.assert_not_empty("amount")
-        self.assert_not_empty("currency")
-        self.assert_not_empty("rate")
-        self.assert_not_empty("months")
-        self.assert_not_empty("close_data")
+        self.assert_not_empty_str("name")
+        self.assert_not_empty_float("amount")
+        self.assert_not_empty_str("currency")
+        self.assert_not_empty_int("rate")
+        self.assert_not_empty_int("months")
+        self.assert_not_empty_str("close_data")

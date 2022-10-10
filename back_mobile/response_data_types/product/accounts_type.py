@@ -40,12 +40,12 @@ class Account(BaseType):
         self.id = data["id"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("name_acc")
-        self.assert_not_empty("account")
-        self.assert_not_empty("code_currency")
-        self.assert_not_empty("saldo")
-        self.assert_not_empty("code_filial")
-        self.assert_not_empty("code_coa")
-        self.assert_not_empty("condition")
-        self.assert_not_empty("create_date")
-        self.assert_not_empty("id")
+        self.assert_not_empty_str("name_acc")
+        self.assert_not_empty_str("account")
+        self.assert_not_empty_str("code_currency")
+        self.assert_not_empty_str("saldo")
+        self.assert_not_empty_str("code_filial")
+        self.assert_not_empty_str("code_coa")
+        self.assert_not_empty_str("condition")
+        self.assert_not_empty_str("create_date")
+        self.assert_not_empty_str("id")

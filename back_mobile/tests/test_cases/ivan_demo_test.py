@@ -12,8 +12,12 @@ from back_mobile.tests.steps.auth_steps import step_login
 from back_mobile.tests.steps.main_page_steps import step_client_cards
 from back_mobile.tests.steps.settings_steps import step_change_language
 
+__all__ = [
+    "DemoIvanBackMobileTestCase"
+]
 
-class DemoScenarioTestCase(TestCase):
+
+class DemoIvanBackMobileTestCase(TestCase):
     def setUp(self) -> None:
         self.client = Client(
             User(

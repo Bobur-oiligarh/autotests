@@ -1,13 +1,17 @@
 from unittest import TestCase
+
 import allure
 
 from back_mobile.test_data.client import Client, User, Device
-from back_mobile.tests.scenarios.product_scenarios import scenario_products
 from back_mobile.tests.scenarios.references_scenarios import scenario_references
 from back_mobile.tests.scenarios.registration_scenarios import scenario_registration
 
+__all__ = [
+    "DemoMainPageTestCase"
+]
 
-class DemoScenarioTestCase(TestCase):
+
+class DemoMainPageTestCase(TestCase):
     def setUp(self) -> None:
         self.client = Client(
             User(

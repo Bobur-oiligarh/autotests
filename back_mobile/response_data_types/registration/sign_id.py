@@ -15,7 +15,7 @@ class SignId(BaseTypeParent):
         self.sign_id = data["sign_id"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("sign_id")
+        self.assert_not_empty_str("sign_id")
 
     def set_data_to(self, obj: Client):
         self.set_sign_id(obj)

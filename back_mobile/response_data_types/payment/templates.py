@@ -33,7 +33,7 @@ class Template(BaseType):
         super().__init__()
         self.sender = TransactionParticipant(data["sender"])
         self.receiver = TransactionParticipant(data["receiver"])
-        self.sum: float = data["sum"]
+        self.sum: int = data["sum"]
         self.commission_sum: float = data["commission_sum"]
         self.status = data["status"]
         self.operation_time = data["operation_time"]
@@ -42,11 +42,11 @@ class Template(BaseType):
     def check(self, client, **kwargs):
         self.check_attrs_of("sender", client, **kwargs)
         self.check_attrs_of("receiver", client, **kwargs)
-        self.assert_not_none("sum")
-        self.assert_not_none("commission_sum")
-        self.assert_not_none("status")
-        self.assert_not_none("operation_time")
-        self.assert_not_none("template_id")
+        self.assert_not_empty_int("sum")
+        self.assert_not_empty_float("commission_sum")
+        self.assert_not_empty_str("status")
+        self.assert_not_empty_str("operation_time")
+        self.assert_not_empty_str("template_id")
 
 
 class TransactionParticipant(BaseType):
@@ -61,9 +61,9 @@ class TransactionParticipant(BaseType):
         self.owner = data["owner"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("id")
-        self.assert_not_empty("pan")
-        self.assert_not_none("expire")
-        self.assert_not_empty("ps_code")
-        self.assert_not_empty("bank_code")
-        self.assert_not_empty("owner")
+        self.assert_not_empty_str("id")
+        self.assert_not_empty_str("pan")
+        self.assert_not_none_and_true_type("expire", str)
+        self.assert_not_empty_str("ps_code")
+        self.assert_not_empty_str("bank_code")
+        self.assert_not_empty_str("owner")

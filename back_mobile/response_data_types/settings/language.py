@@ -14,6 +14,6 @@ class ChangeLangResult(BaseType):
         self.result = result
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("result")
+        self.assert_not_empty_str("result")
         self.assert_equal("result",
                           "Успешно установлен" if "expected_result" not in kwargs.keys() else kwargs["expected_result"])

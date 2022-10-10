@@ -16,7 +16,7 @@ class Offer(BaseType):
         self.short_text = data["short_text"]
 
     def check(self, client, **kwargs):
-        self.assert_not_empty("text")
+        self.assert_not_empty_str("text")
         self.true_text_language(client)
 
     @allure.step("язык текста совпадает с ожидаемым")
