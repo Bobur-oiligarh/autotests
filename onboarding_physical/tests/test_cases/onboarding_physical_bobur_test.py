@@ -4,6 +4,7 @@ import allure
 
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.check_phone_steps import step_check_phone
+from onboarding_physical.tests.steps.check_prospect_by_client_id_steps import step_check_prospect
 from onboarding_physical.tests.steps.get_prospect_profile_steps import step_get_prospect_profile
 
 
@@ -11,12 +12,12 @@ class OnboardingPhysicalTC(TestCase):
 
     def setUp(self) -> None:
         self.context = OnboardingPhysicalContext(
-            prospectID='f5cd86b7-836c-4f5b-861b-fcf34021d986'
+            prospectID='f5cd86b7-836c-4f5b-861b-fcf34021d986',
+            iabs_id='4959379'
         )
 
     def test_check_phone(self):
         step_check_phone(context=self.context)
-        print(self.context.prospectID)
         with allure.step("Телефон:"):
             pass
 
@@ -24,3 +25,9 @@ class OnboardingPhysicalTC(TestCase):
         step_get_prospect_profile(context=self.context)
         with allure.step(f"({self.context.prospectID})"):
             pass
+
+    def test_check_prospect_by_client_id(self):
+        step_check_prospect(context=self.context)
+        with allure.step(f"{self.context.prospect}"):
+            pass
+
