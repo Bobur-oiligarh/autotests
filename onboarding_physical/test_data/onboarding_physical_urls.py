@@ -11,5 +11,9 @@ onboarding_physical_urls = {
             "path": "get-prospect-profile",
             "method": "get"
         },
+        "check_prospect": {
+            "path": "check-prospect-by-client-id",
+            "method": "post"
+        }
     }
 }

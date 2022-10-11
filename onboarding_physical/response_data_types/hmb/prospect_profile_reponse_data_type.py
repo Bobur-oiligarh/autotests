@@ -72,6 +72,6 @@ class ProspectProfileResponseType(BaseTypeParent):
     def set_data_to(self, obj):
         self._set_profile_to(obj)
 
+    @allure.step("Установим prospect-profile")
     def _set_profile_to(self, obj):
         obj.prospect_profile = self
-
