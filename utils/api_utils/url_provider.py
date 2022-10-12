@@ -4,7 +4,6 @@ from credentials_service.test_data.credential_service_urls import credentials_se
 from iabs_client_service.test_data.iabs_clients_service_urls import iabs_clients_service
 import os
 
-from limit_module.test_data.limit_module_urls import limit_module_urls
 from onboarding_physical.test_data.onboarding_physical_urls import onboarding_physical_urls
 from limit_module.test_data.limit_module_urls import limit_module_urls
 from reference_service.test_data.reference_service_urls import reference_service_urls
@@ -19,7 +18,7 @@ all_services_urls = {
     "reference_service": reference_service_urls,
     "credentials_service": credentials_service,
     "limit_module": limit_module_urls,
-    "onboarding_physical": onboarding_physical_urls
+    "onboarding_physical": onboarding_physical_urls,
     "reference_service": reference_service_urls,
     "credentials_service": credentials_service,
     "limit_module": limit_module_urls
