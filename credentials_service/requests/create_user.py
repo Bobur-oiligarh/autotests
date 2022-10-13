@@ -11,7 +11,8 @@ __all__ = [
 class CreateUser(TestRequest):
     def __init__(self, context: CredentialServiceContext):
         super().__init__(
-            URLProvider().url("credentials_service", "references", "create_user"),
+            URLProvider().url("credentials_service", "create-user"),
+            "post",
             data_type=CreateUserDataType
         )
 

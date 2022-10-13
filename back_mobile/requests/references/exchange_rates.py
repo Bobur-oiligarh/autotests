@@ -8,7 +8,8 @@ class ExchangeRateRequest(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "references", "exchange-rates"),
+            URLProvider().url("back_mobile", "api/v1/mobile/exchange-rates"),
+            "get",
             data_type=ExchangeRateList,
             headers=client.auth_token(),
         )

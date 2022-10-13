@@ -8,7 +8,8 @@ class CheckClientRegistration(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "registration", "check_client_reg"),
+            URLProvider().url("back_mobile", "api/v1/mobile/check-client-registration"),
+            "post",
             data_type=ConfirmMethod,
             headers=client.auth_token()
         )

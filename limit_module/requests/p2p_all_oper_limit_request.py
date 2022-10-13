@@ -7,7 +7,8 @@ class P2PAllOperationsLimitRequest(TestRequest):
 
     def __init__(self, context):
         super().__init__(
-            URLProvider().url("limit_module", "operation", "p2p_all"),
+            URLProvider().url("limit_module", "p2p-all"),
+            "post",
             data_type=LimitDataTypes
         )
         self.product_id = context.product_id

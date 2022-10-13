@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class Loans(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "product", "loans"),
+            URLProvider().url("back_mobile", "api/v1/mobile/product/loans"),
+            "get",
             data_type=LoansResult,
             headers=client.auth_token()
         )

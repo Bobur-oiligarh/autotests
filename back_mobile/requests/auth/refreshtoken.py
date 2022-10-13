@@ -8,7 +8,8 @@ class RefreshToken(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "auth", "refreshtoken"),
+            URLProvider().url("back_mobile", "api/v1/mobile/refresh"),
+            "post",
             data_type=DeviceIdentifySign
         )
         self.device_id = client.device.device_id

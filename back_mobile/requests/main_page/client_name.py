@@ -8,7 +8,8 @@ class ClientNameRequest(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "main_page", "client_name"),
+            URLProvider().url("back_mobile", "api/v1/mobile/client-name"),
+            "get",
             data_type=ClientNameType,
             headers=client.auth_token()
         )

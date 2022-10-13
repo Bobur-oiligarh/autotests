@@ -7,6 +7,7 @@ class Languages(TestRequest):
 
     def __init__(self):
         super().__init__(
-            URLProvider().url("back_mobile", "references", "languages"),
+            URLProvider().url("back_mobile", "api/v1/mobile/dict/languages"),
+            "get",
             data_type=AvailableLanguages
         )

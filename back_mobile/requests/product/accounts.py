@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class Accounts(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "product", "accounts"),
+            URLProvider().url("back_mobile", "api/v1/mobile/product/accounts"),
+            "get",
             data_type=OpenedAccounts,
             headers=client.auth_token()
         )

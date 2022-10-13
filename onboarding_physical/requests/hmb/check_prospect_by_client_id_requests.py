@@ -8,7 +8,8 @@ class CheckProspectByClientID(TestRequest):
 
     def __init__(self, context: OnboardingPhysicalContext):
         super().__init__(
-            URLProvider().url('onboarding_physical', 'hmb', 'check_prospect'),
+            URLProvider().url('onboarding_physical', 'check-prospect-by-client-id'),
+            "post",
             data_type=ProspectByClientID
         )
         self.iabs_id = context.iabs_id

@@ -8,7 +8,8 @@ class P2PTemplates(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "payment", "p2p_templates"),
+            URLProvider().url("back_mobile", "api/v1/mobile/payment/p2p-templates"),
+            "get",
             data_type=Templates,
             headers=client.auth_token()
         )

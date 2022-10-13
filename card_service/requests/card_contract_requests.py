@@ -8,7 +8,8 @@ class CardContractRequest(TestRequest):
 
     def __init__(self, context: CardServiceContext):
         super().__init__(
-            URLProvider().url('card_service', 'info', 'card_contract'),
+            URLProvider().url("card_service", "card/contract/"),
+            "post",
             data_type=CardContract
         )
         self.card_number = context.card_number

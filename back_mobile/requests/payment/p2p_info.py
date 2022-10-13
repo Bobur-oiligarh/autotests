@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class P2PInfo(TestRequest):
     def __init__(self, client: Client, card_number: str):
         super().__init__(
-            URLProvider().url("back_mobile", "payment", "p2p_info", card_number),
+            URLProvider().url("back_mobile", "api/v1/mobile/payment/p2p-info/" + card_number),
+            "get",
             data_type=CardInfo,
             headers=client.auth_token()
         )

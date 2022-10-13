@@ -8,7 +8,8 @@ class ProspectProfileRequest(TestRequest):
 
     def __init__(self, context: OnboardingPhysicalContext):
         super().__init__(
-            URLProvider().url('onboarding_physical', 'hmb', 'get_prospect_profile'),
+            URLProvider().url('onboarding_physical', 'get-prospect-profile'),
+            "get",
             data_type=ProspectProfileResponseType,
             params={'prospectID': context.prospectID}
         )

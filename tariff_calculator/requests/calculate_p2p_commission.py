@@ -8,7 +8,8 @@ class CalcP2PCommission(TestRequest):
 
     def __init__(self, context: TariffCalcContext):
         super().__init__(
-            URLProvider().url("tariff_calculator", "references", "calc_p2p_comm"),
+            URLProvider().url("tariff_calculator", "calculate-p2p-commission"),
+            "post",
             data_type=Commission
         )
         self.channel_id = context.channel_id

@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class Login(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "auth", "login"),
+            URLProvider().url("back_mobile", "api/v1/mobile/login"),
+            "post",
             data_type=DeviceIdentifySign
         )
         self.device_id = client.device.device_id
