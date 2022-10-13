@@ -14,6 +14,8 @@ class EngineFabricBase:
         self._set_engines()
 
     def create_engine(self, db_name, echo: bool = True, pool_size: int = 5, max_overflow: int = 10):
+        print(self.CREDS)
+        print()
         engine = create_engine(
             self.CREDS % db_name,
             echo=echo,

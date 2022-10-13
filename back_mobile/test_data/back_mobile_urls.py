@@ -12,7 +12,7 @@ back_mobile_urls = {
             "method": "post"
         },
         "get_offer": {
-            "path": "api/v1/mobile/registration-offer",
+            "path": "",
             "method": "get"
         },
         "agree_offer": {

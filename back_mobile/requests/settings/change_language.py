@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class ChangeLanguage(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "settings", "change_language"),
+            URLProvider().url("back_mobile", "api/v1/mobile/settings/language"),
+            "put",
             data_type=ChangeLangResult,
             headers=client.auth_token()
         )

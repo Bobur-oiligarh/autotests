@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class CardBalances(TestRequest):
     def __init__(self, client: Client, cards: list = None):
         super().__init__(
-            URLProvider().url("back_mobile", "main_page", "cards_balances"),
+            URLProvider().url("back_mobile", "api/v2/mobile/cards-balances"),
+            "post",
             data_type=Balances,
             headers=client.auth_token(),
             parameters_in_list=True,

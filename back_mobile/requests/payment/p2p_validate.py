@@ -16,7 +16,8 @@ class P2PValidate(TestRequest):
     ):
 
         super().__init__(
-            URLProvider().url("back_mobile", "payment", "p2p_validate"),
+            URLProvider().url("back_mobile", "api/v1/mobile/payment/p2p-validate"),
+            "post",
             data_type=P2PValidateResult,
             headers=client.auth_token()
         )

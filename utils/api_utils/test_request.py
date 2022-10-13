@@ -18,7 +18,8 @@ methods = {
 class RequestBase:
 
     def __init__(self,
-                 url: dict,
+                 url: str,
+                 method: str,
                  data_type: type = None,
                  data: str = None,
                  headers: dict = None,
@@ -40,8 +41,8 @@ class RequestBase:
 
         self._response = None
         self._data_type = data_type
-        self._method = url["method"]
-        self._url = url["url"]
+        self._url = url
+        self._method = method
         self._data = data
         self._headers = headers
         self._cookies = cookies

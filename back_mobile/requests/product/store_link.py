@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class StoreLink(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "product", "store_link"),
+            URLProvider().url("back_mobile", "api/v1/mobile/product/store/1"),
+            "get",
             data_type=StoreLinkType,
             headers=client.auth_token()
         )

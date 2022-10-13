@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class P2PConfirm(TestRequest):
     def __init__(self, client: Client, confirm_code):
         super().__init__(
-            URLProvider().url("back_mobile", "payment", "p2p_confirm"),
+            URLProvider().url("back_mobile", "api/v1/mobile/payment/p2p-confirm"),
+            "post",
             data_type=P2PConfirmResult,
             headers=client.auth_token()
         )

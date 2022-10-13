@@ -7,7 +7,8 @@ from utils.api_utils.url_provider import URLProvider
 class GetOffer(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "registration", "get_offer"),
+            URLProvider().url("back_mobile", "api/v1/mobile/registration-offer"),
+            "get",
             data_type=Offer,
             headers=client.auth_token()
         )
@@ -16,7 +17,8 @@ class GetOffer(TestRequest):
 class AgreeOffer(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "registration", "agree_offer"),
+            URLProvider().url("back_mobile", "api/v1/mobile/registration-offer"),
+            "put",
             data_type=AgreeOfferResult,
             headers=client.auth_token()
         )

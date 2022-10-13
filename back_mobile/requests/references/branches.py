@@ -9,7 +9,8 @@ class Branches(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "references", "branches"),
+            URLProvider().url("back_mobile", "api/v1/mobile/dict/branches"),
+            "get",
             data_type=AvailableBranches,
             headers=client.auth_token(),
             params={'region_code': client.region_code}

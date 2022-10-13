@@ -8,7 +8,8 @@ class IABSClientByIdRequest(TestRequest):
 
     def __init__(self, context: IABSContext):
         super().__init__(
-            URLProvider().url("iabs_clients_service", "search_clients", "search_clients_by_id"),
+            URLProvider().url("iabs_clients_service", "clients/search"),
+            "get",
             data_type=IABSClient,
             params={'client_uid': context.iabs_id}
         )

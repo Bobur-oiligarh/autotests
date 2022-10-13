@@ -12,3 +12,4 @@ if __name__ == "__main__":
     for key in os.environ.keys():
         if key.startswith("TEST_DIR"):
             run(os.environ.get(key))
+            os.environ.pop(key)

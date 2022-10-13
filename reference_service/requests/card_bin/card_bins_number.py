@@ -7,6 +7,7 @@ from utils.api_utils.url_provider import URLProvider
 class CardBinsNumber(TestRequest):
     def __init__(self, context: ReferenceServiceContext):
         super().__init__(
-            URLProvider().url("reference_service", "card_bin", "number", context.card_number),
+            URLProvider().url("reference_service", "card-bins/number/" + context.card_number),
+            "get",
             data_type=CardBinNumberResult
         )

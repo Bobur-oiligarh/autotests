@@ -7,7 +7,8 @@ class DeviceLangUpdateRequest(TestRequest):
 
     def __init__(self, context: CredentialServiceContext):
         super().__init__(
-            URLProvider().url("credentials_service", "references", "device_language_update"),
+            URLProvider().url("credentials_service", "device-language-update"),
+            "post",
             data_type=None
         )
         self.device_id = context.device_id

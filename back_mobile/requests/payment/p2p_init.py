@@ -7,7 +7,8 @@ from utils.api_utils.test_request import TestRequest
 class P2PInit(TestRequest):
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "payment", "p2p_init"),
+            URLProvider().url("back_mobile", "api/v1/mobile/payment/p2p-init"),
+            "post",
             data_type=SignId,
             headers=client.auth_token()
         )

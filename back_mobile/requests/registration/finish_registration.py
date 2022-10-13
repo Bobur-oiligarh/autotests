@@ -8,7 +8,8 @@ class FinishRegistration(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "registration", "finish_reg"),
+            URLProvider().url("back_mobile", "api/v1/mobile/finish-registration"),
+            "post",
             data_type=AccRefTokens
         )
         self.code = client.code

@@ -8,7 +8,8 @@ class ClientSMSRegistration(TestRequest):
 
     def __init__(self, client: Client):
         super().__init__(
-            URLProvider().url("back_mobile", "registration", "client_sms_reg"),
+            URLProvider().url("back_mobile", "api/v1/mobile/client-registration"),
+            "post",
             data_type=AccRefTokens,
             headers=client.auth_token()
         )
