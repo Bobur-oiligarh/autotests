@@ -14,7 +14,7 @@ class CheckPhoneResponseDatatype(BaseTypeParent):
 
     @allure.step("Установим данные ответа к контексту")
     def set_data_to(self, obj: OnboardingPhysicalContext):
-        self._set_prospectId_to_obj(obj)
+        self._set_prospect_id_to_obj(obj)
 
-    def _set_prospectId_to_obj(self, obj):
-        obj.prospectID = self
+    def _set_prospect_id_to_obj(self, obj):
+        obj.prospect_id = self

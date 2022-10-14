@@ -8,7 +8,7 @@ class CheckPhoneRequest(TestRequest):
     def __init__(self):
         super().__init__(
             URLProvider().url("onboarding_physical", "check-phone"),
-            "get",
+            method="get",
             data_type=CheckPhoneResponseDatatype,
-            params={'phone': '998941775859', 'phone_type': '1'}
+            params={'phone': '998941775859', 'phone_type': '0'}
         )
