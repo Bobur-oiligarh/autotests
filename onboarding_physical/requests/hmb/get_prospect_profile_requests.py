@@ -11,5 +11,5 @@ class ProspectProfileRequest(TestRequest):
             URLProvider().url('onboarding_physical', 'get-prospect-profile'),
             "get",
             data_type=ProspectProfileResponseType,
-            params={'prospectID': context.prospectID}
+            params={'prospectID': context.prospect_id}
         )

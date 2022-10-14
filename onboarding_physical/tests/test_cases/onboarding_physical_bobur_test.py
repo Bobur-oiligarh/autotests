@@ -12,7 +12,7 @@ class OnboardingPhysicalTC(TestCase):
 
     def setUp(self) -> None:
         self.context = OnboardingPhysicalContext(
-            prospectID='f5cd86b7-836c-4f5b-861b-fcf34021d986',
+            prospect_id='f5cd86b7-836c-4f5b-861b-fcf34021d986',
             iabs_id='4959379'
         )
 
@@ -23,7 +23,7 @@ class OnboardingPhysicalTC(TestCase):
 
     def test_get_prospect_profile(self):
         step_get_prospect_profile(context=self.context)
-        with allure.step(f"({self.context.prospectID})"):
+        with allure.step(f"({self.context.prospect_id})"):
             pass
 
     def test_check_prospect_by_client_id(self):
