@@ -26,8 +26,3 @@ class OnboardingPhysicalTC(TestCase):
         with allure.step(f"({self.context.prospect_id})"):
             pass
 
-    def test_check_prospect_by_client_id(self):
-        step_check_prospect(context=self.context)
-        with allure.step(f"{self.context.prospect}"):
-            pass
-

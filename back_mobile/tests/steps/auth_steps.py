@@ -2,7 +2,6 @@ import allure
 
 from back_mobile.requests.auth.login import Login
 from back_mobile.requests.auth.refreshtoken import RefreshToken
-from utils.universal_steps.check_response import check_response
 
 
 @allure.step("Запрос обновления access_token и refresh_token refreshtoken")
