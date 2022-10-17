@@ -3,7 +3,7 @@ from unittest import TestCase
 import allure
 
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
-from onboarding_physical.tests.steps.private_prospects_steps import step_private_prospects
+from onboarding_physical.tests.steps.internal.private_prospects_steps import step_private_prospects
 
 
 class PrivateProspectsTest(TestCase):
