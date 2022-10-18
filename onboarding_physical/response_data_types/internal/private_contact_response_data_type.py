@@ -1,5 +1,4 @@
 import allure
-from onboarding_physical.response_data_types.internal.private_prospects_data_type import PrivateProspectDataType
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from utils.api_utils.response_data_base import BaseTypeParent
 
@@ -28,4 +27,3 @@ class PrivateContactDataType(BaseTypeParent):
     @allure.step('')
     def _set_contact_to(self, obj):
         obj.private_contact = self
-
