@@ -5,6 +5,7 @@ import allure
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.hmb.check_phone_steps import step_check_phone
 from onboarding_physical.tests.steps.hmb.get_prospect_profile_steps import step_get_prospect_profile
+from onboarding_physical.tests.steps.internal.private_contacts_steps import step_private_contacts
 from onboarding_physical.tests.steps.internal.private_prospects_steps import step_private_prospects
 
 
@@ -27,8 +28,15 @@ class OnboardingPhysicalTC(TestCase):
         with allure.step(f"({self.context.prospect_id})"):
             pass
 
-    @allure.step("Поиск проспекта по iabsId и номеру телефона")
+
     def test_prospects(self):
         step_private_prospects(self.context)
         with allure.step(f"({self.context.prospect_id})"):
             pass
+
+
+    def test_private_contacts(self):
+        step_private_contacts(self.context)
+        with allure.step(f"({self.context.contact_id})"):
+            pass
+
