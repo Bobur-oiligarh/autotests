@@ -5,6 +5,7 @@ import allure
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.hmb.check_phone_steps import step_check_phone
 from onboarding_physical.tests.steps.hmb.get_prospect_profile_steps import step_get_prospect_profile
+from onboarding_physical.tests.steps.internal.private_contact_steps import step_private_contact
 from onboarding_physical.tests.steps.internal.private_contacts_steps import step_private_contacts
 from onboarding_physical.tests.steps.internal.private_prospects_steps import step_private_prospects
 
@@ -31,6 +32,12 @@ class OnboardingPhysicalTC(TestCase):
 
     def test_prospects(self):
         step_private_prospects(self.context)
+        with allure.step(f"({self.context.prospect_id})"):
+            pass
+
+    @allure.step('Получение контакта')
+    def test_private_contact(self):
+        step_private_contact(self.context)
         with allure.step(f"({self.context.prospect_id})"):
             pass
 
