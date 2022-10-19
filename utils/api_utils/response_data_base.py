@@ -26,11 +26,12 @@ class BaseType(ABC):
         pass
 
     def assert_not_empty_str(self, param_name: str):
-        self.assert_not_none_and_true_type(param_name, str)
-        with allure.step(param_name + " не пустой"):
-            value = getattr(self, param_name)
-            self._tc.assertNotEqual(value, "", self._empty_str(param_name, value))
-        return self
+        value = getattr(self, param_name, None)
+        if value is not None:
+            self.assert_not_none_and_true_type(param_name, str)
+            with allure.step(param_name + " не пустой"):
+                self._tc.assertNotEqual(value, "", self._empty_str(param_name, value))
+            return self
 
     def assert_not_empty_int(self, param_name: str):
         self.assert_not_none_and_true_type(param_name, int)
@@ -78,7 +79,7 @@ class BaseType(ABC):
                                  f"ожидаемому ({expected_value})")
         return self
 
-    def check_list_of(self, list_param_name, context, **kwargs):
+    def check_list_of(self, list_param_name: str, context, **kwargs):
         with allure.step(f"Проверка объектов в списке {list_param_name}"):
             i = 0
             for item in getattr(self, list_param_name):

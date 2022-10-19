@@ -46,6 +46,7 @@ class PrivateProspectDataType(BaseTypeParent):
         self.assert_not_empty_bool("is_affiliated")
         self.assert_not_empty_bool("is_terrorist")
         self.assert_not_empty_bool("is_profile_complete")
+        self.assert_not_empty_bool('is_consent_needed')
         self.assert_not_empty_bool("is_actualization_needed")
         self.assert_not_none_and_true_type("approval_id", str)
         self.assert_not_empty_str("created_at")
