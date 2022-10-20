@@ -4,7 +4,7 @@ class OnboardingPhysicalContext:
     prospect = None
     prospect_by_phone_iabs = None
     private_contact = None
-
+    private_prospect = None
     def __init__(self,
                  prospect_id: str = None,
                  iabs_id: str = None,
