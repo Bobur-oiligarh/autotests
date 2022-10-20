@@ -25,13 +25,32 @@ class BaseType(ABC):
     def check(self, context, **kwargs):
         pass
 
+    def assert_no_strict_str(self, param_name):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_type_is_true(param_name, str)
+
+    def assert_no_strict_int(self, param_name):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_type_is_true(param_name, int)
+
+    def assert_no_strict_flo(self, param_name):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_type_is_true(param_name, float)
+
+    def assert_no_strict_bool(self, param_name):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_type_is_true(param_name, bool)
+
     def assert_not_empty_str(self, param_name: str):
-        value = getattr(self, param_name, None)
-        if value is not None:
-            self.assert_not_none_and_true_type(param_name, str)
-            with allure.step(param_name + " не пустой"):
-                self._tc.assertNotEqual(value, "", self._empty_str(param_name, value))
-            return self
+        self.assert_not_none_and_true_type(param_name, str)
+        with allure.step(param_name + " не пустой"):
+            value = getattr(self, param_name)
+            self._tc.assertNotEqual(value, "", self._empty_str(param_name, value))
+        return self
 
     def assert_not_empty_int(self, param_name: str):
         self.assert_not_none_and_true_type(param_name, int)

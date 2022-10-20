@@ -10,7 +10,7 @@ class PrivateProspectDataType(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        self.contact_id = data["contact_id"]
+        self.contact_id = data.get("contact_id")
         self.id = data["id"]
         self.state = data["state"]
         self.pinfl = data["pinfl"]
@@ -33,7 +33,8 @@ class PrivateProspectDataType(BaseTypeParent):
         self.is_verified = data["is_verified"]
 
     def check(self, context, **kwargs):
-        self.assert_not_empty_str("contact_id")
+        if self.contact_id:
+            self.assert_not_empty_str("contact_id")
         self.assert_not_empty_str("id")
         self.assert_not_empty_int("state")
         self.assert_not_empty_str("pinfl")
