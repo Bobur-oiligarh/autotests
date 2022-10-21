@@ -1,5 +1,7 @@
 import allure
 from abc import ABC
+
+from onboarding_physical.response_data_types.internal.private_address_data_type import PrivateAddress
 from onboarding_physical.response_data_types.internal.private_contact_response_data_type import PrivateContactDataType
 from onboarding_physical.response_data_types.internal.private_prospects_data_type import PrivateProspectDataType
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
@@ -17,8 +19,8 @@ class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
         self.doc_issued_org_desc = data['doc_issue_org_desc']
         self.doc_region_code = data['doc_region_code']
         self.doc_district_code = data['doc_district_code']
-        self.domicile_address = Address(data['domicile_address']) if data.get('domicile_address') else None
-        self.temporary_address = Address(data['temporary_address']) if data.get('temporary_address') else None
+        self.domicile_address = PrivateAddress(data['domicile_address']) if data.get('domicile_address') else None
+        self.temporary_address = PrivateAddress(data['temporary_address']) if data.get('temporary_address') else None
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.middle_name = data['middle_name']
@@ -88,40 +90,3 @@ class Contacts(BaseTypeParent):
 
     def set_data_to(self, obj):
         pass
-
-
-class Address(BaseType):
-    def __init__(self, data):
-        super().__init__()
-        self.address = data.get('address')
-        self.block = data.get('block')
-        self.country_code = data.get('country_code')
-        self.created_at = data.get('created_at')
-        self.district_code = data.get('district_code')
-        self.flat = data.get('flat')
-        self.house = data.get('house')
-        self.id = data.get('id')
-        self.kadastr = data.get('kadastr')
-        self.place_desc = data.get('place_desc')
-        self.profile_id = data.get('profile_id')
-        self.region_code = data.get('region_code')
-        self.registered_at = data.get('registered_at')
-        self.street_desc = data.get('street_desc')
-        self.type = data.get('type')
-
-    def check(self, context, **kwargs):
-        self.assert_not_empty_str('address')
-        self.assert_no_strict_str('block')
-        self.assert_no_strict_str('country_code')
-        self.assert_no_strict_str('created_at')
-        self.assert_no_strict_str('district_code')
-        self.assert_no_strict_str('flat')
-        self.assert_no_strict_str('house')
-        self.assert_no_strict_str('id')
-        self.assert_no_strict_str('kadastr')
-        self.assert_no_strict_str('place_desc')
-        self.assert_no_strict_str('profile_id')
-        self.assert_no_strict_str('region_code')
-        self.assert_no_strict_str('registered_at')
-        self.assert_no_strict_str('street_desc')
-        self.assert_no_strict_str('type')
