@@ -2,6 +2,8 @@ from unittest import TestCase
 
 import allure
 
+from onboarding_physical.tests.steps.internal.private_prospects_by_id_steps import \
+    step_private_prospect_by_prospect_id
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.hmb.check_phone_steps import step_check_phone
 from onboarding_physical.tests.steps.hmb.get_prospect_profile_steps import step_get_prospect_profile
@@ -46,3 +48,7 @@ class OnboardingPhysicalTC(TestCase):
         with allure.step(f"({self.context.contact_id})"):
             pass
 
+    def test_private_prospects_by_prospect_id(self):
+        step_private_prospect_by_prospect_id(self.context)
+        with allure.step(f"({self.context.prospect_id})"):
+            pass

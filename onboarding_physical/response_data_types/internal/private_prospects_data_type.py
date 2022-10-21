@@ -10,7 +10,7 @@ class PrivateProspectDataType(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
-        self.contact_id = data["contact_id"]
+        self.contact_id = data.get("contact_id")
         self.id = data["id"]
         self.state = data["state"]
         self.pinfl = data["pinfl"]
@@ -33,7 +33,8 @@ class PrivateProspectDataType(BaseTypeParent):
         self.is_verified = data["is_verified"]
 
     def check(self, context, **kwargs):
-        self.assert_not_empty_str("contact_id")
+        if self.contact_id:
+            self.assert_not_empty_str("contact_id")
         self.assert_not_empty_str("id")
         self.assert_not_empty_int("state")
         self.assert_not_empty_str("pinfl")
@@ -46,6 +47,7 @@ class PrivateProspectDataType(BaseTypeParent):
         self.assert_not_empty_bool("is_affiliated")
         self.assert_not_empty_bool("is_terrorist")
         self.assert_not_empty_bool("is_profile_complete")
+        self.assert_not_empty_bool('is_consent_needed')
         self.assert_not_empty_bool("is_actualization_needed")
         self.assert_not_none_and_true_type("approval_id", str)
         self.assert_not_empty_str("created_at")

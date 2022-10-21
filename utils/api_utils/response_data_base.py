@@ -25,6 +25,26 @@ class BaseType(ABC):
     def check(self, context, **kwargs):
         pass
 
+    def assert_no_strict_str(self, param_name: str):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_not_empty_str(param_name)
+
+    def assert_no_strict_int(self, param_name: str):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_not_empty_int(param_name)
+
+    def assert_no_strict_float(self, param_name: str):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_not_empty_float(param_name)
+
+    def assert_no_strict_bool(self, param_name: str):
+        value = getattr(self, param_name)
+        if value:
+            self.assert_not_empty_bool(param_name)
+
     def assert_not_empty_str(self, param_name: str):
         self.assert_not_none_and_true_type(param_name, str)
         with allure.step(param_name + " не пустой"):
@@ -78,7 +98,7 @@ class BaseType(ABC):
                                  f"ожидаемому ({expected_value})")
         return self
 
-    def check_list_of(self, list_param_name, context, **kwargs):
+    def check_list_of(self, list_param_name: str, context, **kwargs):
         with allure.step(f"Проверка объектов в списке {list_param_name}"):
             i = 0
             for item in getattr(self, list_param_name):
