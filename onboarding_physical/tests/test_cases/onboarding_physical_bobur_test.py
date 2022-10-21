@@ -2,6 +2,7 @@ from unittest import TestCase
 
 import allure
 
+from onboarding_physical.tests.steps.internal.private_address_by_address_id_steps import step_private_address_by_id
 from onboarding_physical.tests.steps.internal.private_prospects_by_id_steps import \
     step_private_prospect_by_prospect_id
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
@@ -19,7 +20,8 @@ class OnboardingPhysicalTC(TestCase):
             prospect_id='f5cd86b7-836c-4f5b-861b-fcf34021d986',
             iabs_id='4959379',
             phone='998941775859',
-            contact_id='0a699f19-d71b-48b0-8606-4837102c59c2'
+            contact_id='0a699f19-d71b-48b0-8606-4837102c59c2',
+            address_id='2056e105-703e-4d60-9af7-055ee56bbf56'
         )
 
     def test_check_phone(self):
@@ -51,4 +53,9 @@ class OnboardingPhysicalTC(TestCase):
     def test_private_prospects_by_prospect_id(self):
         step_private_prospect_by_prospect_id(self.context)
         with allure.step(f"({self.context.prospect_id})"):
+            pass
+
+    def test_private_address_by_address_id(self):
+        step_private_address_by_id(self.context)
+        with allure.step(f"({self.context.prospect_id}"):
             pass
