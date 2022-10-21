@@ -25,25 +25,25 @@ class BaseType(ABC):
     def check(self, context, **kwargs):
         pass
 
-    def assert_no_strict_str(self, param_name):
+    def assert_no_strict_str(self, param_name: str):
         value = getattr(self, param_name)
         if value:
-            self.assert_type_is_true(param_name, str)
+            self.assert_not_empty_str(param_name)
 
-    def assert_no_strict_int(self, param_name):
+    def assert_no_strict_int(self, param_name: str):
         value = getattr(self, param_name)
         if value:
-            self.assert_type_is_true(param_name, int)
+            self.assert_not_empty_int(param_name)
 
-    def assert_no_strict_flo(self, param_name):
+    def assert_no_strict_float(self, param_name: str):
         value = getattr(self, param_name)
         if value:
-            self.assert_type_is_true(param_name, float)
+            self.assert_not_empty_float(param_name)
 
-    def assert_no_strict_bool(self, param_name):
+    def assert_no_strict_bool(self, param_name: str):
         value = getattr(self, param_name)
         if value:
-            self.assert_type_is_true(param_name, bool)
+            self.assert_not_empty_bool(param_name)
 
     def assert_not_empty_str(self, param_name: str):
         self.assert_not_none_and_true_type(param_name, str)

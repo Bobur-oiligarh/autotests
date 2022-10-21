@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import allure
 
-from onboarding_physical.response_data_types.internal.private_prospects_by_id_steps import \
+from onboarding_physical.tests.steps.internal.private_prospects_by_id_steps import \
     step_private_prospect_by_prospect_id
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.hmb.check_phone_steps import step_check_phone

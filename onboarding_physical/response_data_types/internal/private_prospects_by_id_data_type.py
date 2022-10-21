@@ -62,20 +62,13 @@ class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
         self.assert_not_empty_str('citizenship_code')
         self.assert_not_empty_bool('is_resident')
         self.contacts.check(context, **kwargs)
-        if self.contact_id:
-            self.assert_not_empty_str('contact_id')
-        if self.first_name_en:
-            self.assert_not_empty_str('first_name_en')
-        if self.last_name_en:
-            self.assert_not_empty_str('last_name_en')
-        if self.sphere_of_activity:
-            self.assert_not_empty_str('sphere_of_activity')
-        if self.subject_state:
-            self.assert_not_empty_str('subject_state')
-        if self.tin_registration_date:
-            self.assert_not_empty_str('tin_registration_date')
-        if self.tin_registration_gni:
-            self.assert_not_empty_str('tin_registration_gni')
+        self.assert_no_strict_str('contact_id')
+        self.assert_no_strict_str('first_name_en')
+        self.assert_no_strict_str('last_name_en')
+        self.assert_no_strict_str('sphere_of_activity')
+        self.assert_no_strict_str('subject_state')
+        self.assert_no_strict_str('tin_registration_date')
+        self.assert_no_strict_str('tin_registration_gni')
 
     def set_data_to(self, obj: OnboardingPhysicalContext):
         self._set_private_prospect_to(obj)
