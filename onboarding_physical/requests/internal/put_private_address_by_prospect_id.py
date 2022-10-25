@@ -13,5 +13,5 @@ class PutPrivateAddressRequest(TestRequest):
             URLProvider().url('onboarding_physical', f'private/address/{context.prospect_id}'),
             'put',
             data_type=PutPrivateAddressToProspectDataType,
-            data=context.data
+            data=context.private_address
         )
