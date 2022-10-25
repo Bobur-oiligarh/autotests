@@ -91,6 +91,8 @@ class RequestBase:
                         data[key] = getattr(self, key)
         else:
             data = self.__dict__[self._name_of_list]
+        with allure.step(json.dumps(data)):
+            pass
         return json.dumps(data)
 
 
@@ -98,4 +100,14 @@ class TestRequest(RequestBase, ABC):
 
     @allure.step("Отправляем запрос, получаем ответ")
     def _run(self):
-        super()._run()
+        if not self._data:
+            super()._run()
+        else:
+            response = methods[self._method](
+                url=self._url,
+                data=self._data,
+                headers=self._headers,
+                cookies=self._cookies,
+                params=self._params
+            )
+            self._response = TestResponse(response, self._data_type)
