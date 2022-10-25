@@ -100,10 +100,10 @@ class RequestBase:
 class TestRequest(RequestBase, ABC):
 
     def _get_data(self) -> json:
-        # with allure.step(json.dumps(self.data())):
-        #     pass
-        # if self.data():
-        #     return json.dumps(self.data())
+        with allure.step(json.dumps(self.data())):
+            pass
+        if self.data():
+            return json.dumps(self.data())
         return super()._get_data()
 
     @allure.step("Отправляем запрос, получаем ответ")
