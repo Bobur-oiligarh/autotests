@@ -44,3 +44,17 @@ class PrivateAddress(BaseType):
 
     def _set_address_to(self, obj):
         obj.private_address = self
+
+    def get_data_to_put_request(self):
+        data = dict()
+        for item in ['id',
+                     'profile_id',
+                     'address',
+                     'registered_at',
+                     'country_code',
+                     'region_code',
+                     'district_code',
+                     'kadastr',
+                     'created_at']:
+            data[item] = vars(self)[item]
+        return data

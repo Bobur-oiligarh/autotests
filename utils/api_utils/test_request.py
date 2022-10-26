@@ -21,7 +21,7 @@ class RequestBase:
                  url: str,
                  method: str,
                  data_type: type = None,
-                 data: str = None,
+                 data: dict = None,
                  headers: dict = None,
                  cookies: dict = None,
                  parameters_in_list: bool = False,
@@ -75,7 +75,7 @@ class RequestBase:
         )
         self._response = TestResponse(response, self._data_type)
 
-    def _get_data(self) -> str:
+    def _get_data(self) -> json:
         """
         Сериализует поля без префикса "_" в параметры тела запроса,
         в качестве имени параметра будет использовано имя переменной
@@ -93,8 +93,15 @@ class RequestBase:
             data = self.__dict__[self._name_of_list]
         return json.dumps(data)
 
+    def data(self):
+        return self._data
+
 
 class TestRequest(RequestBase, ABC):
+    def _get_data(self) -> json:
+        if self.data():
+            return json.dumps(self.data())
+        return super()._get_data()
 
     @allure.step("Отправляем запрос, получаем ответ")
     def _run(self):
