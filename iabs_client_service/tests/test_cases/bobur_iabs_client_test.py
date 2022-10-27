@@ -8,7 +8,7 @@ from iabs_client_service.tests.steps.post_clients_search_steps import step_post_
 
 class IABSClientTestCase(TestCase):
 
-    def SetUp(self) -> None:
+    def setUp(self) -> None:
         self.context = IABSContext(
             data={
                 "doc_number": "0356528",
