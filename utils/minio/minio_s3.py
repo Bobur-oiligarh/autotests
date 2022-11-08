@@ -1,6 +1,7 @@
 import base64
 import io
 import json
+import pickle
 from typing import Any
 
 from minio.api import Minio
@@ -20,20 +21,34 @@ class MinioS3:
             secure=YAMLReader().minio_data.get('secure')
         )
 
+    def upload_unstructured_data(self, data_name: str, uploaded_data: Any, **kwargs):
+        pass
+
+    def upload_structured_data(self, data_name: str, uploaded_data: Any, **kwargs):
+        if isinstance(uploaded_data, str):
+            data_as_bytes = uploaded_data.encode('utf-8')
+        elif isinstance(uploaded_data, dict):
+            data_as_bytes = json.dumps(uploaded_data).encode('utf-8')
+        elif isinstance(uploaded_data, list):
+            data_as_bytes = bytes(uploaded_data)
+        else:
+            data_as_bytes = bytearray(uploaded_data)
+        print(data_as_bytes)
+        encoded_data = base64.b64encode(data_as_bytes)
+        print(encoded_data)
+        decoded_data = base64.b64decode(encoded_data)
+        data_as_a_stream = io.BytesIO(decoded_data)
+        print(data_as_a_stream)
+        self.client.put_object(self.bucket_name, data_name, data_as_a_stream, length=len(data_as_bytes), **kwargs)
+
     def get(self, object_name: str, **kwargs):
         try:
-            object_buffer = io.BytesIO()
-            self.client.get_object(self.bucket_name, object_name, **kwargs)
-            print("Data of an object downloaded successfully")
+            response = self.client.get_object(bucket_name=self.bucket_name, object_name=object_name)
+            data = response.data
+            decoded_data = data.decode()
+            return decoded_data
         except Exception as err:
             print(err)
-
-    def upload(self, data_name: str, data: Any, **kwargs):
-        data_as_bytes = bytes(data)
-        encoded = base64.b64encode(data_as_bytes)
-        decoded = base64.b64decode(encoded)
-        data_as_a_stream = io.BytesIO(decoded)
-        self.client.put_object(self.bucket_name, data_name, data_as_a_stream, length=len(data_as_bytes), **kwargs)
 
 
 class MinioParent(MinioS3, metaclass=Singleton):
@@ -42,49 +57,11 @@ class MinioParent(MinioS3, metaclass=Singleton):
 
 if __name__ == '__main__':
     m = MinioS3()
-    m.upload('test6', data={1: 'klklkm'})
 
-    d = {1: "kjkl"}
-    asd = bytes(d)
-    encode = base64.b64encode(asd)
-    print(encode)
-    kas = io.BytesIO(encode)
-    print(kas.read())
-
-
-    print(asd)
-    mas = io.BytesIO(asd)
-    print(mas.read())
-
-    # m.upload('check', '/home/bobur/Test/testfile')
-    #
-    # path = Path(__file__).joinpath('credentials.yaml')
-    # print(path)
-    # value = "Some text I want to upload"
-    # value_as_bytes = value.encode('utf-8')
-    # value_as_a_stream = io.BytesIO(value_as_bytes)
-    # m.put_object('mydata', value_as_a_stream, length=len(value_as_bytes))
-
-    # data = 'test string'
-    # m.put_object('next_data', data)
-
-    # datas = {1: 'dmlkl'}
-    # # data_as_bytes = data.encode('utf-8')
-    # # print(data_as_bytes)
-    # # data_as_a_stream = io.BytesIO(data_as_bytes)
-    # # print(data_as_a_stream.read())
-    # #
-    # # data_2_as_a_stream = base64.b64encode(data_as_bytes)
-    # # decoded = base64.b64decode(data_2_as_a_stream)
-    # # print(data_2_as_a_stream)
-    # # print(data_2_as_a_stream)
-    # # print(decoded)
-    #
-    # encoded_data = json.dumps(data).encode('utf-8')
-    # data_as_aa_stream = io.BytesIO(encoded_data)
-    #
-    # # encoded = base64.b64encode(data)
-    # print(encoded_data)
-    # print(data_as_aa_stream.read())
-    # # decoded = base64.b64decode(encoded)
-    # # print(decoded)
+    m.upload_structured_data('test25', uploaded_data=[1, 2, 3])
+    resp = m.client.get_object('test', 'test25')
+    print(type(resp))
+    data = resp.data
+    print(data)
+    print(data.decode())
+    print(type(data.decode()))
