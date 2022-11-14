@@ -43,12 +43,12 @@ class MinioS3:
 
     def to_base64(self, object_name: str):
         data = self.get_object(object_name)
-        if self.bucket_name == "files":
+        if self.format not in self.IMAGE_FORMATS:
             data_bytes = data.encode('utf-8')
             base64_bytes = base64.b64encode(data_bytes)
             result_b64_str = base64_bytes.decode('utf-8')
 
-        elif self.bucket_name == "images":
+        elif self.format in self.IMAGE_FORMATS:
             buffered = io.BytesIO()
             data.save(buffered, format=self.format)
             buffered.seek(0)
