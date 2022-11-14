@@ -24,18 +24,20 @@ class MinioS3:
         data_as_a_stream = io.BytesIO(data_in_bytes)
         length = len(data_in_bytes)
         extension = object_name.split('.')[1]
-        self._client.put_object(bucket_name=self._img_bucket if extension in self._IMAGE_EXTENSIONS else self._file_bucket,
-                                object_name=object_name,
-                                data=data_as_a_stream,
-                                length=length)
+        self._client.put_object(
+            bucket_name=self._img_bucket if extension in self._IMAGE_EXTENSIONS else self._file_bucket,
+            object_name=object_name,
+            data=data_as_a_stream,
+            length=length
+        )
 
     def get(self, object_name: str):
         extension = object_name.split('.')[1]
         bucket_name = self._img_bucket if extension in self._IMAGE_EXTENSIONS else self._file_bucket
         obj = self._client.get_object(
-                     bucket_name=bucket_name,
-                     object_name=object_name
-                 )
+            bucket_name=bucket_name,
+            object_name=object_name
+        )
         if bucket_name == self._file_bucket:
             return obj.read().decode()
 
@@ -50,12 +52,14 @@ class MinioS3:
 
         return self._str_to_b64(data)
 
-    def _str_to_b64(self, data):
+    @staticmethod
+    def _str_to_b64(data):
         data_bytes = data.encode('utf-8')
         base64_bytes = base64.b64encode(data_bytes)
         return base64_bytes.decode('utf-8')
 
-    def _foto_to_b64(self, data, extension):
+    @staticmethod
+    def _foto_to_b64(data, extension):
         buffered = io.BytesIO()
         data.save(buffered, format=extension)
         buffered.seek(0)
