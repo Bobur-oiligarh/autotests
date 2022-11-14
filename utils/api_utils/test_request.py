@@ -12,7 +12,8 @@ methods = {
     "get": requests.get,
     "put": requests.put,
     "delete": requests.delete,
-    "patch": requests.patch}
+    "patch": requests.patch
+}
 
 
 class RequestBase:
