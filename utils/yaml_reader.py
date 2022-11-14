@@ -9,12 +9,9 @@ class YAMLReader(metaclass=Singleton):
 
     def __init__(self):
         self.paths: dict = self.read()["paths"]
+        self.minio_data: dict = self.read()['minio']
 
     def read(self):
         with open(self.CRED_PATH, "r") as f:
             read_data = yaml.load(f, Loader=yaml.FullLoader)
         return read_data
-
-
-if __name__ == "__main__":
-    print(YAMLReader().paths)
