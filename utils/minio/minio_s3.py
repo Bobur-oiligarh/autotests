@@ -1,17 +1,17 @@
 import base64
-
+import io
+import PIL.Image as Image
 from minio.api import Minio
 from utils.patterns.singleton import Singleton
 from utils.yaml_reader import YAMLReader
 
 
 class MinioS3:
+    IMAGE_FORMATS = ['jpg', 'png', 'jpeg', 'svg', 'jfif', 'pjpeg', 'pjp']
 
     def __init__(self):
-        self.file_bucket = YAMLReader().minio_data.get('file_bucket')
-        self.image_bucket = YAMLReader().minio_data.get('image_bucket')
-        self.local_files_directory = YAMLReader().minio_data.get('file_folder_in_local')
-        self.local_images_directory = YAMLReader().minio_data.get('image_folder_in_local')
+        self.bucket_name = None
+        self.format = None
         self.client = Minio(
             endpoint=YAMLReader().minio_data.get('server'),
             access_key=YAMLReader().minio_data.get('access_key'),
@@ -19,70 +19,44 @@ class MinioS3:
             secure=YAMLReader().minio_data.get('secure')
         )
 
-    def upload_file(self, file_name: str, **kwargs):
-        """
-        Для загрузки файла в желаемом формате - передайти file_name с нужным расширением.(.txt, .yaml)
-        @param file_name: the files will be named in bucket (with extension)
-        @param kwargs:
-        @return:
-        """
-        self.client.fput_object(
-            bucket_name=self.file_bucket,
-            object_name=file_name,
-            file_path=f"{self.local_files_directory}/{file_name}",
-            **kwargs
-        )
+    def put_object(self, object_name, data_in_bytes, data_format: str):
+        length = len(data_in_bytes)
+        self.bucket_name = "images" if data_format in self.IMAGE_FORMATS else "files"
 
-    def upload_image(self, image_name: str, **kwargs):
-        """Для загрузки файла в желаемом формате - передайти file_name с нужным расширением.(.txt, .yaml)"""
-        self.client.fput_object(
-            bucket_name=self.image_bucket,
-            object_name=image_name,
-            file_path=f"{self.local_images_directory}/{image_name}",
-            **kwargs
-        )
+        self.client.put_object(bucket_name=self.bucket_name,
+                               object_name=object_name,
+                               data=data_in_bytes,
+                               length=length)
 
-    def download_file(self, object_name: str, **kwargs):
-        """
-        @param object_name: name of the unloaded object
-        @param kwargs:
-        @return:
-        """
-        try:
-            self.client.fget_object(
-                bucket_name=self.file_bucket,
-                object_name=object_name,
-                file_path=f"{self.local_files_directory}/{object_name}",
-                **kwargs
-            )
-        except Exception as err:
-            print(err)
+    def get_object(self, object_name: str):
+        self.format = object_name.split('.')[1]
+        self.bucket_name = 'images' if self.format in self.IMAGE_FORMATS else 'files'
+        obj = self.client.get_object(
+                     bucket_name=self.bucket_name,
+                     object_name=object_name
+                 )
+        if self.bucket_name == 'files':
+            decoded_object = obj.read().decode()
+        elif self.bucket_name == 'images':
+            decoded_object = Image.open(io.BytesIO(obj.read()))
+        return decoded_object
 
-    def download_image(self, object_name: str, **kwargs):
-        try:
-            self.client.fget_object(
-                bucket_name=self.image_bucket,
-                object_name=object_name,
-                file_path=f"{self.local_images_directory}/{object_name}",
-                **kwargs
-            )
-        except Exception as err:
-            print(err)
+    def to_base64(self, object_name: str):
+        data = self.get_object(object_name)
+        if self.bucket_name == "files":
+            data_bytes = data.encode('utf-8')
+            base64_bytes = base64.b64encode(data_bytes)
+            result_b64_str = base64_bytes.decode('utf-8')
 
-    def data_to_base64(self, file_name):
-        image_formats = ['jpg', 'png', 'jpeg', 'svg', 'jfif', 'pjpeg', 'pjp']
-        file_format = file_name.split('.')[1]
-        if file_format in image_formats:
-            self.download_image(file_name)
-            file_path = f"{self.local_images_directory}/{file_name}"
-        else:
-            self.download_file(file_name)
-            file_path = f"{self.local_files_directory}/{file_name}"
-        with open(file_path, 'rb') as file:
-            encoded_string = base64.b64encode(file.read())
-            file.close()
-        return encoded_string.decode('utf-8')
+        elif self.bucket_name == "images":
+            buffered = io.BytesIO()
+            data.save(buffered, format=self.format)
+            buffered.seek(0)
+            img_byte = buffered.getvalue()
+            result_b64_str = f"data:image/{self.format};base64,{base64.b64encode(img_byte).decode()}"
+        return result_b64_str
 
 
 class MinioParent(MinioS3, metaclass=Singleton):
     pass
+
