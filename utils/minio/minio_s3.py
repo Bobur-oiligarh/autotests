@@ -19,13 +19,14 @@ class MinioS3:
             secure=YAMLReader().minio_data.get('secure')
         )
 
-    def put_object(self, object_name, data_in_bytes, data_format: str):
+    def put_object(self, object_name, data_in_bytes):
+        data_as_a_stream = io.BytesIO(data_in_bytes)
         length = len(data_in_bytes)
-        self.bucket_name = "images" if data_format in self.IMAGE_FORMATS else "files"
-
+        self.format = object_name.split('.')[1]
+        self.bucket_name = "images" if self.format in self.IMAGE_FORMATS else "files"
         self.client.put_object(bucket_name=self.bucket_name,
                                object_name=object_name,
-                               data=data_in_bytes,
+                               data=data_as_a_stream,
                                length=length)
 
     def get_object(self, object_name: str):
@@ -59,4 +60,12 @@ class MinioS3:
 
 class MinioParent(MinioS3, metaclass=Singleton):
     pass
+
+
+if __name__ == '__main__':
+    m = MinioParent()
+    string = "Hello World"
+    str_bytes = string.encode('utf-8')
+    print(str_bytes)
+    m.put_object("text.txt", str_bytes)
 
