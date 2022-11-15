@@ -6,6 +6,7 @@ from card_service.test_data.card_service_context import CardServiceContext
 from card_service.tests.scenarios.get_cards_balance_scenario import cards_balance_scenario
 from card_service.tests.scenarios.info_scenarios import card_info_scenario, card_contract_scenario
 from card_service.tests.steps.get_cards_steps import step_get_cards
+from card_service.tests.steps.get_cards_balance_steps import step_cards_balance
 
 
 # class DemoTestCase1(TestCase):
@@ -39,8 +40,8 @@ class DemoTestCase3(TestCase):
             bins=["860012", "986016"],
         )
 
-    # def test_get_cards(self):
-    #     step_get_cards(self.context)
+    def test_get_cards(self):
+        step_get_cards(self.context)
 
     def test_get_cards_balance(self):
         cards_balance_scenario(self.context)

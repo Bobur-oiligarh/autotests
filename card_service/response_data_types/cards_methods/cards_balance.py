@@ -22,11 +22,11 @@ class CardsBalance(BaseTypeParent):
 class CardBalance(BaseType):
     def __init__(self, data: dict):
         super().__init__()
-        self.card_id = data["card_id"]
-        self.balance = data["balance"]
-        self.hold_mount = data["hold_mount"]
+        self.card_id = data.get("card_id")
+        self.balance = data.get("balance")
+        self.hold_amount = data.get("hold_amount")
 
     def check(self, context, **kwargs):
         self.assert_not_empty_str("card_id")
         self.assert_not_empty_int("balance")
-        self.assert_not_empty_int("hold")
+        self.assert_not_empty_int("hold_amount")

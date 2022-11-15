@@ -1,6 +1,6 @@
 import allure
 
-from card_service.requests.cards_balance_requests import CardsBalanceRequest
+from card_service.requests.card_methods.get_cards_balance import CardsBalanceRequest
 
 
 @allure.step("Запрос 'GET /v2/balances'")
