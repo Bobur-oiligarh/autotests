@@ -40,7 +40,7 @@ class Cards(BaseTypeParent):
 
     def __init__(self, data: list):
         super().__init__()
-        self.cards = self.deserialize_to_list_of(Card, data)
+        self.cards: list[Card] = self.deserialize_to_list_of(Card, data)
 
     def set_data_to(self, obj):
         self.set_data_to_context(obj)
