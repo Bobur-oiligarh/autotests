@@ -1,7 +1,7 @@
 class CardServiceContext:
     cards = None
     card_contract = None
-
+    cards_balance = None
     def __init__(self, phone: str = None, card_number: str = None, bins: list = None,
                  iabs_client_id: str = None, prospect_id: str = None):
         self.phone = phone
