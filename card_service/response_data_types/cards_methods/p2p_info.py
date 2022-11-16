@@ -21,7 +21,7 @@ class P2PInfo(BaseTypeParent):
         self.assert_not_empty_str("card_type")
         self.assert_not_empty_str("bank_code")
         self.assert_not_empty_str("processing")
-        self.assert_not_empty_str("is_bank_card")
+        self.assert_not_empty_bool("is_bank_card")
         self.assert_not_empty_str("expire")
 
     def set_data_to(self, obj):

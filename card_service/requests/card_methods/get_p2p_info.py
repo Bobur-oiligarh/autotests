@@ -1,3 +1,4 @@
+from card_service.response_data_types.cards_methods.p2p_info import P2PInfo
 from utils.api_utils.test_request import TestRequest
 from utils.api_utils.url_provider import URLProvider
 
