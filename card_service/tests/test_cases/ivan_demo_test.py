@@ -3,6 +3,7 @@ from unittest import TestCase
 from card_service.test_data.card_service_context import CardServiceContext
 from card_service.tests.scenarios.get_balances_scenario import balances_scenario
 from card_service.tests.steps.get_cards_steps import step_get_cards
+from card_service.tests.steps.get_p2pinfo_steps import step_get_p2p_info
 
 
 class DemoTestCase3(TestCase):
@@ -11,6 +12,7 @@ class DemoTestCase3(TestCase):
         self.context = CardServiceContext(
             phone="998941775859",
             bins=["860012", "986016"],
+            card_number="8600120480409831"
         )
 
     def test_get_cards(self):
@@ -18,3 +20,6 @@ class DemoTestCase3(TestCase):
 
     def test_get_balances(self):
         balances_scenario(self.context)
+
+    def test_get_p2p_info(self):
+        step_get_p2p_info(self.context)
