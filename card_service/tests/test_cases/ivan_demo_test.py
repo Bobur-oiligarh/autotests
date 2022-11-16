@@ -11,6 +11,7 @@ class DemoTestCase3(TestCase):
         self.context = CardServiceContext(
             phone="998941775859",
             bins=["860012", "986016"],
+            card_number="8600120480409831"
         )
 
     def test_get_cards(self):
@@ -18,3 +19,6 @@ class DemoTestCase3(TestCase):
 
     def test_get_balances(self):
         balances_scenario(self.context)
+
+    def test_get_p2p_info(self):
+        pass
