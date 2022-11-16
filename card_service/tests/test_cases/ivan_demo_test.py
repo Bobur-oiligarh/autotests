@@ -6,7 +6,7 @@ from card_service.tests.steps.get_cards_steps import step_get_cards
 from card_service.tests.steps.get_p2pinfo_steps import step_get_p2p_info
 
 
-class DemoTestCase3(TestCase):
+class DemoTestCase(TestCase):
 
     def setUp(self) -> None:
         self.context = CardServiceContext(

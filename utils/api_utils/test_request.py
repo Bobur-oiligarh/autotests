@@ -27,7 +27,8 @@ class RequestBase:
                  cookies: dict = None,
                  parameters_in_list: bool = False,
                  name_of_list: str = None,
-                 params: dict = None):
+                 params: dict = None,
+                 require_err_note: bool = True):
 
         """
         :param url: {"method": "метод запроса", "url": "url запроса"}
@@ -49,8 +50,9 @@ class RequestBase:
         self._cookies = cookies
         self._params = params
 
-        self._parameters_in_list: bool = parameters_in_list  #
-        self._name_of_list: str = name_of_list  #
+        self._parameters_in_list: bool = parameters_in_list
+        self._name_of_list: str = name_of_list
+        self._require_error_note = require_err_note
 
     def response(self, refresh: bool = False) -> TestResponse:
         """
@@ -74,7 +76,11 @@ class RequestBase:
             cookies=self._cookies,
             params=self._params
         )
-        self._response = TestResponse(response, self._data_type)
+        self._response = TestResponse(
+            response,
+            self._data_type,
+            require_err_note=self._require_error_note
+        )
 
     def _get_data(self) -> json:
         """

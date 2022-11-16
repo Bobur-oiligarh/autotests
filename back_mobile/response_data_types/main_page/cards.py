@@ -98,7 +98,7 @@ class Card(BaseType):
         self.assert_not_empty_str("mfo")
         self.assert_not_empty_str("mask_num")
         self.assert_not_empty_str("state")
-        self.assert_not_empty_float("balance")
+        self.assert_not_empty_balance("balance")
         self.assert_not_empty_str("ps_code")
         self.assert_not_empty_str("expire")
         self.assert_not_empty_str("owner")
