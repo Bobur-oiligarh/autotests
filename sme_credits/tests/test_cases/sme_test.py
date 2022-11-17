@@ -20,7 +20,7 @@ class SMETestCase(TestCase):
     def test_sme_accounts(self):
         step_get_sme_accounts(self.context)
 
-    def test_post_sme_account(self):
+    def test_post_sme_accounts(self):
         step_post_sme_accounts(self.context)
 
     def test_delete_sme_accounts(self):
