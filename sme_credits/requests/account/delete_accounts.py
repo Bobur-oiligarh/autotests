@@ -9,6 +9,6 @@ class DeleteAccounts(TestRequest):
         super().__init__(
             url=URLProvider().url(service_name="sme_credits", end_point=f"accounts/{context.id}"),
             method="delete",
-            data_type=SMEAccount,
+            data_type=None,
             require_err_note=False
         )
