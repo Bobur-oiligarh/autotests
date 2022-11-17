@@ -4,11 +4,17 @@ from utils.api_utils.test_request import TestRequest
 from utils.api_utils.url_provider import URLProvider
 
 
-class DeleteAccounts(TestRequest):
+class PatchAccounts(TestRequest):
     def __init__(self, context: SMEContext):
         super().__init__(
             url=URLProvider().url(service_name="sme_credits", end_point=f"accounts/{context.id}"),
-            method="delete",
+            method="patch",
             data_type=None,
             require_err_note=False
         )
+        self.account_mask = context.account_mask
+        self.list_id = context.list_id
+        self.active = context.active
+
+
+
