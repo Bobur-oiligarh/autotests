@@ -17,14 +17,15 @@ class SMETestCase(TestCase):
             user_employee="Bobur"
         )
 
-    def test_sme_accounts(self):
+    def test_get_accounts(self):
         step_get_sme_accounts(self.context)
 
-    def test_post_sme_accounts(self):
+    def test_post_accounts(self):
         step_post_sme_accounts(self.context)
 
-    def test_delete_sme_accounts(self):
-        step_delete_sme_accounts(self.context, account_id="d1aafa82-70eb-4528-bb63-49ebe67d3152")
+    def test_delete_accounts(self):
+        self.context.id = "d1aafa82-70eb-4528-bb63-49ebe67d3152"
+        step_delete_sme_accounts(self.context)
 
     def test_patch_accounts(self):
         self.context.id = "fbadbe09-b336-452c-9b70-ec9a0d2907ee"
