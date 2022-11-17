@@ -2,6 +2,7 @@ from unittest import TestCase
 
 import allure
 
+from sme_credits.response_data_types.accounts_data_type import SMEAccount
 from sme_credits.test_data.sme_context import SMEContext
 from sme_credits.tests.steps.account.delete_accounts_steps import step_delete_sme_accounts
 from sme_credits.tests.steps.account.get_accounts_steps import step_get_sme_accounts
@@ -12,12 +13,14 @@ from sme_credits.tests.steps.account.post_accounts_steps import step_post_sme_ac
 class SMETestCase(TestCase):
 
     def setUp(self) -> None:
-        self.context = SMEContext(
-            account_mask="15805",
-            active=False,
-            list_id="AL002",
-            user_employee="Bobur"
-        )
+        self.context = SMEContext()
+        self.context.account = SMEAccount({
+            "id": "8dcd7c16-f921-4e19-9444-4e752b291cb6",
+            "account_mask": "15805",
+            "active": False,
+            "list_id": "AL002",
+            "user_employee": "Bobur"
+        })
 
     def test_get_accounts(self):
         step_get_sme_accounts(self.context)

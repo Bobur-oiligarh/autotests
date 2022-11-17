@@ -12,8 +12,8 @@ class PostAccounts(TestRequest):
             data_type=SMEAccount,
             require_err_note=False
         )
-        self.account_mask = context.account_mask
-        self.active = context.active
-        self.list_id = context.list_id
-        self.user_employee = context.user_employee
+        self.account_mask = context.account.account_mask
+        self.active = context.account.active
+        self.list_id = context.account.list_id
+        self.user_employee = context.account.user_employee
 

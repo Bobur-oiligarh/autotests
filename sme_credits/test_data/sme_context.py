@@ -1,15 +1,6 @@
-class SMEContext:
-    accounts = None
+from utils.methods import obj_to_string
 
-    def __init__(self,
-                 id: str = None,
-                 account_mask: str = None,
-                 active: bool = True,
-                 list_id: str = None,
-                 user_employee: str = None,
-                 ):
-        self.id = id
-        self.account_mask = account_mask
-        self.active = active
-        self.list_id = list_id
-        self.user_employee = user_employee
+
+class SMEContext:
+    accounts: list = None
+    account = None
