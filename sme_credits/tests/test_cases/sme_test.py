@@ -1,15 +1,22 @@
 from unittest import TestCase
 
-import allure
-
 from sme_credits.test_data.sme_context import SMEContext
-from sme_credits.tests.steps.sme_accounts_steps import step_sme_accounts
+from sme_credits.tests.steps.account.get_accounts_steps import step_get_sme_accounts
+from sme_credits.tests.steps.account.post_accounts_steps import step_post_sme_accounts
 
 
 class SMETestCase(TestCase):
 
     def setUp(self) -> None:
-        self.context = SMEContext()
+        self.context = SMEContext(
+            account_mask="15778",
+            active=True,
+            list_id="AL001",
+            user_employee="Bobur"
+        )
 
     def test_sme_accounts(self):
-        step_sme_accounts(self.context)
+        step_get_sme_accounts(self.context)
+
+    def test_post_sme_account(self):
+        step_post_sme_accounts(self.context)
