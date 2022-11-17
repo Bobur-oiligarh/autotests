@@ -24,4 +24,4 @@ class SMETestCase(TestCase):
         step_post_sme_accounts(self.context)
 
     def test_delete_sme_accounts(self):
-        step_delete_sme_accounts(self.context, id="d1aafa82-70eb-4528-bb63-49ebe67d3152")
+        step_delete_sme_accounts(self.context, account_id="d1aafa82-70eb-4528-bb63-49ebe67d3152")
