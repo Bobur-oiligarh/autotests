@@ -16,4 +16,4 @@ class PatchAccounts(TestRequest):
         self.active = context.active
         self.list_id = context.list_id
 
-        print(super()._url)
+
