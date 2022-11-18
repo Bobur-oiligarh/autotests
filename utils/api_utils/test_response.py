@@ -15,6 +15,7 @@ class TestResponse:
         self._require_error_note = require_err_note
 
         self._raw_response_text = response.text
+        self._data_type = data_type
         self.data: data_type = None
         self.status = resp_dict["status"]
         self.error_code = resp_dict["error_code"]
@@ -40,6 +41,14 @@ class TestResponse:
             .check_error_note("") \
             .check_data_not_null() \
             .check_data_parameters(context)
+        return self
+
+    @allure.step("Проверка параметров data твета")
+    def check_data(self, context):
+        if self._data_type:
+            self.check_data_not_null().check_data_parameters(context)
+            return self
+        self.check_data_is_null()
         return self
 
     @allure.step("Проверка ответа - отрицательный результат")
