@@ -23,10 +23,7 @@ class SMETestCase(TestCase):
         })
 
     # def test_get_accounts(self):
-    #     check_methods_work_scenario(self.context)
-
-    def test_get_accounts(self):
-        step_get_sme_accounts(self.context)
+    #     step_get_sme_accounts(self.context)
     #
     # def test_post_accounts(self):
     #     step_post_sme_accounts(self.context)

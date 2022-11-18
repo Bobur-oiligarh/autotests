@@ -8,31 +8,43 @@ from utils.api_utils.response_data_base import BaseTypeParent
 class SMEAccounts(BaseTypeParent):
     def __init__(self, data: list):
         super().__init__()
-        self.accounts_list: list[SMEAccount] = self.deserialize_to_list_of(SMEAccount, data)
+        self.accounts: list[SMEAccount] = self.deserialize_to_list_of(SMEAccount, data)
 
     def check(self, context, **kwargs):
-        self.check_list_of("accounts_list", context)
+        self.check_list_of("accounts", context)
 
     def set_data_to(self, obj):
         self.set_data_to_obj(obj)
+
+    def get_acc_by_param(self, param_name, param_val):
+        result = None
+        for item in self.accounts:
+            if item.__dict__[param_name] == param_val:
+                result = item
+        return result
 
     @allure.step("Установим аккаунты контексту")
     def set_data_to_obj(self, obj):
         obj.accounts = self
 
-    @allure.step("Достаем аккаунт с указанным параметром")
+    @allure.step("Получить аккаунт по параметру {param_name}")
     def get_account_by_param(self, param_name: str, param_value: Any):
         result = None
-        for account in self.accounts_list:
-            if account.__getattribute__(param_name) == param_value:
+        for account in self.accounts:
+            if account.__dict__[param_name] == param_value:
                 result = account
-            return result
+        return result
 
-    @allure.step("Проверяем наличие аккаунта в листе аккаунтов")
-    def is_account_exist(self, id: str):
-        if self.get_account_by_param(param_name="id", param_value=id):
-            return True
-        return None
+    @allure.step("Проверяем наличие аккаунта в список аккаунтов")
+    def account_exist(self, id: str):
+        self._tc.assertTrue(
+            True if self.get_account_by_param(param_name="id", param_value=id) else False
+        )
+
+    def account_not_exist(self, id: str):
+        self._tc.assertFalse(
+            False if not self.get_account_by_param(param_name="id", param_value=id) else True
+        )
 
 
 class SMEAccount(BaseTypeParent):
@@ -60,15 +72,15 @@ class SMEAccount(BaseTypeParent):
     def set_account_to(self, obj):
         obj.account = self
 
-    @allure.step("Меняем значение параметра")
+    @allure.step("Изменить значение параметра {param_name}")
     def change_param(self, param_name: str, param_value: Any):
         self.__setattr__(param_name, param_value)
 
-    @allure.step("Сопоставляем  акаунты")
-    def equal(self, account):
-        if (self.id == account.id and
-                self.active == account.active and
-                self.account_mask == account.account_mask and
-                self.user_employee == account.user_employee):
-            return True
-
+    @allure.step("Сопоставляем акаунты")
+    def assert_equal(self, account):
+        differences = []
+        for key in self.__dict__.keys():
+            if self.__dict__[key] != account.__dict__[key]:
+                differences.append([key, self.__dict__[key], account.__dict__[key]])
+        self._tc.assertEqual(0, len(differences),
+                             f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
