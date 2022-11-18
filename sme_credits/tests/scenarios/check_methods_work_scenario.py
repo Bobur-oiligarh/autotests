@@ -13,9 +13,9 @@ def check_methods_work_scenario(context):
     step_get_sme_accounts(context)
 
     # Создаем новый аккаунт
-    with allure.step(f"POST accounts/{context.id}"):
+    with allure.step(f"POST /accounts"):
         pass
-    created_account_id = step_post_sme_accounts(context)
+    created_account_id = step_post_sme_accounts(context).account.id
 
     # Проверяем создался ли аккаунт
     with allure.step("Проверяем создался ли аккаунт"):
