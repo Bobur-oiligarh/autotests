@@ -77,7 +77,7 @@ class Client:
 
     app_version: str = None
 
-    def __init__(self, user: User, device: Device, app_version: str = "1.0.1", offer_sign_action: str = "accept",
+    def __init__(self, user: User, device: Device, app_version: str = "1.2.5", offer_sign_action: str = "accept",
                  p2p_init_action: str = "accept", region_code: str = "10"):
         self.user = user
         self.device = device

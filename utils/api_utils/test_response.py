@@ -9,15 +9,16 @@ from utils.methods import obj_to_string
 
 class TestResponse:
 
-    def __init__(self, response: Response, data_type: type):
+    def __init__(self, response: Response, data_type: type, require_err_note: bool = True):
         self._tc = TestCase()
         resp_dict = json.loads(response.text)
+        self._require_error_note = require_err_note
 
         self._raw_response_text = response.text
         self.data: data_type = None
         self.status = resp_dict["status"]
         self.error_code = resp_dict["error_code"]
-        self.error_note = resp_dict["error_note"]
+        self.error_note = None if not require_err_note else resp_dict["error_note"]
         self._set_data(resp_dict["data"], data_type)
 
     def _set_data(self, data, data_type: type):
@@ -65,9 +66,10 @@ class TestResponse:
 
     @allure.step("Проверка error_note")
     def check_error_note(self, expected_error_note: str):
-        self._tc.assertEqual(self.error_note, expected_error_note,
-                             f"error_note ({self.error_note}) не соответствует "
-                             f"ожидаемому ({expected_error_note})" + self._raw_response_text)
+        if self._require_error_note:
+            self._tc.assertEqual(self.error_note, expected_error_note,
+                                 f"error_note ({self.error_note}) не соответствует "
+                                 f"ожидаемому ({expected_error_note})" + self._raw_response_text)
         return self
 
     @allure.step("Проверка data ответа не null")
