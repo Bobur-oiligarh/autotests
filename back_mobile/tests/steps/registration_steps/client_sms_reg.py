@@ -1,14 +1,10 @@
 import allure
 
-from back_mobile.requests.registration.client_sms_registration import ClientSMSRegistration
-
-__all__ = [
-    "step_client_sms_reg"
-]
+from back_mobile.requests.registration.post_client_sms_reg import PostClientSMSRegistration
 
 
 @allure.step("Подтверждение номера карты через СМС client_sms_registration")
-def step_client_sms_reg(client):
-    response = ClientSMSRegistration(client).response()
-    response.check_success(client)\
-        .data.set_data_to(client)
+def step_client_sms_reg(context):
+    response = PostClientSMSRegistration(context).response()
+    response.check_success(context)\
+        .data.set_data_to(context)

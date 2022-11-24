@@ -1,13 +1,9 @@
 import allure
 
-from back_mobile.requests.registration.check_client_registration import CheckClientRegistration
-
-__all__ = [
-    "step_check_client_reg"
-]
+from back_mobile.requests.registration.post_check_client_reg import PostCheckClientReg
 
 
 @allure.step("Добавление карты check_client_registration")
-def step_check_client_reg(client):
-    response = CheckClientRegistration(client).response()
-    response.check_success(client).data.set_data_to(client)
+def step_check_client_reg(context):
+    response = PostCheckClientReg(context).response()
+    response.check_success(context).data.set_data_to(context)

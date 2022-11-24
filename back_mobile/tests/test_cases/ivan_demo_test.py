@@ -4,7 +4,7 @@ import allure
 
 from back_mobile.test_data.client import Client, User, Device
 from back_mobile.tests.scenarios.main_page_scenarios import scenario_open_main_page
-from back_mobile.tests.scenarios.p2p_scenarios import scenario_template_p2p_transaction, scenario_card_p2p_transaction
+from back_mobile.tests.scenarios.p2p_scenarios import scenario_card_p2p_transaction
 from back_mobile.tests.scenarios.product_scenarios import scenario_products
 from back_mobile.tests.scenarios.references_scenarios import scenario_references
 from back_mobile.tests.scenarios.registration_scenarios import scenario_registration
@@ -37,11 +37,11 @@ class DemoTestCase(TestCase):
         scenario_registration(self.client)
         scenario_open_main_page(self.client)
 
-    @allure.description("Перевод по шаблону")
-    def test_template_p2p(self):
-        scenario_registration(self.client)
-        step_client_cards(self.client)
-        scenario_template_p2p_transaction(self.client)
+    # @allure.description("Перевод по шаблону")
+    # def test_template_p2p(self):
+    #     scenario_registration(self.client)
+    #     step_client_cards(self.client)
+    #     scenario_template_p2p_transaction(self.client)
 
     @allure.description("Перевод по номеру карты")
     def test_card_p2p(self):

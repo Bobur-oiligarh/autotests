@@ -2,11 +2,6 @@ import allure
 
 from utils.api_utils.response_data_base import BaseType
 
-__all__ = [
-    "Offer",
-    "AgreeOfferResult"
-]
-
 
 class Offer(BaseType):
     def __init__(self, data: dict):

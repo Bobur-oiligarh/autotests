@@ -1,9 +1,5 @@
 from back_mobile.response_data_types.registration.access_refresh_tokens import AccRefTokens
 
-__all__ = [
-    "DeviceIdentifySign"
-]
-
 
 class DeviceIdentifySign(AccRefTokens):
     def __init__(self, data: dict):

@@ -2,12 +2,8 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent
 
-__all__ = [
-    "ClientNameType"
-]
 
-
-class ClientNameType(BaseTypeParent):
+class ClientName(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()

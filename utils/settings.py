@@ -54,22 +54,22 @@ class Loader:
 
 def spawn_process(number, data):
     Settings().set_data(data)
-    time.sleep(number)
     loader = Loader()
     loader.find_tests()
+    time.sleep(number)
     print(f"\nThis is process: {number}")
 
 
 if __name__ == "__main__":
     services = [
-        {"service": "back_mobile", "con_type": "vpn", "team": "sme_credits", "env": "component"},
-        {"service": "card_service", "con_type": "vpn", "team": "sme_credits", "env": "component"},
-        {"service": "credentials_service", "con_type": "vpn", "team": "sme_credits", "env": "component"},
+        {"service": "back_mobile", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
+        {"service": "card_service", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
+        {"service": "credentials_service", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         {"service": "iabs_client_service", "con_type": "vpn", "team": "sme_credits", "env": "component"},
-        {"service": "limit_module", "con_type": "vpn", "team": "sme_credits", "env": "component"},
+        {"service": "limit_module", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         {"service": "onboarding_physical", "con_type": "vpn", "team": "sme_credits", "env": "component"},
         {"service": "reference_service", "con_type": "vpn", "team": "sme_credits", "env": "component"},
-        {"service": "tariff_calculator", "con_type": "vpn", "team": "sme_credits", "env": "component"},
+        {"service": "tariff_calculator", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         {"service": "sme_credits", "con_type": "vpn", "team": "sme_credits", "env": "component"}
     ]
 

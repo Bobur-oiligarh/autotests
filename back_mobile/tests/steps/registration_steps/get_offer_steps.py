@@ -1,13 +1,9 @@
 import allure
 
-from back_mobile.requests.registration.offer import GetOffer
-
-__all__ = [
-    "step_get_offer"
-]
+from back_mobile.requests.registration.get_put_offer import GetOffer
 
 
 @allure.step("Запрос оферты get_offer")
-def step_get_offer(client):
-    response = GetOffer(client).response()
-    response.check_success(client)
+def step_get_offer(context):
+    response = GetOffer(context).response()
+    response.check_success(context)

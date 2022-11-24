@@ -1,13 +1,6 @@
 import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent, BaseType
-from back_mobile.test_data.client import Client
-
-__all__ = [
-    "Operations",
-    "State",
-    "Operation"
-]
 
 
 class Operations(BaseTypeParent):

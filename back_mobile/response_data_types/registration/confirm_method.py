@@ -2,10 +2,6 @@ import allure
 
 from back_mobile.response_data_types.registration.sign_id import SignId
 
-__all__ = [
-    "ConfirmMethod"
-]
-
 
 class ConfirmMethod(SignId):
     def __init__(self, data: dict):

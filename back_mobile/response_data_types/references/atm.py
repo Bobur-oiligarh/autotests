@@ -1,13 +1,6 @@
 import allure
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
-__all__ = [
-    "ATMs",
-    "ATM",
-    "Coordinates",
-    "DiffLangTextParams"
-]
-
 
 class ATMs(BaseTypeParent):
 

@@ -2,10 +2,6 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent
 
-__all__ = [
-    "SignId"
-]
-
 
 class SignId(BaseTypeParent):
 

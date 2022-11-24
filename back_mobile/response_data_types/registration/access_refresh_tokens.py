@@ -2,11 +2,6 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent
 
-__all__ = [
-    "AccRefTokens",
-    "StoreAccRefTokens"
-]
-
 
 class AccRefTokens(BaseTypeParent):
 
