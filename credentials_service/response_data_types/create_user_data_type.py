@@ -1,6 +1,6 @@
 import allure
 
-from back_mobile.response_data_types import AccRefTokens
+from back_mobile.response_data_types.registration.access_refresh_tokens import AccRefTokens
 from credentials_service.test_data.credential_service_context import CredentialServiceContext
 
 __all__ = [

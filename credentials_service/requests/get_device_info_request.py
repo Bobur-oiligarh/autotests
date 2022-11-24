@@ -9,6 +9,7 @@ class GetDeviceInfo(TestRequest):
     def __init__(self, context: CredentialServiceContext):
         super().__init__(
             URLProvider().url('credentials_service', 'get-device-info'),
+            method="post",
             data_type=DeviceResponseType
         )
         self.device_id = context.device_id

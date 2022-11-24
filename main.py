@@ -41,7 +41,7 @@ if __name__ == "__main__":
     services = [
         # {"service": "back_mobile", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         # {"service": "card_service", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
-        {"service": "credentials_service", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
+        # {"service": "credentials_service", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         # {"service": "iabs_client_service", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         # {"service": "limit_module", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},
         # {"service": "onboarding_physical", "con_type": "vpn", "team": "hamkor_mobile", "env": "component"},

@@ -1,10 +1,11 @@
 from unittest import TestCase
 import allure
 from credentials_service.test_data.credential_service_context import CredentialServiceContext
-from credentials_service.tests.steps import create_user_success, step_update_user
+from credentials_service.tests.steps.create_user_steps import create_user_success
 from credentials_service.tests.steps.device_auth_steps import step_device_auth
 from credentials_service.tests.steps.device_lang_update_steps import step_device_lang_update
 from credentials_service.tests.steps.get_device_info_steps import step_get_and_check_device_info
+from credentials_service.tests.steps.update_user_steps import step_update_user
 
 
 class CredentialServiceTestCases(TestCase):
@@ -17,7 +18,7 @@ class CredentialServiceTestCases(TestCase):
         )
         self.context.refresh_token = '0eb7ca77-9427-3611-8ecc-bf24f5a7d82b'
 
-    @allure.description('Проверка запрроса девайс аутентифакацию')
+    @allure.description('Проверка запроса информации о девайсе')
     def test_get_device_info(self):
         step_get_and_check_device_info(self.context)
         step_device_auth(self.context)

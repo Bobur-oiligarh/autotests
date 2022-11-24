@@ -1,6 +1,6 @@
 import allure
 
-from credentials_service.requests import PostCreateUser
+from credentials_service.requests.create_user import PostCreateUser
 from credentials_service.test_data.credential_service_context import CredentialServiceContext
 
 

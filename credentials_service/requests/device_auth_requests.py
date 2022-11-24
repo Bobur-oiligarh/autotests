@@ -7,10 +7,10 @@ class DeviceAuthRequest(TestRequest):
 
     def __init__(self, context):
         super().__init__(
-            URLProvider().url('credentials_service', 'device-auth'),
-            "post",
+            url=URLProvider().url('credentials_service', 'device-auth'),
+            method="post",
             data_type=DeviceAuthDataType
         )
         self.device_id = context.device_id
-        self.refresh_token = context.refresh_token
+        self.refresh_token = context.device_info.refresh_token
 
