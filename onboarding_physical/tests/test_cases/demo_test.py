@@ -3,18 +3,29 @@ from unittest import TestCase
 import allure
 
 from onboarding_physical.response_data_types.internal.private_address_data_type import PrivateAddress
-from onboarding_physical.tests.steps.internal.private_address_by_address_id_steps import step_private_address_by_id
-from onboarding_physical.tests.steps.internal.private_prospects_by_id_steps import \
-    step_private_prospect_by_prospect_id
 from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from onboarding_physical.tests.steps.hmb.check_phone_steps import step_check_phone
 from onboarding_physical.tests.steps.hmb.get_prospect_profile_steps import step_get_prospect_profile
+from onboarding_physical.tests.steps.internal.private_address_by_address_id_steps import step_private_address_by_id
 from onboarding_physical.tests.steps.internal.private_contact_steps import step_private_contact
 from onboarding_physical.tests.steps.internal.private_contacts_steps import step_private_contacts
+from onboarding_physical.tests.steps.internal.private_prospects_by_id_steps import step_private_prospect_by_prospect_id
 from onboarding_physical.tests.steps.internal.private_prospects_steps import step_private_prospects
 from onboarding_physical.tests.steps.internal.put_private_address_to_prospect_steps import \
     step_put_private_address_to_prospect
-from utils.api_utils.response_data_base import BaseType
+
+
+class PrivateProspectsTest(TestCase):
+
+    def setUp(self) -> None:
+        self.context = OnboardingPhysicalContext(
+            iabs_id="3589246",
+            phone="998941775859"
+        )
+
+    @allure.step("Поиск проспекта по iabsId и номеру телефона")
+    def test_prospects(self):
+        step_private_prospects(self.context)
 
 
 class OnboardingPhysicalTC(TestCase):
@@ -79,4 +90,3 @@ class OnboardingPhysicalTC(TestCase):
 
     def test_put_private_address_to_prospect(self):
         step_put_private_address_to_prospect(self.context)
-

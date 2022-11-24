@@ -3,7 +3,17 @@ from unittest import TestCase
 import allure
 
 from iabs_client_service.test_data import IABSContext
+from iabs_client_service.tests.scenarios import scenario_search_clients
 from iabs_client_service.tests.steps.post_clients_search_steps import step_post_clients_search
+
+
+class DemoScenarioTestCase(TestCase):
+
+    def setUp(self) -> None:
+        self.context = IABSContext(iabs_id="4959379")
+
+    def test_iabs_clients_search(self):
+        scenario_search_clients(context=self.context)
 
 
 class IABSClientTestCase(TestCase):

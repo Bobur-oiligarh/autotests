@@ -3,12 +3,12 @@ from utils.api_utils.test_request import TestRequest
 from utils.url_provider import URLProvider
 
 
-class P2PAllOperationsLimitRequest(TestRequest):
+class PostP2PAllOperationsLimit(TestRequest):
 
     def __init__(self, context):
         super().__init__(
-            URLProvider().url("limit_module", "p2p-all"),
-            "post",
+            url=URLProvider().url("limit_module", "operation/p2p-all"),
+            method="post",
             data_type=LimitDataTypes
         )
         self.product_id = context.product_id
