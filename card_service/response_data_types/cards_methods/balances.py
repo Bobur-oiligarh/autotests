@@ -3,7 +3,7 @@ from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 import allure
 
 
-class CardsBalance(BaseTypeParent):
+class CardBalances(BaseTypeParent):
     def __init__(self, data: list):
         super().__init__()
         self.cards_balance: list[CardBalance] = self.deserialize_to_list_of(CardBalance, data)

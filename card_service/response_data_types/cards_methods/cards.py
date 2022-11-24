@@ -1,10 +1,5 @@
 from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 
-__all__ = [
-    "Cards",
-    "Card"
-]
-
 
 class Card(BaseType):
 

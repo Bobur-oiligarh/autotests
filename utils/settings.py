@@ -56,7 +56,6 @@ def spawn_process(number, data):
     Settings().set_data(data)
     loader = Loader()
     loader.find_tests()
-    time.sleep(number)
     print(f"\nThis is process: {number}")
 
 
