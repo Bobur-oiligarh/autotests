@@ -1,12 +1,11 @@
 from back_mobile.response_data_types.registration.access_refresh_tokens import AccRefTokens
-from back_mobile.test_data.client import Client
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 from utils.api_utils.test_request import TestRequest
 
 
 class ClientSMSRegistration(TestRequest):
 
-    def __init__(self, client: Client):
+    def __init__(self, client):
         super().__init__(
             URLProvider().url("back_mobile", "api/v1/mobile/client-registration"),
             "post",

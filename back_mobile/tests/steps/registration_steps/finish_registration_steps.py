@@ -1,6 +1,6 @@
 import allure
 
-from back_mobile.requests.registration import FinishRegistration
+from back_mobile.requests.registration.finish_registration import FinishRegistration
 
 __all__ = [
     "step_finish_reg"

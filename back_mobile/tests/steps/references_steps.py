@@ -5,7 +5,6 @@ from back_mobile.requests.references.branches import Branches
 from back_mobile.requests.references.exchange_rates import ExchangeRateRequest
 from back_mobile.requests.references.languages import Languages
 from back_mobile.requests.references.operators import Operators
-from utils.universal_steps.check_response import check_response
 
 
 @allure.step("Запрос банкоматов bankomates")

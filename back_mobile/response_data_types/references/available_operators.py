@@ -1,6 +1,5 @@
 import allure
 
-from back_mobile.test_data.client import Client
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
 __all__ = [
@@ -18,11 +17,11 @@ class AvailableOperators(BaseTypeParent):
         self.set_operators(obj)
 
     @allure.step("Установить операторы клиенту")
-    def set_operators(self, client):
-        client.operators = self
+    def set_operators(self, context):
+        context.operators = self
 
-    def check(self, client, **kwargs):
-        self.check_list_of("operators_list", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("operators_list", context, **kwargs)
 
 
 class Operator(BaseType):
@@ -33,7 +32,7 @@ class Operator(BaseType):
         self.mask = data["mask"]
         self.name = data["name"]
 
-    def check(self, client: Client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("operator_id")
         self.assert_not_empty_str("mask")
         self.assert_not_empty_str("name")

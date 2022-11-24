@@ -1,7 +1,6 @@
 import allure
 
-from back_mobile.requests.registration import CheckClientRegistration
-from utils.universal_steps.check_response import check_response
+from back_mobile.requests.registration.check_client_registration import CheckClientRegistration
 
 __all__ = [
     "step_check_client_reg"

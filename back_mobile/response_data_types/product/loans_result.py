@@ -17,11 +17,11 @@ class LoansResult(BaseTypeParent):
         self.set_loans_to_client(obj)
 
     @allure.step("Установить кредиты клиенту")
-    def set_loans_to_client(self, client):
-        client.loans = self
+    def set_loans_to_client(self, context):
+        context.loans = self
 
-    def check(self, client, **kwargs):
-        self.check_list_of("loans_list", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("loans_list", context, **kwargs)
 
 
 class Loan(BaseType):
@@ -36,7 +36,7 @@ class Loan(BaseType):
         self.graph_amount = data["GraphAmount"]
         self.close_data = data["CloseData"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("name")
         self.assert_not_empty_float("amount")
         self.assert_not_empty_str("currency")

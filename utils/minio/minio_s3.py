@@ -10,14 +10,14 @@ class MinioS3:
     _IMAGE_EXTENSIONS = YAMLReader().read()['image_extensions']
 
     def __init__(self):
-        self._file_bucket = YAMLReader().minio_data.get('file_bucket')
-        self._img_bucket = YAMLReader().minio_data.get('image_bucket')
+        self._file_bucket = YAMLReader().minio.get('file_bucket')
+        self._img_bucket = YAMLReader().minio.get('image_bucket')
 
         self._client = Minio(
-            endpoint=YAMLReader().minio_data.get('server'),
-            access_key=YAMLReader().minio_data.get('access_key'),
-            secret_key=YAMLReader().minio_data.get('secret_key'),
-            secure=YAMLReader().minio_data.get('secure')
+            endpoint=YAMLReader().minio.get('server'),
+            access_key=YAMLReader().minio.get('access_key'),
+            secret_key=YAMLReader().minio.get('secret_key'),
+            secure=YAMLReader().minio.get('secure')
         )
 
     def put(self, object_name, data_in_bytes):

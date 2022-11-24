@@ -4,7 +4,6 @@ from back_mobile.requests.product.accounts import Accounts
 from back_mobile.requests.product.deposits import Deposits
 from back_mobile.requests.product.loans import Loans
 from back_mobile.requests.product.store_link import StoreLink
-from utils.universal_steps.check_response import check_response
 
 
 @allure.step("Запрос кредитов клиента loans")

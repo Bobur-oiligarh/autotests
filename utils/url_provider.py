@@ -19,6 +19,9 @@ class URLProviderBase:
     def db_url(self):
         return f"{self._path('postgres')}"
 
+    def rabbit_url(self):
+        pass
+
     def _path(self, service_name):
         return f"{self.hosts[os.environ['ENV']]}:{self._port(service_name)}"
 

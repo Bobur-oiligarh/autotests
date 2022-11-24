@@ -1,8 +1,6 @@
-import allure
-
 from card_service.response_data_types.cards_methods.cards import Cards
 from utils.api_utils.test_request import TestRequest
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 
 
 class GetCards(TestRequest):

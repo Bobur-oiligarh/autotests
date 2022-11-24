@@ -1,7 +1,6 @@
 import allure
 
 from back_mobile.requests.settings.change_language import ChangeLanguage
-from utils.universal_steps.check_response import check_response
 
 
 @allure.step("сменить язык приложения change_language")

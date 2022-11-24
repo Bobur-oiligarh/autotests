@@ -15,9 +15,9 @@ class Offer(BaseType):
         self.is_short_title = data["is_short_title"]
         self.short_text = data["short_text"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("text")
-        self.true_text_language(client)
+        self.true_text_language(context)
 
     @allure.step("язык текста совпадает с ожидаемым")
     def true_text_language(self, client):
@@ -31,8 +31,8 @@ class AgreeOfferResult(BaseType):
         super().__init__()
         self.result = data["result"]
 
-    def check(self, client, **kwargs):
-        self.result_signing_offer("Success" if client.offer_sign_action == "accept" else kwargs["expected_sign_result"])
+    def check(self, context, **kwargs):
+        self.result_signing_offer("Success" if context.offer_sign_action == "accept" else kwargs["expected_sign_result"])
 
     @allure.step("проверка результата подписания оферты")
     def result_signing_offer(self, expected_result):

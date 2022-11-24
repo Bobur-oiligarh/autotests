@@ -18,11 +18,11 @@ class OpenedAccounts(BaseTypeParent):
         self.set_accounts_to_client(obj)
 
     @allure.step("Установить счета клиенту")
-    def set_accounts_to_client(self, client):
-        client.accounts = self
+    def set_accounts_to_client(self, context):
+        context.accounts = self
 
-    def check(self, client, **kwargs):
-        self.check_list_of("accounts", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("accounts", context, **kwargs)
 
 
 class Account(BaseType):
@@ -39,7 +39,7 @@ class Account(BaseType):
         self.create_date = data["create_date"]
         self.id = data["id"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("name_acc")
         self.assert_not_empty_str("account")
         self.assert_not_empty_str("code_currency")

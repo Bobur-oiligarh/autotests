@@ -1,7 +1,6 @@
 import allure
 
-from back_mobile.requests.registration import ClientSMSRegistration
-from utils.universal_steps.check_response import check_response
+from back_mobile.requests.registration.client_sms_registration import ClientSMSRegistration
 
 __all__ = [
     "step_client_sms_reg"

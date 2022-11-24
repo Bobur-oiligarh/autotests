@@ -1,6 +1,4 @@
-from typing import Any
 import allure
-from back_mobile.test_data.client import Client
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
 __all__ = [
@@ -19,11 +17,11 @@ class AvailableLanguages(BaseTypeParent):
         self.set_langs(obj)
 
     @allure.step("Установить доступные языки клиенту")
-    def set_langs(self, client):
-        client.lang_list = self
+    def set_langs(self, context):
+        context.lang_list = self
 
-    def check(self, client, **kwargs):
-        self.check_list_of("lang_list", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("lang_list", context, **kwargs)
 
 
 class Language(BaseType):
@@ -33,6 +31,6 @@ class Language(BaseType):
         self.lang_code = data["lang_code"]
         self.name = data["name"]
 
-    def check(self, client: Client, **kwargs: Any):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("lang_code")
         self.assert_not_empty_str("name")

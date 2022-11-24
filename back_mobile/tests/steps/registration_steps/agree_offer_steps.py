@@ -1,7 +1,6 @@
 import allure
 
-from back_mobile.requests.registration import AgreeOffer
-from utils.universal_steps.check_response import check_response
+from back_mobile.requests.registration.offer import AgreeOffer
 
 __all__ = [
     "step_agree_offer"

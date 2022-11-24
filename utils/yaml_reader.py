@@ -9,7 +9,8 @@ class YAMLReader(metaclass=Singleton):
 
     def __init__(self):
         self.paths: dict = self.read()["paths"]
-        self.minio_data: dict = self.read()['minio']
+        self.minio: dict = self.read()["minio"]
+        self.rabbit: dict = self.read()["rabbit"]
 
     def read(self):
         with open(self.CRED_PATH, "r") as f:

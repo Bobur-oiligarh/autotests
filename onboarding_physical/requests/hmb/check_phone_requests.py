@@ -1,6 +1,6 @@
 from onboarding_physical.response_data_types.hmb.check_phone_response_data_types import CheckPhoneResponseDatatype
 from utils.api_utils.test_request import TestRequest
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 
 
 class CheckPhoneRequest(TestRequest):

@@ -1,7 +1,7 @@
 import base64
 
-from back_mobile.response_data_types.registration import StoreAccRefTokens
-from utils.api_utils.url_provider import URLProvider
+from back_mobile.response_data_types.registration.access_refresh_tokens import StoreAccRefTokens
+from utils.url_provider import URLProvider
 from back_mobile.test_data.client import Client
 from utils.api_utils.test_request import TestRequest
 

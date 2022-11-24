@@ -1,4 +1,4 @@
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 
 
 class Credentials:

@@ -20,10 +20,10 @@ class P2PValidateResult(BaseTypeParent):
         self._set_confirm_data(obj)
 
     @allure.step("Установить p2p_confirm клиенту")
-    def _set_confirm_data(self, client):
-        client.p2p_validate_result = self
+    def _set_confirm_data(self, context):
+        context.p2p_validate_result = self
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_int("commission_sum")
         self.assert_not_empty_str("confirm_method")
         self.assert_not_empty_bool("is_confirm")

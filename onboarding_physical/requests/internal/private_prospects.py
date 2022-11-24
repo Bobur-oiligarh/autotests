@@ -1,6 +1,6 @@
 from onboarding_physical.response_data_types.internal.private_prospects_data_type import PrivateProspectDataType
 from utils.api_utils.test_request import TestRequest
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 
 
 class PrivateProspectsRequest(TestRequest):

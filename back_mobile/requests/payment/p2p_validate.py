@@ -1,7 +1,6 @@
 from back_mobile.response_data_types.payment.p2p_validate_result import P2PValidateResult
 from back_mobile.response_data_types.payment.templates import TransactionParticipant, Template
-from back_mobile.test_data.client import Client
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 from utils.api_utils.test_request import TestRequest
 
 
@@ -9,7 +8,7 @@ class P2PValidate(TestRequest):
 
     def __init__(
             self,
-            client: Client,
+            context,
             summ: float,
             template: Template = None,
             receiver: TransactionParticipant = None
@@ -19,16 +18,16 @@ class P2PValidate(TestRequest):
             URLProvider().url("back_mobile", "api/v1/mobile/payment/p2p-validate"),
             "post",
             data_type=P2PValidateResult,
-            headers=client.auth_token()
+            headers=context.auth_token()
         )
 
-        self.sender: TransactionParticipant = self._set_sender(client, template)
+        self.sender: TransactionParticipant = self._set_sender(context, template)
         self.receiver: TransactionParticipant = receiver if receiver else template.receiver
         self.sum: float = summ
         self.template_id = template.template_id if template else ""
 
     @staticmethod
-    def _set_sender(client: Client, template: Template = None) -> TransactionParticipant:
+    def _set_sender(client, template: Template = None) -> TransactionParticipant:
         if not template:
             return TransactionParticipant({
                 "id": client.main_card.card_id,

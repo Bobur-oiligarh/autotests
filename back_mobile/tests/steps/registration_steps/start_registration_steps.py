@@ -1,6 +1,6 @@
 import allure
 
-from back_mobile.requests.registration import StartRegistration
+from back_mobile.requests.registration.start_registration import StartRegistration
 from back_mobile.test_data.client import Client
 
 __all__ = [

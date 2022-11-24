@@ -1,11 +1,10 @@
 from back_mobile.response_data_types.main_page.balances import Balances
-from back_mobile.test_data.client import Client
-from utils.api_utils.url_provider import URLProvider
+from utils.url_provider import URLProvider
 from utils.api_utils.test_request import TestRequest
 
 
 class CardBalances(TestRequest):
-    def __init__(self, client: Client, cards: list = None):
+    def __init__(self, client, cards: list = None):
         super().__init__(
             URLProvider().url("back_mobile", "api/v2/mobile/cards-balances"),
             "post",

@@ -18,11 +18,11 @@ class OpenedDeposits(BaseTypeParent):
         self.set_deposits(obj)
 
     @allure.step("Установить депозиты клиенту")
-    def set_deposits(self, client):
-        client.deposits = self
+    def set_deposits(self, context):
+        context.deposits = self
 
-    def check(self, client, **kwargs):
-        self.check_list_of("deposits", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("deposits", context, **kwargs)
 
 
 class Deposit(BaseType):
@@ -36,7 +36,7 @@ class Deposit(BaseType):
         self.months = data["Months"]
         self.close_data = data["CloseData"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("name")
         self.assert_not_empty_float("amount")
         self.assert_not_empty_str("currency")

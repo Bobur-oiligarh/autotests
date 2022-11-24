@@ -5,7 +5,6 @@ from back_mobile.requests.payment.p2p_info import P2PInfo
 from back_mobile.requests.payment.p2p_init import P2PInit
 from back_mobile.requests.payment.p2p_templates import P2PTemplates
 from back_mobile.requests.payment.p2p_validate import P2PValidate
-from utils.universal_steps.check_response import check_response
 
 
 @allure.step("Запрос шаблонов переводов templates")

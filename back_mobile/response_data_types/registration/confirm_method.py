@@ -1,7 +1,6 @@
 import allure
 
 from back_mobile.response_data_types.registration.sign_id import SignId
-from back_mobile.test_data.client import Client
 
 __all__ = [
     "ConfirmMethod"
@@ -18,7 +17,7 @@ class ConfirmMethod(SignId):
         self.assert_not_empty_str("confirm_method")
         self.assert_equal("confirm_method", client.confirm_method)
 
-    def set_data_to(self, obj: Client):
+    def set_data_to(self, obj):
         super().set_data_to(obj)
         self.set_confirm_method(obj)
 

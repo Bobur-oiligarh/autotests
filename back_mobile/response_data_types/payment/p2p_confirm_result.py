@@ -26,10 +26,10 @@ class P2PConfirmResult(BaseTypeParent):
         self._set_operation_check(obj)
 
     @allure.step("Установить чек операции клиенту")
-    def _set_operation_check(self, client):
-        client.operation_check = self
+    def _set_operation_check(self, context):
+        context.operation_check = self
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("product_name")
         self.assert_not_empty_str("transact_id")
         self.assert_not_empty_str("sender_name")
