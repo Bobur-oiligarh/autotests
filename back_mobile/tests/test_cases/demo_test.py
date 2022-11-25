@@ -14,7 +14,10 @@ from back_mobile.tests.steps.settings_steps import step_change_language
 
 
 class DemoTestCase(TestCase):
+    num = 7
+
     def setUp(self) -> None:
+        self.num += 1
         self.client = Client(
             User(
                 "998941775859",
@@ -24,8 +27,8 @@ class DemoTestCase(TestCase):
             ),
             Device(
                 phone_type="1",
-                device_id="string7",
-                device_info="string7",
+                device_id=f"string{self.num}",
+                device_info=f"string{self.num}",
                 device_os="Android",
                 lang_id="ru"
             )

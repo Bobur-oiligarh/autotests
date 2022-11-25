@@ -4,7 +4,7 @@ import allure
 
 from iabs_client_service.test_data import IABSContext
 from iabs_client_service.tests.scenarios import scenario_search_clients
-from iabs_client_service.tests.steps.post_clients_search_steps import step_post_clients_search
+from iabs_client_service.tests.steps.post_clients_search_steps import step_clients_search
 
 
 class DemoScenarioTestCase(TestCase):
@@ -30,6 +30,6 @@ class IABSClientTestCase(TestCase):
         )
 
     def test_post_clients_search(self):
-        step_post_clients_search(self.context)
+        step_clients_search(self.context)
         with allure.step(f"{self.context.iabs_id}"):
             pass
