@@ -1,12 +1,6 @@
 import allure
 
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
-from back_mobile.test_data.client import Client
-
-__all__ = [
-    "Balances",
-    "Balance"
-]
 
 
 class Balances(BaseTypeParent):
@@ -16,8 +10,8 @@ class Balances(BaseTypeParent):
         self.balances: list = self.deserialize_to_list_of(Balance, data["balances"])
         self.total_sum = data["total_sum"]
 
-    def check(self, client: Client, **kwargs):
-        self.check_list_of("balances", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("balances", context, **kwargs)
         self.total_sum_is_true(
             kwargs["expected_total_sum"] if "expected_total_sum" in kwargs.keys() else None
         )
@@ -35,9 +29,9 @@ class Balances(BaseTypeParent):
         self.update_client_balances_and_total_sum(obj)
 
     @allure.step("Обновить балансы карт клиента и общую сумму")
-    def update_client_balances_and_total_sum(self, client: Client):
-        client.cards.refresh_balances(self.balances)
-        client.cards.refresh_total_sum()
+    def update_client_balances_and_total_sum(self, context):
+        context.cards.refresh_balances(self.balances)
+        context.cards.refresh_total_sum()
 
 
 class Balance(BaseType):
@@ -47,6 +41,6 @@ class Balance(BaseType):
         self.card_id = data["card_id"]
         self.balance = data["balance"]
 
-    def check(self, client: Client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("card_id")
         self.assert_not_empty_float("balance")

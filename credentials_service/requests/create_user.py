@@ -1,14 +1,10 @@
 from credentials_service.response_data_types.create_user_data_type import CreateUserDataType
 from credentials_service.test_data.credential_service_context import CredentialServiceContext
 from utils.api_utils.test_request import TestRequest
-from utils.api_utils.url_provider import URLProvider
-
-__all__ = [
-    "CreateUser"
-]
+from utils.url_provider import URLProvider
 
 
-class CreateUser(TestRequest):
+class PostCreateUser(TestRequest):
     def __init__(self, context: CredentialServiceContext):
         super().__init__(
             URLProvider().url("credentials_service", "create-user"),

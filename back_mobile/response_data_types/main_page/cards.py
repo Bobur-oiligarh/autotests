@@ -1,12 +1,6 @@
 import allure
 
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
-from back_mobile.test_data.client import Client
-
-__all__ = [
-    "Cards",
-    "Card"
-]
 
 
 class Cards(BaseTypeParent):
@@ -16,11 +10,11 @@ class Cards(BaseTypeParent):
         self.cards: list = self.deserialize_to_list_of(Card, data["cards"])
         self.total_sum = data["total_sum"]
 
-    def check(self, client: Client, **kwargs):
+    def check(self, context, **kwargs):
         total_sum_uzs = 0.0
         for card in self.cards:
             with allure.step(f"проверка параметров карты {card.mask_num}"):
-                card.check(client, **kwargs)
+                card.check(context, **kwargs)
             total_sum_uzs += card.balance
         self.assert_not_empty_float("total_sum")
         self.total_sum_is_true(total_sum_uzs)
@@ -44,23 +38,23 @@ class Cards(BaseTypeParent):
             result.append({"card_id" if full else "id": card.card_id, "ps_code": card.ps_code})
         return result
 
-    def set_data_to(self, obj: Client):
+    def set_data_to(self, obj):
         self._set_cards(obj)
         self._set_main_card(obj)
 
     @allure.step("Установить карты")
-    def _set_cards(self, client: Client):
-        client.cards = self
+    def _set_cards(self, context):
+        context.cards = self
 
     @allure.step("Установить основной карту с наибольшим балансом")
-    def _set_main_card(self, client: Client):
+    def _set_main_card(self, context):
         result_card = None
         for card in self.get_cards_by():
             if result_card is None:
                 result_card = card
             if card.balance > result_card.balance:
                 result_card = card
-        client.main_card = result_card
+        context.main_card = result_card
 
     @allure.step("Обновить балансы карт")
     def refresh_balances(self, balances: list):
@@ -92,7 +86,7 @@ class Card(BaseType):
         self.expire = data["expire"]
         self.owner = data["owner"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("card_id")
         self.assert_not_empty_str("card_type")
         self.assert_not_empty_str("mfo")

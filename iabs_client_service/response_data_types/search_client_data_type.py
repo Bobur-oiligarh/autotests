@@ -3,10 +3,10 @@ import allure
 from iabs_client_service.test_data.context import IABSContext
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
-__all__ = ['IABSClientDataType', 'Branches', 'Branch']
+__all__ = ['IABSClient', 'Branches', 'Branch']
 
 
-class IABSClientDataType(BaseTypeParent):
+class IABSClient(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()

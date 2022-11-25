@@ -1,13 +1,9 @@
 import allure
 
-from back_mobile.requests.registration import FinishRegistration
-
-__all__ = [
-    "step_finish_reg"
-]
+from back_mobile.requests.registration.post_finish_reg import PostFinishRegistration
 
 
 @allure.step("Подтверждение номера телефона finish_registration")
-def step_finish_reg(client):
-    response = FinishRegistration(client).response()
-    response.check_success(client).data.set_data_to(client)
+def step_finish_reg(context):
+    response = PostFinishRegistration(context).response()
+    response.check_success(context).data.set_data_to(context)
