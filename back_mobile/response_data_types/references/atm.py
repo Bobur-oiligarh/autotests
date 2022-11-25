@@ -1,14 +1,5 @@
-from typing import Any
 import allure
-from back_mobile.test_data.client import Client
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
-
-__all__ = [
-    "ATMs",
-    "ATM",
-    "Coordinates",
-    "DiffLangTextParams"
-]
 
 
 class ATMs(BaseTypeParent):
@@ -21,11 +12,11 @@ class ATMs(BaseTypeParent):
         self._set_atms(obj)
 
     @allure.step("Установить банкоматы клиенту")
-    def _set_atms(self, client):
-        client.atm_list = self
+    def _set_atms(self, context):
+        context.atm_list = self
 
-    def check(self, client, **kwargs):
-        self.check_list_of("atm_list", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("atm_list", context, **kwargs)
 
 
 class ATM(BaseType):
@@ -42,16 +33,16 @@ class ATM(BaseType):
         self.atm_type = DiffLangTextParams(data["atm_type"])
         self.address = DiffLangTextParams(data["address"])
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_none_and_true_type("mfo", str)
         self.assert_not_empty_str("type")
-        self.check_attrs_of("Coords", client, **kwargs)
+        self.check_attrs_of("Coords", context, **kwargs)
         self.assert_not_empty_str("region_code")
-        self.check_attrs_of("orienter", client, **kwargs)
-        self.check_attrs_of("work_time", client, **kwargs)
-        self.check_attrs_of("work_days", client, **kwargs)
-        self.check_attrs_of("atm_type", client, **kwargs)
-        self.check_attrs_of("address", client, **kwargs)
+        self.check_attrs_of("orienter", context, **kwargs)
+        self.check_attrs_of("work_time", context, **kwargs)
+        self.check_attrs_of("work_days", context, **kwargs)
+        self.check_attrs_of("atm_type", context, **kwargs)
+        self.check_attrs_of("address", context, **kwargs)
 
 
 class Coordinates(BaseType):
@@ -61,7 +52,7 @@ class Coordinates(BaseType):
         self.lat = data["lat"]
         self.lng = data["lng"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("lat")
         self.assert_not_empty_str("lng")
 
@@ -73,7 +64,7 @@ class DiffLangTextParams(BaseType):
         self.uz = data["uz"]
         self.ru = data["ru"]
 
-    def check(self, client: Client, **kwargs):
+    def check(self, context, **kwargs):
         self.uz_not_null()
         self.ru_not_null()
 

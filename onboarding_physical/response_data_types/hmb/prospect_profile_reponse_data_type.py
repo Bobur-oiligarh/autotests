@@ -9,7 +9,7 @@ class ProspectProfileResponseType(BaseTypeParent):
         super().__init__()
         self.id = data['ID']
         self.source = data['Source']
-        self.prospectID = data['ProspectID']
+        self.prospect_id = data['ProspectID']
         self.first_name = data['FirstName']
         self.last_name = data['LastName']
         self.middle_name = data['MiddleName']
@@ -45,7 +45,7 @@ class ProspectProfileResponseType(BaseTypeParent):
     def check(self, context, **kwargs):
         self.assert_not_empty_str('id')
         self.assert_not_empty_int('source')
-        self.assert_not_empty_str('prospectID')
+        self.assert_not_empty_str('prospect_id')
         self.assert_not_empty_str('first_name')
         self.assert_not_empty_str('last_name')
         self.assert_not_empty_str('middle_name')

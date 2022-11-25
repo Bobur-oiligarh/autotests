@@ -1,7 +1,12 @@
 import allure
 
 from back_mobile.tests.steps.identification_steps import set_sms_code
-from back_mobile.tests.steps import *
+from back_mobile.tests.steps.registration_steps.agree_offer_steps import step_agree_offer
+from back_mobile.tests.steps.registration_steps.check_client_reg_steps import step_check_client_reg
+from back_mobile.tests.steps.registration_steps.client_sms_reg import step_client_sms_reg
+from back_mobile.tests.steps.registration_steps.finish_registration_steps import step_finish_reg
+from back_mobile.tests.steps.registration_steps.get_offer_steps import step_get_offer
+from back_mobile.tests.steps.registration_steps.start_registration_steps import step_start_reg_success
 
 
 @allure.step("Процесс регистрации")

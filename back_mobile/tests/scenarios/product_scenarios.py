@@ -1,6 +1,6 @@
 import allure
 
-from back_mobile.tests.steps.product_steps import step_loans, step_deposits, step_store_link
+from back_mobile.tests.steps.product_steps import step_deposits, step_store_link
 from back_mobile.tests.steps.product_steps import step_loans, step_accounts
 
 

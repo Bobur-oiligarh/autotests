@@ -1,13 +1,6 @@
 import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent, BaseType
-from back_mobile.test_data.client import Client
-
-__all__ = [
-    "Operations",
-    "State",
-    "Operation"
-]
 
 
 class Operations(BaseTypeParent):
@@ -17,16 +10,16 @@ class Operations(BaseTypeParent):
         self.operations = self.deserialize_to_list_of(Operation, data["operations"])
         self.state = self.deserialize_to_list_of(State, data["state"])
 
-    def set_data_to(self, obj: Client):
+    def set_data_to(self, obj):
         self.set_operations(obj)
 
     @allure.step("Установть операции")
-    def set_operations(self, client):
-        client.operations = self.operations
+    def set_operations(self, context):
+        context.operations = self.operations
 
-    def check(self, client, **kwargs):
-        self.check_list_of("operations", client, **kwargs)
-        self.check_list_of("state", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("operations", context, **kwargs)
+        self.check_list_of("state", context, **kwargs)
 
 
 class State(BaseType):
@@ -36,7 +29,7 @@ class State(BaseType):
         self.ps_code = data["ps_code"]
         self.health = data["health"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("ps_code")
         self.assert_not_empty_bool("health")
 
@@ -55,7 +48,7 @@ class Operation(BaseType):
         self.curr_code = data["curr_code"]
         self.is_credit = data["is_credit"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("ps_code")
         self.assert_not_empty_str("pan")
         self.assert_not_empty_str("time")

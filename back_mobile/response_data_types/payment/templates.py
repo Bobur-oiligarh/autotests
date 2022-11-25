@@ -2,12 +2,6 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 
-__all__ = [
-    "Templates",
-    "Template",
-    "TransactionParticipant"
-]
-
 
 class Templates(BaseTypeParent):
 
@@ -19,12 +13,12 @@ class Templates(BaseTypeParent):
         self._set_templates_to_client(obj)
 
     @allure.step("Установить шаблоны")
-    def _set_templates_to_client(self, client):
-        client.templates = self
+    def _set_templates_to_client(self, context):
+        context.templates = self
 
     @allure.step("Проверка всех шаблонов")
-    def check(self, client, **kwargs):
-        self.check_list_of("templates", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_list_of("templates", context, **kwargs)
 
 
 class Template(BaseType):
@@ -39,9 +33,9 @@ class Template(BaseType):
         self.operation_time = data["operation_time"]
         self.template_id = data["template_id"]
 
-    def check(self, client, **kwargs):
-        self.check_attrs_of("sender", client, **kwargs)
-        self.check_attrs_of("receiver", client, **kwargs)
+    def check(self, context, **kwargs):
+        self.check_attrs_of("sender", context, **kwargs)
+        self.check_attrs_of("receiver", context, **kwargs)
         self.assert_not_empty_int("sum")
         self.assert_not_empty_float("commission_sum")
         self.assert_not_empty_str("status")
@@ -60,7 +54,7 @@ class TransactionParticipant(BaseType):
         self.bank_code = data["bank_code"]
         self.owner = data["owner"]
 
-    def check(self, client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("id")
         self.assert_not_empty_str("pan")
         self.assert_not_none_and_true_type("expire", str)

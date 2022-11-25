@@ -1,1 +1,1 @@
-from .search_client import IABSClientByIdRequest
+from .get_clients_search_requests import IABSClientByIdRequest

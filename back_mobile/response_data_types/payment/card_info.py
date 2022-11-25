@@ -1,12 +1,7 @@
 import allure
 
-from back_mobile.test_data.client import Client
+from back_mobile.response_data_types.payment.templates import TransactionParticipant
 from utils.api_utils.response_data_base import BaseTypeParent
-from . import TransactionParticipant
-
-__all__ = [
-    "CardInfo"
-]
 
 
 class CardInfo(BaseTypeParent):
@@ -22,12 +17,12 @@ class CardInfo(BaseTypeParent):
         self.processing = data["processing"]
         self.is_bank_card = data["is_bank_card"]
 
-    def set_data_to(self, obj: Client):
+    def set_data_to(self, obj):
         self._set_card_info_to_client(obj)
 
     @allure.step("Установить параметры получателя клиенту")
-    def _set_card_info_to_client(self, client: Client):
-        client.receiver = TransactionParticipant({
+    def _set_card_info_to_client(self, context):
+        context.receiver = TransactionParticipant({
             "id": self.card_id,
             "pan": self.pan,
             "expire": self.expire,
@@ -36,7 +31,7 @@ class CardInfo(BaseTypeParent):
             "owner": self.owner
         })
 
-    def check(self, client: Client, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str("card_id")
         self.assert_not_empty_str("owner")
         self.assert_not_empty_str("pan")

@@ -1,6 +1,6 @@
 import allure
 
-from credentials_service.requests import UpdateUser
+from credentials_service.requests.update_user import UpdateUser
 from credentials_service.test_data.credential_service_context import CredentialServiceContext
 
 __all__ = [
