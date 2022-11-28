@@ -1,14 +1,9 @@
 import allure
 
-from credentials_service.requests.update_user import UpdateUser
-from credentials_service.test_data.credential_service_context import CredentialServiceContext
-
-__all__ = [
-    "step_update_user"
-]
+from credentials_service.requests.post_update_user import PostUpdateUser
 
 
 @allure.step("Запрос на обновление пользователя")
-def step_update_user(context: CredentialServiceContext):
-    response = UpdateUser(context).response()
+def step_update_user(context):
+    response = PostUpdateUser(context).response()
     response.check_success(context).data.set_data_to(context)

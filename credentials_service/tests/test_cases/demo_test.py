@@ -4,7 +4,7 @@ from credentials_service.test_data.credential_service_context import CredentialS
 from credentials_service.tests.steps.create_user_steps import create_user_success
 from credentials_service.tests.steps.device_auth_steps import step_device_auth
 from credentials_service.tests.steps.device_lang_update_steps import step_device_lang_update
-from credentials_service.tests.steps.get_device_info_steps import step_get_and_check_device_info
+from credentials_service.tests.steps.device_info_steps import step_get_and_check_device_info
 from credentials_service.tests.steps.update_user_steps import step_update_user
 
 
