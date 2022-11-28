@@ -1,12 +1,11 @@
 from iabs_client_service.response_data_types.search_client_data_type import IABSClient
-from iabs_client_service.test_data.context import IABSContext
 from utils.api_utils.test_request import TestRequest
 from utils.url_provider import URLProvider
 
 
-class IABSClientByIdRequest(TestRequest):
+class GetIABSClientById(TestRequest):
 
-    def __init__(self, context: IABSContext):
+    def __init__(self, context):
         super().__init__(
             URLProvider().url("iabs_client_service", "clients/search"),
             "get",

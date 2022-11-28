@@ -1,6 +1,6 @@
 import allure
 
-from iabs_client_service.requests.post_clients_search_requests import PostClientsSearch
+from iabs_client_service.requests.post_clients_search import PostClientsSearch
 
 
 @allure.step('Делаем POST запрос на clients/search и проверяем ответ')
