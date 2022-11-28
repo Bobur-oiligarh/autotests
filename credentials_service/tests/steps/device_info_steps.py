@@ -1,6 +1,6 @@
 import allure
 
-from credentials_service.requests.get_device_info_request import GetDeviceInfo
+from credentials_service.requests.get_device_info import GetDeviceInfo
 
 
 @allure.step('Запрашиваем инфо по девайсу')

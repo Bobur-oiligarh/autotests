@@ -1,14 +1,9 @@
 import allure
 
 from back_mobile.response_data_types.registration.access_refresh_tokens import AccRefTokens
-from credentials_service.test_data.credential_service_context import CredentialServiceContext
-
-__all__ = [
-    "CreateUserDataType"
-]
 
 
-class CreateUserDataType(AccRefTokens):
+class CreateUser(AccRefTokens):
 
     def __init__(self, data: dict):
         super().__init__(data)
@@ -18,7 +13,7 @@ class CreateUserDataType(AccRefTokens):
         self.set_data_to_context(obj)
 
     @allure.step("Установить данные в контекст")
-    def set_data_to_context(self, context: CredentialServiceContext):
+    def set_data_to_context(self, context):
         context.refresh_token = self.refresh_token
         context.access_token = self.access_token
         context.user_id = self.user_id

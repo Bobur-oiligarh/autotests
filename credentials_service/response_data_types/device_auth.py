@@ -3,7 +3,7 @@ from credentials_service.test_data.credential_service_context import CredentialS
 import allure
 
 
-class DeviceAuthDataType(AccRefTokens):
+class DeviceAuth(AccRefTokens):
 
     def __init__(self, data: dict):
         super().__init__(data)

@@ -1,10 +1,10 @@
 import allure
 
-from credentials_service.requests.device_auth_requests import DeviceAuthRequest
+from credentials_service.requests.post_device_auth import PostDeviceAuth
 
 
 @allure.step('Запрос на аутентификацию девайса, проверяем ответ')
 def step_device_auth(context):
-    response = DeviceAuthRequest(context).response()
+    response = PostDeviceAuth(context).response()
     response.check_success(context).data.set_data_to(context)
 

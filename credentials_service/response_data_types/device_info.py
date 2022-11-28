@@ -1,4 +1,3 @@
-from credentials_service.test_data.credential_service_context import CredentialServiceContext
 from utils.api_utils.response_data_base import BaseTypeParent
 import allure
 
@@ -24,9 +23,9 @@ class DeviceResponseType(BaseTypeParent):
         self.assert_not_empty_int('identity_sign')
         self.assert_not_empty_bool('active')
 
-    def set_data_to(self, obj: CredentialServiceContext):
+    def set_data_to(self, obj):
         self._set_info_to_device(obj)
 
     @allure.step('Устанавливаем инфо к девайсу')
-    def _set_info_to_device(self, obj: CredentialServiceContext):
+    def _set_info_to_device(self, obj):
         obj.device_info = self
