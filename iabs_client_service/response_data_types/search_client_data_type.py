@@ -1,9 +1,6 @@
 import allure
 
-from iabs_client_service.test_data.context import IABSContext
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
-
-__all__ = ['IABSClient', 'Branches', 'Branch']
 
 
 class IABSClient(BaseTypeParent):
@@ -35,7 +32,7 @@ class IABSClient(BaseTypeParent):
         self.residence_full_address = data['residence_full_address']
         self.residence_kadastr = data['residence_kadastr']
 
-    def check(self, context: IABSContext, **kwargs):
+    def check(self, context, **kwargs):
         self.assert_not_empty_str('iabs_id')
         self.assert_not_empty_str('doc_type')
         self.assert_not_empty_str('doc_series')
@@ -61,11 +58,11 @@ class IABSClient(BaseTypeParent):
         self.assert_not_empty_str('residence_full_address')
         self.assert_not_none_and_true_type('residence_full_address', str)
 
-    def set_data_to(self, obj: IABSContext):
+    def set_data_to(self, obj):
         self._set_iabs_client(obj)
 
     @allure.step("Установим клиента iabs")
-    def _set_iabs_client(self, obj: IABSContext):
+    def _set_iabs_client(self, obj):
         obj.iabs_client = self
 
 
@@ -74,7 +71,7 @@ class Branches(BaseTypeParent):
         super().__init__()
         self.branches = self.deserialize_to_list_of(Branch, data)
 
-    def set_data_to(self, obj: IABSContext):
+    def set_data_to(self, obj):
         self._set_branches_to_iabs_client(obj)
 
     @allure.step("Установить филлиалы клиенту")
@@ -91,6 +88,6 @@ class Branch(BaseType):
         self.mfo = data["mfo"]
         self.client_code = data["client_code"]
 
-    def check(self, client: IABSContext, **kwargs):
+    def check(self, client, **kwargs):
         self.assert_not_empty_str('mfo')
         self.assert_not_empty_str('client_code')

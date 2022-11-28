@@ -6,8 +6,15 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # },
+    # {
+    #     "service": "credentials_service",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": None
+    # },
     {
-        "service": "credentials_service",
+        "service": "iabs_client_service",
         "env": "component",
         "team": "hamkor_mobile",
         "con_type": "vpn",
