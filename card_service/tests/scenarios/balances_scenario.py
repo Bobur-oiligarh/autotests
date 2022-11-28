@@ -1,7 +1,7 @@
 import allure
 
 from card_service.tests.steps.get_cards_steps import step_get_cards
-from card_service.tests.steps.get_balances_steps import step_get_balance
+from card_service.tests.steps.balances_steps import step_get_balance
 
 
 @allure.step("Запрашиваем карты связанные к данному телефону")

@@ -1,1 +1,1 @@
-from .infocards import *
+from .info_cards import *

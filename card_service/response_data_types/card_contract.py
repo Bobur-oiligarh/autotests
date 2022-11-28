@@ -23,7 +23,7 @@ class CardContract(BaseTypeParent):
         self.assert_not_empty_str('account')
         self.assert_not_empty_int('contract_type')
 
-    def set_data_to(self, obj: CardServiceContext):
+    def set_data_to(self, obj):
         self._set_card_contract_to_obj(obj)
 
     @allure.step('Установим контракт карты объекту')

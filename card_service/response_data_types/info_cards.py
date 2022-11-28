@@ -2,11 +2,6 @@ import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 
-__all__ = [
-    "InfoCards",
-    "InfoCard"
-]
-
 
 class InfoCards(BaseTypeParent):
 

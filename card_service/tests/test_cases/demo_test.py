@@ -3,7 +3,7 @@ from unittest import TestCase
 import allure
 
 from card_service.test_data.card_service_context import CardServiceContext
-from card_service.tests.scenarios.get_balances_scenario import balances_scenario
+from card_service.tests.scenarios.balances_scenario import balances_scenario
 from card_service.tests.steps.get_cards_steps import step_get_cards
 from card_service.tests.steps.get_p2pinfo_steps import step_get_p2p_info
 
