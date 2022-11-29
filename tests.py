@@ -13,8 +13,15 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # },
+    # {
+    #     "service": "iabs_client_service",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": None
+    # }
     {
-        "service": "iabs_client_service",
+        "service": "limit_module",
         "env": "component",
         "team": "hamkor_mobile",
         "con_type": "vpn",

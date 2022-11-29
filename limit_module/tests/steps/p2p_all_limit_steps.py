@@ -1,6 +1,6 @@
 import allure
 
-from limit_module.requests.p2p_all_oper_limit_request import PostP2PAllOperationsLimit
+from limit_module.requests.post_p2p_all_oper_limit import PostP2PAllOperationsLimit
 
 
 @allure.step("Запрашиваем лимит по p2p операции и проверяем")

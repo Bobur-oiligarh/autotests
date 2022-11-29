@@ -3,11 +3,11 @@ from utils.api_utils.response_data_base import BaseTypeParent, BaseType
 import allure
 
 
-class LimitDataTypes(BaseTypeParent):
+class Limits(BaseTypeParent):
 
     def __init__(self, data: list):
         super().__init__()
-        self.limits: list = self.deserialize_to_list_of(LimitDataType, data)
+        self.limits: list = self.deserialize_to_list_of(Limit, data)
 
     def check(self, context, **kwargs):
         self.check_list_of("limits", context, **kwargs)
@@ -20,7 +20,7 @@ class LimitDataTypes(BaseTypeParent):
         obj.limits = self
 
 
-class LimitDataType(BaseType):
+class Limit(BaseType):
 
     def __init__(self, data: dict):
         super().__init__()
