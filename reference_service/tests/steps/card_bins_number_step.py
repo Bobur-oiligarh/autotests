@@ -1,6 +1,6 @@
 import allure
 
-from reference_service.requests.card_bin.card_bins_number import GetCardBinsNumber
+from reference_service.requests.card_bin.get_card_bins_number import GetCardBinsNumber
 
 
 @allure.step("Проверка запроса /card-bins/number")
