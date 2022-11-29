@@ -1,12 +1,7 @@
 from utils.api_utils.response_data_base import BaseType, BaseTypeParent
 
-__all__ = [
-    "CardBinNumberResult",
-    "Processing"
-]
 
-
-class CardBinNumberResult(BaseTypeParent):
+class CardBinNumber(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()

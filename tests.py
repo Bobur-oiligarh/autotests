@@ -19,7 +19,7 @@ services = [
     #     "team": "hamkor_mobile",
     #     "con_type": "vpn",
     #     "tests": None
-    # }
+    # },
     # {
     #     "service": "limit_module",
     #     "env": "component",
@@ -27,11 +27,19 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # },
+    # {
+    #     "service": "onboarding_physical",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": None
+    # },
     {
-        "service": "onboarding_physical",
+        "service": "reference_service",
         "env": "component",
         "team": "hamkor_mobile",
         "con_type": "vpn",
         "tests": None
     }
+
 ]
