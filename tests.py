@@ -34,12 +34,19 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # },
+    # {
+    #     "service": "reference_service",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": None
+    # },
     {
-        "service": "reference_service",
+        "service": "sme_credits",
         "env": "component",
-        "team": "hamkor_mobile",
+        "team": "sme_credits",
         "con_type": "vpn",
-        "tests": None
+        "tests": ["vbnv_100"]
     }
 
 ]

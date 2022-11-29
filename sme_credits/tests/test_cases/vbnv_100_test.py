@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from sme_credits.response_data_types.accounts_data_type import SMEAccount
+from sme_credits.response_data_types.accounts import SMEAccount
 from sme_credits.test_data.sme_context import SMEContext
 from sme_credits.tests.scenarios.check_methods_work_scenario import check_methods_work_scenario
 
