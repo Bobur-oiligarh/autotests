@@ -3,7 +3,7 @@ from utils.api_utils.response_data_base import BaseTypeParent
 import allure
 
 
-class CheckPhoneResponseDatatype(BaseTypeParent):
+class CheckPhone(BaseTypeParent):
 
     def __init__(self, data):
         super().__init__()

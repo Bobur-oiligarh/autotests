@@ -1,9 +1,8 @@
 import allure
-from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from utils.api_utils.response_data_base import BaseTypeParent
 
 
-class PrivateContactDataType(BaseTypeParent):
+class PrivateContact(BaseTypeParent):
     def __init__(self, data: dict):
         super().__init__()
         self.id = data.get('id')
@@ -21,7 +20,7 @@ class PrivateContactDataType(BaseTypeParent):
         self.assert_no_strict_str('verified_at')
         self.assert_not_empty_str('created_at')
 
-    def set_data_to(self, obj: OnboardingPhysicalContext):
+    def set_data_to(self, obj):
         self._set_contact_to(obj)
 
     @allure.step('')

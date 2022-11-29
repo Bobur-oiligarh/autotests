@@ -3,7 +3,7 @@ import allure
 from utils.api_utils.response_data_base import BaseTypeParent
 
 
-class ProspectProfileResponseType(BaseTypeParent):
+class ProspectProfile(BaseTypeParent):
 
     def __init__(self, data):
         super().__init__()

@@ -20,8 +20,15 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # }
+    # {
+    #     "service": "limit_module",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": None
+    # },
     {
-        "service": "limit_module",
+        "service": "onboarding_physical",
         "env": "component",
         "team": "hamkor_mobile",
         "con_type": "vpn",

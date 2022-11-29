@@ -1,12 +1,7 @@
-from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
 from utils.api_utils.response_data_base import BaseTypeParent
 
-__all_ = [
-    "PrivateProspectDataType"
-]
 
-
-class PrivateProspectDataType(BaseTypeParent):
+class PrivateProspect(BaseTypeParent):
 
     def __init__(self, data: dict):
         super().__init__()
@@ -57,5 +52,5 @@ class PrivateProspectDataType(BaseTypeParent):
     def set_data_to(self, obj):
         self.set_data_to_context(obj)
 
-    def set_data_to_context(self, context: OnboardingPhysicalContext):
+    def set_data_to_context(self, context):
         context.prospect_by_phone_iabs = self
