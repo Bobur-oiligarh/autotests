@@ -1,14 +1,12 @@
 import allure
-from abc import ABC
 
-from onboarding_physical.response_data_types.internal.private_address_data_type import PrivateAddress
-from onboarding_physical.response_data_types.internal.private_contact_response_data_type import PrivateContactDataType
-from onboarding_physical.response_data_types.internal.private_prospects_data_type import PrivateProspectDataType
-from onboarding_physical.test_data.onboarding_physical_context import OnboardingPhysicalContext
-from utils.api_utils.response_data_base import BaseType, BaseTypeParent
+from onboarding_physical.response_data_types.internal.private_address import PrivateAddress
+from onboarding_physical.response_data_types.internal.private_contact import PrivateContact
+from onboarding_physical.response_data_types.internal.private_prospects import PrivateProspect
+from utils.api_utils.response_data_base import BaseTypeParent
 
 
-class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
+class PrivateProspectsByID(PrivateProspect):
 
     def __init__(self, data: dict):
         super().__init__(data)
@@ -31,7 +29,6 @@ class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
         self.inps = data['inps']
         self.nationality_code = data['nationality_code']
         self.citizenship_code = data['citizenship_code']
-        self.marital_status = data['marital_status']
         self.is_resident = data['is_resident']
         self.contacts = Contacts(data['contacts'])
         self.first_name_en = data.get('first_name_en')
@@ -40,6 +37,7 @@ class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
         self.subject_state = data.get('subject_state')
         self.tin_registration_date = data.get('tin_registration_date')
         self.tin_registration_gni = data.get('tin_registration_gni')
+        self.marital_status = data.get('marital_status')
 
     def check(self, context, **kwargs):
         super().check(context, **kwargs)
@@ -72,7 +70,7 @@ class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
         self.assert_no_strict_str('tin_registration_date')
         self.assert_no_strict_str('tin_registration_gni')
 
-    def set_data_to(self, obj: OnboardingPhysicalContext):
+    def set_data_to(self, obj):
         self._set_private_prospect_to(obj)
 
     @allure.step('Установим private_prospect')
@@ -83,7 +81,7 @@ class PrivateProspectsByIDResponseDataType(PrivateProspectDataType):
 class Contacts(BaseTypeParent):
     def __init__(self, data: list):
         super().__init__()
-        self.contacts: list = self.deserialize_to_list_of(PrivateContactDataType, data)
+        self.contacts: list = self.deserialize_to_list_of(PrivateContact, data)
 
     def check(self, context, **kwargs):
         self.check_list_of("contacts", context, **kwargs)
