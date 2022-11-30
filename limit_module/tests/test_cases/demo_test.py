@@ -16,6 +16,3 @@ class LimitModuleTestCase(TestCase):
 
     def test_limit_module(self):
         step_p2p_all_limit(self.context)
-
-        with allure.step(f"{self.context.limits}"):
-            pass

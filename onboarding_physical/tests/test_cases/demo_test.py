@@ -54,39 +54,25 @@ class OnboardingPhysicalTC(TestCase):
 
     def test_check_phone(self):
         step_check_phone(context=self.context)
-        with allure.step("Телефон:"):
-            pass
 
     def test_get_prospect_profile(self):
         step_get_prospect_profile(context=self.context)
-        with allure.step(f"({self.context.prospect_id})"):
-            pass
 
     def test_prospects(self):
         step_private_prospects(self.context)
-        with allure.step(f"({self.context.prospect_id})"):
-            pass
 
     @allure.step('Получение контакта')
     def test_private_contact(self):
         step_private_contact(self.context)
-        with allure.step(f"({self.context.prospect_id})"):
-            pass
 
     def test_private_contacts(self):
         step_private_contacts(self.context)
-        with allure.step(f"({self.context.contact_id})"):
-            pass
 
     def test_private_prospects_by_prospect_id(self):
         step_private_prospect_by_prospect_id(self.context)
-        with allure.step(f"({self.context.prospect_id})"):
-            pass
 
     def test_private_address_by_address_id(self):
         step_private_address_by_id(self.context)
-        with allure.step(f"({self.context.prospect_id}"):
-            pass
 
     def test_put_private_address_to_prospect(self):
         step_put_private_address_to_prospect(self.context)

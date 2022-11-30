@@ -31,5 +31,3 @@ class IABSClientTestCase(TestCase):
 
     def test_post_clients_search(self):
         step_clients_search(self.context)
-        with allure.step(f"{self.context.iabs_id}"):
-            pass

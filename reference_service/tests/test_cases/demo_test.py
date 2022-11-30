@@ -15,6 +15,3 @@ class DemoTestCase(TestCase):
 
     def test_1(self):
         card_bins_number_success(self.context)
-
-        with allure.step(f"{self.context.card_bins}"):
-            pass
