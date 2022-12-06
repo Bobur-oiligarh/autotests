@@ -1,3 +1,5 @@
+import unittest
+
 import allure
 from utils.api_utils.response_data_base import BaseTypeParent
 
@@ -16,6 +18,19 @@ class SMEStrategies(BaseTypeParent):
     @allure.step("Установим стратегии контексту")
     def set_data_to_obj(self, obj):
         obj.strategies = self
+
+    def get_strategy_by_param(self, param_name: str, param_value):
+        strategy = None
+        for strategy_obj in self.strategies:
+            if strategy_obj.__dict__[param_name] == param_value:
+                return strategy
+        return strategy
+
+    def exist(self, param_name: str, param_value):
+        self._tc.assertTrue(self.get_strategy_by_param(param_name, param_value))
+
+    def not_exist(self, param_name: str, param_value):
+        self._tc.assertFalse(self.get_strategy_by_param(param_name, param_value))
 
 
 class SMEStrategy(BaseTypeParent):
@@ -43,3 +58,22 @@ class SMEStrategy(BaseTypeParent):
     def set_strategy_to(self, obj):
         obj.strategy = self
 
+    def change_param_value(self, param_name: str, param_value):
+        self.__setattr__(param_name, param_value)
+
+    def check_objects_similarity(self, strategy: object):
+        for attribute in self.__dict__.keys():
+            if attribute in
+
+
+
+
+if __name__ == '__main__':
+    class Test:
+        def __init__(self):
+            self.book = "jhbj"
+            self.note = "sfgf"
+
+    a = Test()
+    print(a.__dict__.keys()["book"])
+    unittest.TestCase().assertTrue(a)
