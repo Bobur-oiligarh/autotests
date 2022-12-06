@@ -63,10 +63,14 @@ class BaseType(ABC):
     def assert_not_empty_balance(self, param_name: str):
         self.assert_not_none(param_name)
         with allure.step("проверка типа баланса"):
-            if type(self.__getattribute__(param_name)) in [float, int]:
+            self.assert_not_empty_numeric(param_name)
+
+    def assert_not_empty_numeric(self, param_name: str):
+        self.assert_not_none(param_name)
+        with allure.step("проверка числового типа параметра"):
+            if type(getattr(self, param_name)) in [float, int]:
                 return self
-            assert False, f"тип данных баланса не соответствует числовому {type(self.__getattribute__(param_name))}\n" \
-                   f"{self.__str__()}"
+            assert False, f"тип данных баланса не соответствует числовому {type(getattr(self, param_name))}\n{self.__str__()}"
 
     def assert_not_empty_bool(self, param_name: str):
         self.assert_not_none_and_true_type(param_name, bool)

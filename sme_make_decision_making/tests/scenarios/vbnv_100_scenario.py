@@ -1,9 +1,9 @@
 import allure
 
-from sme_credits.tests.steps.account.delete_accounts_steps import step_delete_sme_accounts
-from sme_credits.tests.steps.account.get_accounts_steps import step_get_sme_accounts
-from sme_credits.tests.steps.account.patch_accounts_steps import step_patch_account
-from sme_credits.tests.steps.account.post_accounts_steps import step_post_sme_accounts
+from sme_make_decision_making.tests.steps.account.delete_accounts_steps import step_delete_sme_accounts
+from sme_make_decision_making.tests.steps.account.get_accounts_steps import step_get_sme_accounts
+from sme_make_decision_making.tests.steps.account.patch_accounts_steps import step_patch_account
+from sme_make_decision_making.tests.steps.account.post_accounts_steps import step_post_sme_accounts
 
 
 @allure.step("Проверка работы конечных точек SME accounts")

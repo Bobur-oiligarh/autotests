@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.account.patch_accounts import PatchAccounts
+from sme_make_decision_making.requests.account.patch_accounts import PatchAccounts
 
 
 @allure.step("Запрос PATCH /accounts, проверка ответа")

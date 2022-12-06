@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.account.get_accounts import GetAccounts
+from sme_make_decision_making.requests.account.get_accounts import GetAccounts
 
 
 @allure.step("Get sme/accounts")
