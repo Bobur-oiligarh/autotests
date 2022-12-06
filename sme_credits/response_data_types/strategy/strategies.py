@@ -62,8 +62,11 @@ class SMEStrategy(BaseTypeParent):
         self.__setattr__(param_name, param_value)
 
     def check_objects_similarity(self, strategy: object):
+        counter = 0
         for attribute in self.__dict__.keys():
-            if attribute in
+            if self.__dict__[attribute] == strategy.__dict__[attribute]:
+                counter += 1
+        self._tc.assertEqual(counter, len(self.__dict__))
 
 
 
@@ -75,5 +78,5 @@ if __name__ == '__main__':
             self.note = "sfgf"
 
     a = Test()
-    print(a.__dict__.keys()["book"])
+    print(len(a.__dict__))
     unittest.TestCase().assertTrue(a)
