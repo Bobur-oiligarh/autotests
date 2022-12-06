@@ -17,6 +17,8 @@ class SMECriterions(BaseTypeParent):
         self.check_list_of("criterions", context, **kwargs)
 
 
+
+
 class SMECriterion(BaseTypeParent):
 
     def set_data_to(self, obj):
