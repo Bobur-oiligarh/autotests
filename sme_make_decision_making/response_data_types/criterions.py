@@ -1,4 +1,4 @@
-from utils.api_utils.response_data_base import BaseType, BaseTypeParent
+from utils.api_utils.response_data_base import BaseTypeParent
 
 
 class SMECriterions(BaseTypeParent):
