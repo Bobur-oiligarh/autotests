@@ -20,7 +20,7 @@ class Cards(BaseTypeParent):
         self.total_sum_is_true(total_sum_uzs)
 
     def total_sum_is_true(self, expected_total_sum):
-        self.assert_equal("total_sum", expected_total_sum)
+        self.assert_equal_param("total_sum", expected_total_sum)
 
     def get_cards_by(self, param: str = None, value=None):
         if param is None:

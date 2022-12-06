@@ -102,13 +102,23 @@ class BaseType(ABC):
             self._tc.assertIsNotNone(value, self._empty_str(param_name, value))
         return self
 
-    def assert_equal(self, param_name, expected_value):
+    def assert_equal_param(self, param_name, expected_value):
         value = getattr(self, param_name)
         with allure.step(param_name + " совпадает с ожидаемым"):
             self._tc.assertEqual(value, expected_value,
                                  f"{param_name} ({value}) не соответствует "
                                  f"ожидаемому ({expected_value})")
         return self
+
+    def assert_equal(self, obj):
+        differences = self._differences(obj)
+        self._tc.assertEqual(0, len(differences),
+                             f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
+
+    def assert_not_equal(self, obj):
+        differences = self._differences(obj)
+        self._tc.assertNotEqual(0, len(differences),
+                                f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
 
     def check_list_of(self, list_param_name: str, context, **kwargs):
         with allure.step(f"Проверка объектов в списке {list_param_name}"):
@@ -126,6 +136,13 @@ class BaseType(ABC):
     def _empty_str(self, parameter_name, value):
         return parameter_name + f" ({value}) пустой" + self.__str__()
 
+    def _differences(self, obj) -> list:
+        differences = []
+        for key in self.__dict__.keys():
+            if self.__dict__[key] != obj.__dict__[key]:
+                differences.append([key, self.__dict__[key], obj.__dict__[key]])
+        return differences
+
 
 class BaseTypeParent(BaseType, ABC):
     def __init__(self):
@@ -141,3 +158,23 @@ class BaseTypeParent(BaseType, ABC):
     @abstractmethod
     def set_data_to(self, obj):
         pass
+
+    def get_obj_by_param(self, list_param_name, param_name, param_value):
+        result = None
+        for item in getattr(self, list_param_name):
+            if item.__dict__[param_name] == param_value:
+                result = item
+                break
+        return result
+
+    def assert_obj_exist(self, list_param_name, param_name, param_value):
+        self._tc.assertTrue(
+            True if self.get_obj_by_param(list_param_name, param_name, param_value) else False,
+            f"Такого объекта {param_name} - {param_value} нет в списке {getattr(self, list_param_name)}"
+        )
+
+    def assert_obj_not_exist(self, list_param_name, param_name, param_value):
+        self._tc.assertFalse(
+            False if not self.get_obj_by_param(list_param_name, param_name, param_value) else True,
+            f"Такой объект присутствует в списке"
+        )

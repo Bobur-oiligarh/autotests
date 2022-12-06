@@ -9,5 +9,5 @@ class ChangeLang(BaseType):
 
     def check(self, context, **kwargs):
         self.assert_not_empty_str("result")
-        self.assert_equal("result",
+        self.assert_equal_param("result",
                           "Успешно установлен" if "expected_result" not in kwargs.keys() else kwargs["expected_result"])

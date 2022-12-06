@@ -19,7 +19,7 @@ def check_methods_work_scenario(context):
     context.account.change_param(param_name="account_mask", param_value="11111")
     step_patch_account(context)
     step_get_sme_accounts(context)
-    context.account.assert_equal(
+    context.account.assert_equal_param(
         context.accounts.get_account_by_param(param_name="id", param_value=context.account.id)
     )
     # удаление аккаунта, проверка удаления
