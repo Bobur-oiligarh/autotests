@@ -4,6 +4,7 @@ from sme_credits.response_data_types.account.accounts import SMEAccount
 from sme_credits.response_data_types.strategy.strategies import SMEStrategy
 from sme_credits.test_data.sme_context import SMEContext
 from sme_credits.tests.scenarios.check_methods_work_scenario import check_methods_work_scenario
+from sme_credits.tests.steps.strategy.step_get_strategies import step_get_strategies
 from sme_credits.tests.steps.strategy.step_post_strategy import step_post_strategy
 
 
@@ -21,6 +22,9 @@ class DemoTestCase(TestCase):
 
     def test_post_strategy(self):
         step_post_strategy(self.context)
+
+    def test_get_strategies(self):
+        step_get_strategies(self.context)
 
 #
 # class SMETestCase(TestCase):
