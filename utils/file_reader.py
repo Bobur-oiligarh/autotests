@@ -1,3 +1,5 @@
+import re
+
 from utils.settings import Settings
 from pathlib import Path
 
@@ -18,3 +20,15 @@ class FileReader:
             for line in file:
                 parameters.append(line.split(","))
         return parameters
+
+    @staticmethod
+    def _cconvert_type(value: str):
+        if re.fullmatch("[A-Za-zА-Яа-я]+", value):
+            if re.fullmatch("^\s*(\b(True|False)\b){1,2}(!\S)+\s*$", value):
+                return bool(value)
+            return str(value)
+        if re.fullmatch("^\s*\d+\.\d+\s*$", value):
+            return float(value)
+        if re.fullmatch("^\s*\d*\s*$", value):
+            return int(value)
+
