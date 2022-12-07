@@ -12,6 +12,15 @@ class SettingsBase:
         self._PARAMS = None
 
     def set_data(self, data: dict):
+        """
+        data format: {
+                "service" : "service_name",
+                "env": "env_name",
+                "team": "",
+                "con_type": ""
+            }
+        """
+        print(f"Settings.set_data, data = {data}")
         if None in self.__dict__.values():
             self._SERVICE = data.get("service")
             self._ENV = data.get("env")

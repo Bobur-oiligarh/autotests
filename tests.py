@@ -53,6 +53,15 @@ services = [
         "env": "component",
         "team": "sme_credits",
         "con_type": "vpn",
+        "tests": ["vbnv_100"]
+    },
+    # {
+    #     "service": "tariff_calculator",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": ["vbnv_100"]
+    # }
         "tests": None
     },
     # {
