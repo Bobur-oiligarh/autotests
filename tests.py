@@ -41,6 +41,13 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # },
+    # {
+    #     "service": "sme_make_decision_making",
+    #     "env": "component",
+    #     "team": "sme_credits",
+    #     "con_type": "vpn",
+    #     "tests": ["vbnv_100"]
+    # },
     {
         "service": "sme_make_decision_making",
         "env": "component",
