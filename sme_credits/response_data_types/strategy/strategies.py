@@ -1,5 +1,3 @@
-import unittest
-
 import allure
 from utils.api_utils.response_data_base import BaseTypeParent
 
@@ -26,9 +24,11 @@ class SMEStrategies(BaseTypeParent):
                 return strategy
         return strategy
 
+    @allure.step("Проверка наличия объекта strategy с заданным параметром")
     def exist(self, param_name: str, param_value):
         self._tc.assertTrue(self.get_strategy_by_param(param_name, param_value))
 
+    @allure.step("Проверка отсутствия объекта strategy заданным параметром")
     def not_exist(self, param_name: str, param_value):
         self._tc.assertFalse(self.get_strategy_by_param(param_name, param_value))
 
@@ -58,25 +58,16 @@ class SMEStrategy(BaseTypeParent):
     def set_strategy_to(self, obj):
         obj.strategy = self
 
+    @allure.step("Изменение значения параметра объекта strategy: {param_name} на {param_value}")
     def change_param_value(self, param_name: str, param_value):
         self.__setattr__(param_name, param_value)
 
+    @allure.step("Сопоставление стратегий")
     def check_objects_similarity(self, strategy: object):
-        counter = 0
-        for attribute in self.__dict__.keys():
-            if self.__dict__[attribute] == strategy.__dict__[attribute]:
-                counter += 1
-        self._tc.assertEqual(counter, len(self.__dict__))
+        differences = []
+        for key in self.__dict__.keys():
+            if self.__dict__[key] == strategy.__dict__[key]:
+                differences.append([key, self.__dict__[key], strategy.__dict__[key]])
+        self._tc.assertEqual(0, len(differences),
+                             f"Результаты сопоставления объектов: {differences}, не соответствуют ожидаемым")
 
-
-
-
-if __name__ == '__main__':
-    class Test:
-        def __init__(self):
-            self.book = "jhbj"
-            self.note = "sfgf"
-
-    a = Test()
-    print(len(a.__dict__))
-    unittest.TestCase().assertTrue(a)
