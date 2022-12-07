@@ -1,5 +1,4 @@
 import allure
-
 from sme_credits.requests.strategy.get_all_strategies import GetStrategies
 
 
@@ -7,3 +6,4 @@ from sme_credits.requests.strategy.get_all_strategies import GetStrategies
 def step_get_strategies(context):
     response = GetStrategies().response()
     response.check_success(context).data.set_data_to(context)
+

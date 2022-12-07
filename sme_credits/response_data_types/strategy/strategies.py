@@ -18,11 +18,12 @@ class SMEStrategies(BaseTypeParent):
         obj.strategies = self
 
     def get_strategy_by_param(self, param_name: str, param_value):
-        strategy = None
+        result = None
         for strategy_obj in self.strategies:
             if strategy_obj.__dict__[param_name] == param_value:
-                return strategy
-        return strategy
+                result = strategy_obj
+                return result
+        return result
 
     @allure.step("Проверка наличия объекта strategy с заданным параметром")
     def exist(self, param_name: str, param_value):
@@ -63,10 +64,10 @@ class SMEStrategy(BaseTypeParent):
         self.__setattr__(param_name, param_value)
 
     @allure.step("Сопоставление стратегий")
-    def check_objects_similarity(self, strategy: object):
+    def check_objects_similarity(self, strategy):
         differences = []
         for key in self.__dict__.keys():
-            if self.__dict__[key] == strategy.__dict__[key]:
+            if self.__dict__[key] != strategy.__dict__[key]:
                 differences.append([key, self.__dict__[key], strategy.__dict__[key]])
         self._tc.assertEqual(0, len(differences),
                              f"Результаты сопоставления объектов: {differences}, не соответствуют ожидаемым")
