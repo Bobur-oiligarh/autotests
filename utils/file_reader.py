@@ -1,6 +1,8 @@
 from utils.settings import Settings
 from pathlib import Path
 
+import re
+
 
 class FileReader:
     FILES = None
