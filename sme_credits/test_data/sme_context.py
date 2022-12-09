@@ -9,3 +9,6 @@ class SMEContext:
 
     strategy: SMEStrategy = None
     strategies: SMEStrategies = None
+
+    list: SMEList = None
+    lists: SMELists = None
