@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from sme_make_decision_making.response_data_types.accounts import SMEAccount
 from sme_make_decision_making.test_data.sme_context import SMEContext
-from sme_make_decision_making.tests.scenarios.vbnv_100_scenario import check_methods_work_scenario
+from sme_make_decision_making.tests.scenarios.vbnv_100_scenario import vbnv_100_scenario
 
 
 class VBNV100TestCase(TestCase):
