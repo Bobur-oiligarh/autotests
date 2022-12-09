@@ -1,17 +1,5 @@
-import re
-
 from utils.settings import Settings
 from pathlib import Path
-
-s = Settings().set_data(
-    {
-        "service": "sme_make_decision_making",
-        "env": "component",
-        "team": "sme_credits",
-        "con_type": "vpn",
-        "tests": ["vbnv_118"]
-    }
-)
 
 
 class FileReader:
