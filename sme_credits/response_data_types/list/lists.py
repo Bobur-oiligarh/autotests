@@ -1,4 +1,20 @@
+from sme_credits.response_data_types.account.accounts import SMEAccounts, SMEAccount
 from utils.api_utils.response_data_base import BaseTypeParent
+
+
+class SMEListAccounts(BaseTypeParent):
+    def __init__(self, data: list):
+        super().__init__()
+        self.list_accounts: list[SMEAccount] = self.deserialize_to_list_of(SMEAccount, data)
+
+    def check(self, context, **kwargs):
+        self.check_list_of("list_accounts", context, **kwargs)
+
+    def set_data_to(self, obj):
+        self.set_list_accounts_to(obj)
+
+    def set_list_accounts_to(self, obj):
+        obj.list_accounts = self
 
 
 class SMELists(BaseTypeParent):

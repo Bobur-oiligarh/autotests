@@ -12,3 +12,4 @@ class SMEContext:
 
     list: SMEList = None
     lists: SMELists = None
+    list_accounts: SMEAccounts = None
