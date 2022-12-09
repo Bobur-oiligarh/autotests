@@ -23,7 +23,7 @@ class Balances(BaseTypeParent):
             for balance in self.balances:
                 expected_total_sum += balance.balance
         self.assert_not_empty_float("total_sum")
-        self.assert_equal("total_sum", expected_total_sum)
+        self.assert_equal_param("total_sum", expected_total_sum)
 
     def set_data_to(self, obj):
         self.update_client_balances_and_total_sum(obj)

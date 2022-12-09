@@ -9,6 +9,7 @@ class SettingsBase:
         self._CON_TYPE = None
         self._SERVICE = None
         self._TESTS = None
+        self._PARAMS = None
 
     def set_data(self, data: dict):
         """
@@ -30,6 +31,7 @@ class SettingsBase:
     def set_tests(self, data: dict):
         if not self._TESTS:
             self._TESTS = data.get("tests")
+            self._PARAMS = data.get("params")
 
     def env(self):
         return self._ENV

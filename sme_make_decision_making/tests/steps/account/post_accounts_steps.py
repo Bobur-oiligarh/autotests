@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.account.post_accounts import PostAccounts
+from sme_make_decision_making.requests.account.post_accounts import PostAccounts
 
 
 @allure.step("Делаем запрос POST /accounts")

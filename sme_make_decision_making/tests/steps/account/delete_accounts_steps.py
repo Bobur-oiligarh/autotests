@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.account.delete_accounts import DeleteAccounts
+from sme_make_decision_making.requests.account.delete_accounts import DeleteAccounts
 
 
 @allure.step("Get sme/accounts")
