@@ -6,8 +6,8 @@ from sme_make_decision_making.tests.steps.account.patch_accounts_steps import st
 from sme_make_decision_making.tests.steps.account.post_accounts_steps import step_post_sme_accounts
 
 
-@allure.step("Проверка работы конечных точек SME accounts")
-def check_methods_work_scenario(context):
+@allure.step("Проверка работы конечной точки SME accounts")
+def vbnv_100_scenario(context):
     # запрос аккаунтов и  проверка отсутствия добавляемого в ответе
     step_get_sme_accounts(context)
     context.accounts.account_not_exist(context.account)

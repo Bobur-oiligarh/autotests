@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from sme_make_decision_making.response_data_types.criterions import SMECriterion
 from sme_make_decision_making.test_data.sme_context import SMEContext
-from sme_make_decision_making.tests.scenarios.demo_scenarios import demo_criterion_scenario
+from sme_make_decision_making.tests.scenarios.vbnv_118_scenario import vbnv_118_scenario
 
 
 class DemoTest(TestCase):
@@ -26,4 +26,4 @@ class DemoTest(TestCase):
         )
 
     def test_criterions(self):
-        demo_criterion_scenario(self.context)
+        vbnv_118_scenario(self.context)
