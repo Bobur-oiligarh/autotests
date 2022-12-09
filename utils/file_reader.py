@@ -48,8 +48,3 @@ class FileReader:
 
             return str(value)
         return None
-
-
-if __name__ == '__main__':
-    f = FileReader().get("vbnv_118.csv")
-    print(f)
