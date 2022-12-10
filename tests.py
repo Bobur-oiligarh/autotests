@@ -41,13 +41,27 @@ services = [
     #     "con_type": "vpn",
     #     "tests": None
     # },
+    # {
+    #     "service": "sme_make_decision_making",
+    #     "env": "component",
+    #     "team": "sme_credits",
+    #     "con_type": "vpn",
+    #     "tests": ["vbnv_100"]
+    # },
     {
-        "service": "sme_credits",
+        "service": "sme_make_decision_making",
         "env": "component",
         "team": "sme_credits",
         "con_type": "vpn",
-        "tests": ["demo"]
+        "tests": ["vbnv_118"]
     },
+    # {
+    #     "service": "tariff_calculator",
+    #     "env": "component",
+    #     "team": "hamkor_mobile",
+    #     "con_type": "vpn",
+    #     "tests": ["vbnv_100"]
+    # },
     # {
     #     "service": "tariff_calculator",
     #     "env": "component",
