@@ -1,5 +1,5 @@
 import allure
-from sme_credits.requests.strategy.get_all_strategies import GetStrategies
+from sme_make_decision_making.requests.strategy.get_all_strategies import GetStrategies
 
 
 @allure.step("Запрос Get/strategies, проверка ответа")

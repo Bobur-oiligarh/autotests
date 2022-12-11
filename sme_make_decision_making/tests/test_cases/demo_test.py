@@ -1,16 +1,12 @@
 from unittest import TestCase
 from parameterized import parameterized
-from sme_credits.response_data_types.account.accounts import SMEAccount
-from sme_credits.response_data_types.strategy.strategies import SMEStrategy
-from sme_credits.test_data.sme_context import SMEContext
-from sme_credits.tests.scenarios.account.check_methods_work_scenario import check_methods_work_scenario
-from sme_credits.tests.scenarios.strategy.check_strategy_methods_work_scenario import \
-    check_strategy_methods_work_scenario
-from sme_credits.tests.steps.strategy.step_delete_strategy import step_delete_strategy
-from sme_credits.tests.steps.strategy.step_get_strategies import step_get_strategies
-from sme_credits.tests.steps.strategy.step_get_strategy import step_get_strategy
-from sme_credits.tests.steps.strategy.step_patch_strategy import step_patch_strategy
-from sme_credits.tests.steps.strategy.step_post_strategy import step_post_strategy
+from sme_make_decision_making.response_data_types.accounts import SMEAccount
+from sme_make_decision_making.response_data_types.criterions import SMECriterion
+from sme_make_decision_making.response_data_types.strategies import SMEStrategy
+from sme_make_decision_making.test_data.sme_context import SMEContext
+from sme_make_decision_making.tests.scenarios.vbnv_100_scenario import vbnv_100_scenario
+from sme_make_decision_making.tests.scenarios.vbnv_119_scenario import vbnv_119_scenario
+from sme_make_decision_making.tests.scenarios.vbnv_118_scenario import vbnv_118_scenario
 
 
 class DemoTestCase(TestCase):
@@ -29,10 +25,10 @@ class DemoTestCase(TestCase):
             )
 
     def test_methods_work(self):
-        check_strategy_methods_work_scenario(self.context)
+        vbnv_119_scenario(self.context)
 
 
-class SMETestCase(TestCase):
+class SMEAccountTestCase(TestCase):
 
     def setUp(self) -> None:
         self.context = SMEContext()
@@ -45,4 +41,28 @@ class SMETestCase(TestCase):
         })
 
 #     def test_get_accounts(self):
-#         check_methods_work_scenario(self.context)
+#         vbnv_100_scenario(self.context)
+
+
+class DemoCriterionTest(TestCase):
+
+    def setUp(self) -> None:
+        self.context = SMEContext()
+        self.context.criterion = SMECriterion(
+            {
+                "active": True,
+                "amount_check": 1111,
+                "count_check": 44,
+                "date_action": 2,
+                "date_check": 365,
+                "id": "R299",
+                "list_id": "",
+                "name": "Наличие левого полужопия",
+                "points": 0,
+                "step_id": "A001",
+                "user_employee": "Ivan"
+            }
+        )
+
+    # def test_criterions(self):
+    #     vbnv_118_scenario(self.context)

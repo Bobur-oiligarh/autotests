@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.strategy.delete_strategy import DeleteStrategy
+from sme_make_decision_making.requests.strategy.delete_strategy import DeleteStrategy
 
 
 @allure.step("Запрос DELETE/strategy/id, проверка ответа")

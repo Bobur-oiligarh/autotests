@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.strategy.post_strategy import PostStrategy
+from sme_make_decision_making.requests.strategy.post_strategy import PostStrategy
 
 
 @allure.step("Запрос POST/strategies, проверка параметров ответа")

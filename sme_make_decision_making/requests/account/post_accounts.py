@@ -1,5 +1,5 @@
-from sme_credits.response_data_types.account.accounts import SMEAccount
-from sme_credits.test_data.sme_context import SMEContext
+from sme_make_decision_making.response_data_types.accounts import SMEAccount
+from sme_make_decision_making.test_data.sme_context import SMEContext
 from utils.api_utils.test_request import TestRequest
 from utils.url_provider import URLProvider
 

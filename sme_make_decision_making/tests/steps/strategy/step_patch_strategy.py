@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.strategy.patch_strategy import PatchStrategy
+from sme_make_decision_making.requests.strategy.patch_strategy import PatchStrategy
 
 
 @allure.step("Запрос PATCH/strategies/id, проверка ответа")

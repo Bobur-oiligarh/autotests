@@ -1,4 +1,4 @@
-from sme_credits.response_data_types.account.accounts import SMEAccounts
+from sme_make_decision_making.response_data_types.accounts import SMEAccounts
 from utils.api_utils.test_request import TestRequest
 from utils.url_provider import URLProvider
 
