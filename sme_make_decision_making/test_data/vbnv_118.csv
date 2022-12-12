@@ -1,0 +1,6 @@
+id,name,active,step_id,date_action,date_check,amount_check,count_check,account_list_id,points,user_employee,
+R103,Мошенники ЮЛ,True,A001,,,,,,,Pesos,
+R206,Просрочка учредителя по всем кредитам ХамкорБанка,True,A001,30,360,100000,,,,Pesos,
+R601,Заемщик-поручитель по всем кредитам ХамкорБанка,True,A001,60,,0,,AL001,,Pesos,
+AIP100,Проверка mail,True,A002,,,,,,15,Pesos,
+AIP600,Увеличение остатков 1,True,A002,,360,,1.5,,10,Pesos,

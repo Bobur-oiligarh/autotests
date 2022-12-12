@@ -63,10 +63,14 @@ class BaseType(ABC):
     def assert_not_empty_balance(self, param_name: str):
         self.assert_not_none(param_name)
         with allure.step("проверка типа баланса"):
-            if type(self.__getattribute__(param_name)) in [float, int]:
+            self.assert_not_empty_numeric(param_name)
+
+    def assert_not_empty_numeric(self, param_name: str):
+        self.assert_not_none(param_name)
+        with allure.step("проверка числового типа параметра"):
+            if type(getattr(self, param_name)) in [float, int]:
                 return self
-            assert False, f"тип данных баланса не соответствует числовому {type(self.__getattribute__(param_name))}\n" \
-                   f"{self.__str__()}"
+            assert False, f"тип данных баланса не соответствует числовому {type(getattr(self, param_name))}\n{self.__str__()}"
 
     def assert_not_empty_bool(self, param_name: str):
         self.assert_not_none_and_true_type(param_name, bool)
@@ -106,6 +110,16 @@ class BaseType(ABC):
                                  f"ожидаемому ({expected_value})")
         return self
 
+    def assert_equal(self, obj):
+        differences = self._differences(obj)
+        self._tc.assertEqual(0, len(differences),
+                             f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
+
+    def assert_not_equal(self, obj):
+        differences = self._differences(obj)
+        self._tc.assertNotEqual(0, len(differences),
+                                f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
+
     def check_list_of(self, list_param_name: str, context, **kwargs):
         with allure.step(f"Проверка объектов в списке {list_param_name}"):
             i = 0
@@ -121,16 +135,6 @@ class BaseType(ABC):
 
     def _empty_str(self, parameter_name, value):
         return parameter_name + f" ({value}) пустой" + self.__str__()
-
-    def assert_equal(self, obj):
-        differences = self._differences(obj)
-        self._tc.assertEqual(0, len(differences),
-                             f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
-
-    def assert_not_equal(self, obj):
-        differences = self._differences(obj)
-        self._tc.assertNotEqual(0, len(differences),
-                                f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")
 
     def _differences(self, obj) -> list:
         differences = []
@@ -166,7 +170,7 @@ class BaseTypeParent(BaseType, ABC):
     def assert_obj_exist(self, list_param_name, param_name, param_value):
         self._tc.assertTrue(
             True if self.get_obj_by_param(list_param_name, param_name, param_value) else False,
-            f"Такого объекта {param_name} - {param_value} нет в списке {getattr(self, list_param_name)}"
+            f"Объекта {param_name} - {param_value} нет в списке {getattr(self, list_param_name)}"
         )
 
     def assert_obj_not_exist(self, list_param_name, param_name, param_value):
@@ -174,4 +178,3 @@ class BaseTypeParent(BaseType, ABC):
             False if not self.get_obj_by_param(list_param_name, param_name, param_value) else True,
             f"Такой объект присутствует в списке"
         )
-
