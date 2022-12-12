@@ -16,7 +16,7 @@ class DemoTestCase(TestCase):
         self.context = SMEContext()
         self.context.list = SMEList(
             data={
-                "list_id": "AL001",
+                "list_id": "AL009",
                 "name": "ikkinchi",
                 "user_employee": "Boxodir",
                 "active": False
@@ -38,5 +38,6 @@ class DemoTestCase(TestCase):
     # def test_delete_list(self):
     #     step_delete_list(self.context)
 
-    def test_get_list_accounts(self):
-        step_get_list_accounts(self.context)
+    # def test_get_list_accounts(self):
+    #     step_get_list_accounts(self.context)
+

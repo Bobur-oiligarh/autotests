@@ -77,7 +77,7 @@ class SMEAccount(BaseTypeParent):
         self.__setattr__(param_name, param_value)
 
     @allure.step("Сопоставляем акаунты")
-    def assert_equal(self, account):
+    def assert_equal_param(self, account):
         differences = []
         for key in self.__dict__.keys():
             if self.__dict__[key] != account.__dict__[key]:
