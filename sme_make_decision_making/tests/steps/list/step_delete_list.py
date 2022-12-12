@@ -1,6 +1,6 @@
 import allure
 
-from sme_credits.requests.list.delete_list import DeleteList
+from sme_make_decision_making.requests.list.delete_list import DeleteList
 
 
 @allure.step("Запрос Delete/list/list_id, проверка ответа")

@@ -6,7 +6,7 @@ class PatchList(TestRequest):
 
     def __init__(self, context):
         super().__init__(
-            url=URLProvider().url("sme_credits", f"list/{context.list.list_id}"),
+            url=URLProvider().url("sme_make_decision_making", f"list/{context.list.list_id}"),
             method="patch",
             data_type=None,
             require_err_note=False

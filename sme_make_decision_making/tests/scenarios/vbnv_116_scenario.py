@@ -1,9 +1,9 @@
 import allure
 
-from sme_credits.tests.steps.list.step_delete_list import step_delete_list
-from sme_credits.tests.steps.list.step_get_lists import step_get_lists
-from sme_credits.tests.steps.list.step_patch_list import step_patch_list
-from sme_credits.tests.steps.list.step_post_list import step_post_list
+from sme_make_decision_making.tests.steps.list.step_delete_list import step_delete_list
+from sme_make_decision_making.tests.steps.list.step_get_list import step_get_lists, step_get_list_assert_equal
+from sme_make_decision_making.tests.steps.list.step_patch_list import step_patch_list
+from sme_make_decision_making.tests.steps.list.step_post_list import step_post_list
 
 
 @allure.step("Сценарий проверки работы классов на запросы POST, GET, GET ALL, PATCH, DELETE")
@@ -22,12 +22,13 @@ def vbnv_116_scenario(context):
     step_patch_list(context)
     step_get_lists(context)
     context.list.assert_equal(
-        context.lists.get_obj_by_param("lists", param_name="list_id", param_value=context.list.list_id)
-    )
+        obj=context.lists.get_obj_by_param("lists", param_name="list_id", param_value=context.list.list_id)
+        )
+
+    # Проверка запроса GET list by list_id
+    step_get_list_assert_equal(context)
 
     # Запрос на удаления list, проверка удаления
     step_delete_list(context)
     step_get_lists(context)
     context.lists.assert_obj_not_exist("lists", param_name="list_id", param_value=context.list.list_id)
-
-

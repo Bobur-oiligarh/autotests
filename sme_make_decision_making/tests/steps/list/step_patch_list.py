@@ -1,5 +1,5 @@
 import allure
-from sme_credits.requests.list.patch_list import PatchList
+from sme_make_decision_making.requests.list.patch_list import PatchList
 
 
 @allure.step("Запрос PATCH/list/list_id, проверка ответа")

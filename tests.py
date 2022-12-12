@@ -46,7 +46,7 @@ services = [
         "env": "component",
         "team": "sme_credits",
         "con_type": "vpn",
-        "tests": ["vbnv_119", "vbnv_118"]
+        "tests": ["vbnv_116"]
     },
     # {
     #     "service": "tariff_calculator",

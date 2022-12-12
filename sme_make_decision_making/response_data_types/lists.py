@@ -1,4 +1,4 @@
-from sme_credits.response_data_types.account.accounts import SMEAccounts, SMEAccount
+from sme_make_decision_making.response_data_types.accounts import SMEAccounts, SMEAccount
 from utils.api_utils.response_data_base import BaseTypeParent
 
 
