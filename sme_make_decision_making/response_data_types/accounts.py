@@ -1,3 +1,5 @@
+from typing import Any
+
 import allure
 
 from utils.api_utils.response_data_base import BaseTypeParent
@@ -26,7 +28,7 @@ class SMEAccounts(BaseTypeParent):
         obj.accounts = self
 
     @allure.step("Получить аккаунт по параметру {param_name}")
-    def get_account_by_param(self, param_name: str, param_value):
+    def get_account_by_param(self, param_name: str, param_value: Any):
         result = None
         for account in self.accounts:
             if account.__dict__[param_name] == param_value:
@@ -71,14 +73,5 @@ class SMEAccount(BaseTypeParent):
         obj.account = self
 
     @allure.step("Изменить значение параметра {param_name}")
-    def change_param(self, param_name: str, param_value):
+    def change_param(self, param_name: str, param_value: Any):
         self.__setattr__(param_name, param_value)
-
-    @allure.step("Сопоставляем акаунты")
-    def assert_equal_param(self, account):
-        differences = []
-        for key in self.__dict__.keys():
-            if self.__dict__[key] != account.__dict__[key]:
-                differences.append([key, self.__dict__[key], account.__dict__[key]])
-        self._tc.assertEqual(0, len(differences),
-                             f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")

@@ -1,3 +1,5 @@
+from typing import Union
+
 from utils.settings import Settings
 from pathlib import Path
 
@@ -9,7 +11,7 @@ class FileReader:
     ROOT_DIR = Path(__file__).parent.parent
 
     def get(self, file_name) -> list[dict]:
-        file_path = self.ROOT_DIR.joinpath(f"{Settings().service()}/test_data/{file_name}")
+        file_path = self.ROOT_DIR.joinpath(f"sme_make_decision_making/test_data/{file_name}")
         if ".csv" in file_name:
             return self._csv(file_path)
 
@@ -33,7 +35,9 @@ class FileReader:
         return parameters
 
     @staticmethod
-    def _convert_type(value: str) -> str | int | float | bool | None:
+    def _convert_type(value: str) -> Union[str, int, float, bool, None]:
+        if re.fullmatch(r'^"\d+"$', value):
+            return str(value)
 
         if re.fullmatch(r"^\d+\.\d+$", value):
             return float(value)
