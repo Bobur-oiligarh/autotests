@@ -75,12 +75,3 @@ class SMEAccount(BaseTypeParent):
     @allure.step("Изменить значение параметра {param_name}")
     def change_param(self, param_name: str, param_value: Any):
         self.__setattr__(param_name, param_value)
-
-    @allure.step("Сопоставляем акаунты")
-    def assert_equal(self, account):
-        differences = []
-        for key in self.__dict__.keys():
-            if self.__dict__[key] != account.__dict__[key]:
-                differences.append([key, self.__dict__[key], account.__dict__[key]])
-        self._tc.assertEqual(0, len(differences),
-                             f"Результаты сопоставления объектов {differences} не соответствуют ожидаемым")

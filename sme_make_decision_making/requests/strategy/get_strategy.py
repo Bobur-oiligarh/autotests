@@ -5,9 +5,9 @@ from utils.url_provider import URLProvider
 
 
 class GetStrategy(TestRequest):
-    def __init__(self, context: SMEContext):
+    def __init__(self, strategy_id):
         super().__init__(
-            url=URLProvider().url("sme_make_decision_making", f"strategies/{context.strategy.id}"),
+            url=URLProvider().url("sme_make_decision_making", f"strategies/{strategy_id}"),
             method="get",
             data_type=SMEStrategy,
             require_err_note=False

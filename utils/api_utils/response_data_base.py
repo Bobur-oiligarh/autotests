@@ -170,7 +170,7 @@ class BaseTypeParent(BaseType, ABC):
     def assert_obj_exist(self, list_param_name, param_name, param_value):
         self._tc.assertTrue(
             True if self.get_obj_by_param(list_param_name, param_name, param_value) else False,
-            f"Такого объекта {param_name} - {param_value} нет в списке {getattr(self, list_param_name)}"
+            f"Объекта {param_name} - {param_value} нет в списке {getattr(self, list_param_name)}"
         )
 
     def assert_obj_not_exist(self, list_param_name, param_name, param_value):
