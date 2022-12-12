@@ -1,14 +1,11 @@
 from unittest import TestCase
-from parameterized import parameterized
 from sme_make_decision_making.response_data_types.accounts import SMEAccount
 from sme_make_decision_making.response_data_types.criterions import SMECriterion
 from sme_make_decision_making.response_data_types.lists import SMEList
 from sme_make_decision_making.response_data_types.strategies import SMEStrategy
 from sme_make_decision_making.test_data.sme_context import SMEContext
-from sme_make_decision_making.tests.scenarios.vbnv_100_scenario import vbnv_100_scenario
 from sme_make_decision_making.tests.scenarios.vbnv_116_scenario import vbnv_116_scenario
 from sme_make_decision_making.tests.scenarios.vbnv_119_scenario import vbnv_119_scenario
-from sme_make_decision_making.tests.scenarios.vbnv_118_scenario import vbnv_118_scenario
 
 
 class DemoTestCase(TestCase):
@@ -43,10 +40,6 @@ class SMEAccountTestCase(TestCase):
         })
 
 
-#     def test_get_accounts(self):
-#         vbnv_100_scenario(self.context)
-
-
 class DemoCriterionTest(TestCase):
 
     def setUp(self) -> None:
@@ -66,9 +59,6 @@ class DemoCriterionTest(TestCase):
                 "user_employee": "Ivan"
             }
         )
-
-    # def test_criterions(self):
-    #     vbnv_118_scenario(self.context)
 
 
 class DemoListCase(TestCase):

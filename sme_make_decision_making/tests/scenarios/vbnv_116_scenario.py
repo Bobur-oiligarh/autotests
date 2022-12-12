@@ -6,7 +6,7 @@ from sme_make_decision_making.tests.steps.list.step_patch_list import step_patch
 from sme_make_decision_making.tests.steps.list.step_post_list import step_post_list
 
 
-@allure.step("Сценарий проверки работы классов на запросы POST, GET, GET ALL, PATCH, DELETE")
+@allure.step("Сценарий проверки работы end_point List")
 def vbnv_116_scenario(context):
     # Запрос всех объектов list
     step_get_lists(context)

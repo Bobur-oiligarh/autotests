@@ -27,10 +27,3 @@ class VBNV119TestCase(TestCase):
     @allure.title("УС.СПР, справочники (Strategy)")
     def test_strategy(self, context):
         vbnv_119_scenario(context)
-
-#
-# if __name__ == '__main__':
-#     print(parameters_creator())
-#     for context in parameters_creator():
-#         print(context[0].strategy.__dict__)
-#         print(type(context[0].strategy.product_id))
