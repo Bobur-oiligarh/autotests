@@ -36,7 +36,7 @@ class FileReader:
 
     @staticmethod
     def _convert_type(value: str) -> Union[str, int, float, bool, None]:
-        if re.fullmatch('"\d+"', value):
+        if re.fullmatch(r'^"\d+"$', value):
             return str(value)
 
         if re.fullmatch(r"^\d+\.\d+$", value):
